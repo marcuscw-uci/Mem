@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="mem.c" path="/data11/home/marcuscw/Desktop/Mem/.settings/mem.c"/>
+  </source>
+  <testbench>
+    <originFiles name="mem_test.c" path="/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

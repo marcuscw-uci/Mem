@@ -1,0 +1,1 @@
+set ::AESL_AUTOSIM::gTopFileName /data11/home/marcuscw/Desktop/Mem/solution1/./sim/autowrap/testbench/mem.c_pre.c.tb.c

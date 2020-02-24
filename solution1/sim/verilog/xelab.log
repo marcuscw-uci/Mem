@@ -1,0 +1,25 @@
+INFO: [XSIM 43-3496] Using init file passed via -initfile option "/state/opt/Xilinx/Vivado/2019.1/data/xsim/ip/xsim_ip.ini".
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_mem_top glbl -prj mem.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile /state/opt/Xilinx/Vivado/2019.1/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s mem 
+Multi-threading is on. Using 78 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/mem.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_mem_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/mem_stored.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_stored_ram
+INFO: [VRFC 10-311] analyzing module mem_stored
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.mem_stored_ram
+Compiling module xil_defaultlib.mem_stored(DataWidth=32,AddressR...
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.apatb_mem_top
+Compiling module work.glbl
+Built simulation snapshot mem

@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# xsim v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Wed Feb  5 15:33:06 2020
+# Process ID: 4145187
+# Current directory: /data11/home/marcuscw/Desktop/Mem/solution1/sim/vhdl
+# Command line: xsim -mode tcl -source {xsim.dir/mem/xsim_script.tcl}
+# Log file: /data11/home/marcuscw/Desktop/Mem/solution1/sim/vhdl/xsim.log
+# Journal file: /data11/home/marcuscw/Desktop/Mem/solution1/sim/vhdl/xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/mem/xsim_script.tcl
+# xsim {mem} -autoloadwcfg -tclbatch {mem.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source mem.tcl
+## run all
+Note: simulation done!
+Time: 235 ns  Iteration: 1  Process: /apatb_mem_top/generate_sim_done_proc  File: /data11/home/marcuscw/Desktop/Mem/solution1/sim/vhdl/mem.autotb.vhd
+Failure: NORMAL EXIT (note: failure is to force the simulator to stop)
+Time: 235 ns  Iteration: 1  Process: /apatb_mem_top/generate_sim_done_proc  File: /data11/home/marcuscw/Desktop/Mem/solution1/sim/vhdl/mem.autotb.vhd
+$finish called at time : 235 ns
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Feb  5 15:33:14 2020...
