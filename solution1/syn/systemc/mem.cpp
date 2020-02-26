@@ -29,7 +29,7 @@ mem::mem(sc_module_name name) : sc_module(name), mVcdFile(0) {
     saved_U->address0(saved_address0);
     saved_U->ce0(saved_ce0);
     saved_U->we0(saved_we0);
-    saved_U->d0(temp1_3_fu_77_p3);
+    saved_U->d0(temp1_2_fu_75_p3);
     saved_U->q0(saved_q0);
 
     SC_METHOD(thread_ap_clk_no_reset_);
@@ -53,22 +53,22 @@ mem::mem(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_CS_fsm_state2 );
 
     SC_METHOD(thread_out_r);
-    sensitive << ( re_read_read_fu_34_p2 );
+    sensitive << ( re_read_read_fu_32_p2 );
     sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( temp1_3_fu_77_p3 );
+    sensitive << ( temp1_2_fu_75_p3 );
 
     SC_METHOD(thread_out_r_ap_vld);
-    sensitive << ( re_read_read_fu_34_p2 );
+    sensitive << ( re_read_read_fu_32_p2 );
     sensitive << ( ap_CS_fsm_state2 );
 
-    SC_METHOD(thread_re_read_read_fu_34_p2);
+    SC_METHOD(thread_re_read_read_fu_32_p2);
     sensitive << ( re );
     sensitive << ( ap_CS_fsm_state2 );
 
     SC_METHOD(thread_saved_address0);
     sensitive << ( ap_CS_fsm_state1 );
-    sensitive << ( saved_addr_reg_87 );
-    sensitive << ( sext_ln9_fu_66_p1 );
+    sensitive << ( saved_addr_reg_85 );
+    sensitive << ( sext_ln9_fu_64_p1 );
     sensitive << ( ap_CS_fsm_state2 );
 
     SC_METHOD(thread_saved_ce0);
@@ -79,16 +79,16 @@ mem::mem(sc_module_name name) : sc_module(name), mVcdFile(0) {
     SC_METHOD(thread_saved_we0);
     sensitive << ( ap_CS_fsm_state2 );
 
-    SC_METHOD(thread_sext_ln9_fu_66_p1);
+    SC_METHOD(thread_sext_ln9_fu_64_p1);
     sensitive << ( wr_addr );
 
-    SC_METHOD(thread_temp1_1_fu_71_p2);
+    SC_METHOD(thread_temp1_1_fu_69_p2);
     sensitive << ( saved_q0 );
 
-    SC_METHOD(thread_temp1_3_fu_77_p3);
+    SC_METHOD(thread_temp1_2_fu_75_p3);
     sensitive << ( we );
     sensitive << ( saved_q0 );
-    sensitive << ( temp1_1_fu_71_p2 );
+    sensitive << ( temp1_1_fu_69_p2 );
 
     SC_METHOD(thread_ap_NS_fsm);
     sensitive << ( ap_start );
@@ -114,7 +114,6 @@ mem::mem(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, ap_idle, "(port)ap_idle");
     sc_trace(mVcdFile, ap_ready, "(port)ap_ready");
     sc_trace(mVcdFile, wr_addr, "(port)wr_addr");
-    sc_trace(mVcdFile, rd_addr, "(port)rd_addr");
     sc_trace(mVcdFile, we, "(port)we");
     sc_trace(mVcdFile, re, "(port)re");
     sc_trace(mVcdFile, out_r, "(port)out_r");
@@ -127,12 +126,12 @@ mem::mem(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, saved_ce0, "saved_ce0");
     sc_trace(mVcdFile, saved_we0, "saved_we0");
     sc_trace(mVcdFile, saved_q0, "saved_q0");
-    sc_trace(mVcdFile, saved_addr_reg_87, "saved_addr_reg_87");
-    sc_trace(mVcdFile, sext_ln9_fu_66_p1, "sext_ln9_fu_66_p1");
-    sc_trace(mVcdFile, re_read_read_fu_34_p2, "re_read_read_fu_34_p2");
+    sc_trace(mVcdFile, saved_addr_reg_85, "saved_addr_reg_85");
+    sc_trace(mVcdFile, sext_ln9_fu_64_p1, "sext_ln9_fu_64_p1");
+    sc_trace(mVcdFile, re_read_read_fu_32_p2, "re_read_read_fu_32_p2");
     sc_trace(mVcdFile, ap_CS_fsm_state2, "ap_CS_fsm_state2");
-    sc_trace(mVcdFile, temp1_3_fu_77_p3, "temp1_3_fu_77_p3");
-    sc_trace(mVcdFile, temp1_1_fu_71_p2, "temp1_1_fu_71_p2");
+    sc_trace(mVcdFile, temp1_2_fu_75_p3, "temp1_2_fu_75_p3");
+    sc_trace(mVcdFile, temp1_1_fu_69_p2, "temp1_1_fu_69_p2");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
 #endif
 
@@ -159,7 +158,7 @@ void mem::thread_ap_clk_no_reset_() {
         ap_CS_fsm = ap_NS_fsm.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && esl_seteq<1,1,1>(ap_start.read(), ap_const_logic_1))) {
-        saved_addr_reg_87 =  (sc_lv<7>) (sext_ln9_fu_66_p1.read());
+        saved_addr_reg_85 =  (sc_lv<7>) (sext_ln9_fu_64_p1.read());
     }
 }
 
@@ -197,27 +196,27 @@ void mem::thread_ap_ready() {
 }
 
 void mem::thread_out_r() {
-    out_r = temp1_3_fu_77_p3.read();
+    out_r = temp1_2_fu_75_p3.read();
 }
 
 void mem::thread_out_r_ap_vld() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(re_read_read_fu_34_p2.read(), ap_const_lv1_1))) {
+         esl_seteq<1,1,1>(re_read_read_fu_32_p2.read(), ap_const_lv1_1))) {
         out_r_ap_vld = ap_const_logic_1;
     } else {
         out_r_ap_vld = ap_const_logic_0;
     }
 }
 
-void mem::thread_re_read_read_fu_34_p2() {
-    re_read_read_fu_34_p2 = re.read();
+void mem::thread_re_read_read_fu_32_p2() {
+    re_read_read_fu_32_p2 = re.read();
 }
 
 void mem::thread_saved_address0() {
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
-        saved_address0 = saved_addr_reg_87.read();
+        saved_address0 = saved_addr_reg_85.read();
     } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) {
-        saved_address0 =  (sc_lv<7>) (sext_ln9_fu_66_p1.read());
+        saved_address0 =  (sc_lv<7>) (sext_ln9_fu_64_p1.read());
     } else {
         saved_address0 = "XXXXXXX";
     }
@@ -241,16 +240,16 @@ void mem::thread_saved_we0() {
     }
 }
 
-void mem::thread_sext_ln9_fu_66_p1() {
-    sext_ln9_fu_66_p1 = esl_sext<64,7>(wr_addr.read());
+void mem::thread_sext_ln9_fu_64_p1() {
+    sext_ln9_fu_64_p1 = esl_sext<64,7>(wr_addr.read());
 }
 
-void mem::thread_temp1_1_fu_71_p2() {
-    temp1_1_fu_71_p2 = (!saved_q0.read().is_01() || !ap_const_lv8_1.is_01())? sc_lv<8>(): (sc_biguint<8>(saved_q0.read()) + sc_biguint<8>(ap_const_lv8_1));
+void mem::thread_temp1_1_fu_69_p2() {
+    temp1_1_fu_69_p2 = (!saved_q0.read().is_01() || !ap_const_lv8_1.is_01())? sc_lv<8>(): (sc_biguint<8>(saved_q0.read()) + sc_biguint<8>(ap_const_lv8_1));
 }
 
-void mem::thread_temp1_3_fu_77_p3() {
-    temp1_3_fu_77_p3 = (!we.read()[0].is_01())? sc_lv<8>(): ((we.read()[0].to_bool())? temp1_1_fu_71_p2.read(): saved_q0.read());
+void mem::thread_temp1_2_fu_75_p3() {
+    temp1_2_fu_75_p3 = (!we.read()[0].is_01())? sc_lv<8>(): ((we.read()[0].to_bool())? temp1_1_fu_69_p2.read(): saved_q0.read());
 }
 
 void mem::thread_ap_NS_fsm() {
@@ -289,7 +288,6 @@ void mem::thread_hdltv_gen() {
         mHdltvoutHandle << " , " <<  " \"ap_idle\" :  \"" << ap_idle.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"ap_ready\" :  \"" << ap_ready.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"wr_addr\" :  \"" << wr_addr.read() << "\" ";
-        mHdltvinHandle << " , " <<  " \"rd_addr\" :  \"" << rd_addr.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"we\" :  \"" << we.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"re\" :  \"" << re.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"out_r\" :  \"" << out_r.read() << "\" ";

@@ -18,7 +18,6 @@ port (
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
     wr_addr : IN STD_LOGIC_VECTOR (6 downto 0);
-    rd_addr : IN STD_LOGIC_VECTOR (6 downto 0);
     we : IN STD_LOGIC_VECTOR (0 downto 0);
     re : IN STD_LOGIC_VECTOR (0 downto 0);
     out_r : OUT STD_LOGIC_VECTOR (7 downto 0);
@@ -49,13 +48,13 @@ architecture behav of mem is
     signal saved_ce0 : STD_LOGIC;
     signal saved_we0 : STD_LOGIC;
     signal saved_q0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal saved_addr_reg_87 : STD_LOGIC_VECTOR (6 downto 0);
-    signal sext_ln9_fu_66_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal re_read_read_fu_34_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal saved_addr_reg_85 : STD_LOGIC_VECTOR (6 downto 0);
+    signal sext_ln9_fu_64_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal re_read_read_fu_32_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
-    signal temp1_3_fu_77_p3 : STD_LOGIC_VECTOR (7 downto 0);
-    signal temp1_1_fu_71_p2 : STD_LOGIC_VECTOR (7 downto 0);
+    signal temp1_2_fu_75_p3 : STD_LOGIC_VECTOR (7 downto 0);
+    signal temp1_1_fu_69_p2 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (1 downto 0);
 
     component mem_saved IS
@@ -87,7 +86,7 @@ begin
         address0 => saved_address0,
         ce0 => saved_ce0,
         we0 => saved_we0,
-        d0 => temp1_3_fu_77_p3,
+        d0 => temp1_2_fu_75_p3,
         q0 => saved_q0);
 
 
@@ -109,7 +108,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                saved_addr_reg_87 <= sext_ln9_fu_66_p1(7 - 1 downto 0);
+                saved_addr_reg_85 <= sext_ln9_fu_64_p1(7 - 1 downto 0);
             end if;
         end if;
     end process;
@@ -161,25 +160,25 @@ begin
         end if; 
     end process;
 
-    out_r <= temp1_3_fu_77_p3;
+    out_r <= temp1_2_fu_75_p3;
 
-    out_r_ap_vld_assign_proc : process(re_read_read_fu_34_p2, ap_CS_fsm_state2)
+    out_r_ap_vld_assign_proc : process(re_read_read_fu_32_p2, ap_CS_fsm_state2)
     begin
-        if (((re_read_read_fu_34_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if (((re_read_read_fu_32_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
             out_r_ap_vld <= ap_const_logic_1;
         else 
             out_r_ap_vld <= ap_const_logic_0;
         end if; 
     end process;
 
-    re_read_read_fu_34_p2 <= re;
+    re_read_read_fu_32_p2 <= re;
 
-    saved_address0_assign_proc : process(ap_CS_fsm_state1, saved_addr_reg_87, sext_ln9_fu_66_p1, ap_CS_fsm_state2)
+    saved_address0_assign_proc : process(ap_CS_fsm_state1, saved_addr_reg_85, sext_ln9_fu_64_p1, ap_CS_fsm_state2)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            saved_address0 <= saved_addr_reg_87;
+            saved_address0 <= saved_addr_reg_85;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            saved_address0 <= sext_ln9_fu_66_p1(7 - 1 downto 0);
+            saved_address0 <= sext_ln9_fu_64_p1(7 - 1 downto 0);
         else 
             saved_address0 <= "XXXXXXX";
         end if; 
@@ -205,10 +204,10 @@ begin
         end if; 
     end process;
 
-        sext_ln9_fu_66_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(wr_addr),64));
+        sext_ln9_fu_64_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(wr_addr),64));
 
-    temp1_1_fu_71_p2 <= std_logic_vector(unsigned(saved_q0) + unsigned(ap_const_lv8_1));
-    temp1_3_fu_77_p3 <= 
-        temp1_1_fu_71_p2 when (we(0) = '1') else 
+    temp1_1_fu_69_p2 <= std_logic_vector(unsigned(saved_q0) + unsigned(ap_const_lv8_1));
+    temp1_2_fu_75_p3 <= 
+        temp1_1_fu_69_p2 when (we(0) = '1') else 
         saved_q0;
 end behav;

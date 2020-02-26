@@ -4290,12 +4290,12 @@ typedef unsigned int __attribute__ ((bitwidth(64))) uint64;
 # 84 "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_cint.h" 2
 # 2 "Mem/.settings/mem.h" 2
 
-void mem(int7 wr_addr, int7 rd_addr, int1 we, int1 re, int8 *out);
+void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
 # 3 "Mem/.settings/mem.c" 2
 
 
 
-void mem(int7 wr_addr, int7 rd_addr, int1 we, int1 re, int8 *out){
+void mem(int7 wr_addr, int1 we, int1 re, int8 *out){
  static int8 saved[128];
 
  int8 temp1 = saved[wr_addr];
@@ -4305,10 +4305,8 @@ void mem(int7 wr_addr, int7 rd_addr, int1 we, int1 re, int8 *out){
  }
  saved[wr_addr] = temp1;
 
-
- int8 temp2 = saved[wr_addr];
  if(re){
-  *out = temp2;
+  *out = saved[wr_addr];
  }
 
 

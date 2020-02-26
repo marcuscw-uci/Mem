@@ -12,10 +12,9 @@
   <warningLogs>
     <logs>
       <synLog>
-        <logs message="WARNING: [RTGEN 206-101] Port 'mem/rd_addr' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="Mem" solutionName="solution1" date="2020-02-24T00:14:16.089-0800" type="Warning"/>
-        <logs message="WARNING: [SYN 201-107] Renaming port name 'mem/out' to 'mem/out_r' to avoid the conflict with HDL keywords or other object names." projectName="Mem" solutionName="solution1" date="2020-02-24T00:14:14.369-0800" type="Warning"/>
-        <logs message="WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'." projectName="Mem" solutionName="solution1" date="2020-02-24T00:14:04.766-0800" type="Warning"/>
-        <logs message="WARNING: [HLS 200-40] Cannot find library '/state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/Virtex-7/Virtex-7.lib'." projectName="Mem" solutionName="solution1" date="2020-02-24T00:14:03.336-0800" type="Warning"/>
+        <logs message="WARNING: [SYN 201-107] Renaming port name 'mem/out' to 'mem/out_r' to avoid the conflict with HDL keywords or other object names." projectName="Mem" solutionName="solution1" date="2020-02-26T02:19:01.718-0800" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'." projectName="Mem" solutionName="solution1" date="2020-02-26T02:18:51.056-0800" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Cannot find library '/state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/Virtex-7/Virtex-7.lib'." projectName="Mem" solutionName="solution1" date="2020-02-26T02:18:49.402-0800" type="Warning"/>
       </synLog>
       <simLog/>
       <mgLog/>

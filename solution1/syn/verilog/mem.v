@@ -17,7 +17,6 @@ module mem (
         ap_idle,
         ap_ready,
         wr_addr,
-        rd_addr,
         we,
         re,
         out_r,
@@ -34,7 +33,6 @@ output   ap_done;
 output   ap_idle;
 output   ap_ready;
 input  [6:0] wr_addr;
-input  [6:0] rd_addr;
 input  [0:0] we;
 input  [0:0] re;
 output  [7:0] out_r;
@@ -51,12 +49,12 @@ reg   [6:0] saved_address0;
 reg    saved_ce0;
 reg    saved_we0;
 wire   [7:0] saved_q0;
-reg   [6:0] saved_addr_reg_87;
-wire  signed [63:0] sext_ln9_fu_66_p1;
-wire   [0:0] re_read_read_fu_34_p2;
+reg   [6:0] saved_addr_reg_85;
+wire  signed [63:0] sext_ln9_fu_64_p1;
+wire   [0:0] re_read_read_fu_32_p2;
 wire    ap_CS_fsm_state2;
-wire   [7:0] temp1_3_fu_77_p3;
-wire   [7:0] temp1_1_fu_71_p2;
+wire   [7:0] temp1_2_fu_75_p3;
+wire   [7:0] temp1_1_fu_69_p2;
 reg   [1:0] ap_NS_fsm;
 
 // power-on initialization
@@ -74,7 +72,7 @@ saved_U(
     .address0(saved_address0),
     .ce0(saved_ce0),
     .we0(saved_we0),
-    .d0(temp1_3_fu_77_p3),
+    .d0(temp1_2_fu_75_p3),
     .q0(saved_q0)
 );
 
@@ -88,7 +86,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
-        saved_addr_reg_87 <= sext_ln9_fu_66_p1;
+        saved_addr_reg_85 <= sext_ln9_fu_64_p1;
     end
 end
 
@@ -117,7 +115,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((re_read_read_fu_34_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+    if (((re_read_read_fu_32_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
         out_r_ap_vld = 1'b1;
     end else begin
         out_r_ap_vld = 1'b0;
@@ -126,9 +124,9 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state2)) begin
-        saved_address0 = saved_addr_reg_87;
+        saved_address0 = saved_addr_reg_85;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
-        saved_address0 = sext_ln9_fu_66_p1;
+        saved_address0 = sext_ln9_fu_64_p1;
     end else begin
         saved_address0 = 'bx;
     end
@@ -172,14 +170,14 @@ assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
 assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
 
-assign out_r = temp1_3_fu_77_p3;
+assign out_r = temp1_2_fu_75_p3;
 
-assign re_read_read_fu_34_p2 = re;
+assign re_read_read_fu_32_p2 = re;
 
-assign sext_ln9_fu_66_p1 = $signed(wr_addr);
+assign sext_ln9_fu_64_p1 = $signed(wr_addr);
 
-assign temp1_1_fu_71_p2 = (saved_q0 + 8'd1);
+assign temp1_1_fu_69_p2 = (saved_q0 + 8'd1);
 
-assign temp1_3_fu_77_p3 = ((we[0:0] === 1'b1) ? temp1_1_fu_71_p2 : saved_q0);
+assign temp1_2_fu_75_p3 = ((we[0:0] === 1'b1) ? temp1_1_fu_69_p2 : saved_q0);
 
 endmodule //mem

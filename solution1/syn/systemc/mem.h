@@ -16,7 +16,7 @@
 namespace ap_rtl {
 
 struct mem : public sc_module {
-    // Port declarations 12
+    // Port declarations 11
     sc_in_clk ap_clk;
     sc_in< sc_logic > ap_rst;
     sc_in< sc_logic > ap_start;
@@ -24,7 +24,6 @@ struct mem : public sc_module {
     sc_out< sc_logic > ap_idle;
     sc_out< sc_logic > ap_ready;
     sc_in< sc_lv<7> > wr_addr;
-    sc_in< sc_lv<7> > rd_addr;
     sc_in< sc_lv<1> > we;
     sc_in< sc_lv<1> > re;
     sc_out< sc_lv<8> > out_r;
@@ -48,12 +47,12 @@ struct mem : public sc_module {
     sc_signal< sc_logic > saved_ce0;
     sc_signal< sc_logic > saved_we0;
     sc_signal< sc_lv<8> > saved_q0;
-    sc_signal< sc_lv<7> > saved_addr_reg_87;
-    sc_signal< sc_lv<64> > sext_ln9_fu_66_p1;
-    sc_signal< sc_lv<1> > re_read_read_fu_34_p2;
+    sc_signal< sc_lv<7> > saved_addr_reg_85;
+    sc_signal< sc_lv<64> > sext_ln9_fu_64_p1;
+    sc_signal< sc_lv<1> > re_read_read_fu_32_p2;
     sc_signal< sc_logic > ap_CS_fsm_state2;
-    sc_signal< sc_lv<8> > temp1_3_fu_77_p3;
-    sc_signal< sc_lv<8> > temp1_1_fu_71_p2;
+    sc_signal< sc_lv<8> > temp1_2_fu_75_p3;
+    sc_signal< sc_lv<8> > temp1_1_fu_69_p2;
     sc_signal< sc_lv<2> > ap_NS_fsm;
     static const sc_logic ap_const_logic_1;
     static const sc_logic ap_const_logic_0;
@@ -73,13 +72,13 @@ struct mem : public sc_module {
     void thread_ap_ready();
     void thread_out_r();
     void thread_out_r_ap_vld();
-    void thread_re_read_read_fu_34_p2();
+    void thread_re_read_read_fu_32_p2();
     void thread_saved_address0();
     void thread_saved_ce0();
     void thread_saved_we0();
-    void thread_sext_ln9_fu_66_p1();
-    void thread_temp1_1_fu_71_p2();
-    void thread_temp1_3_fu_77_p3();
+    void thread_sext_ln9_fu_64_p1();
+    void thread_temp1_1_fu_69_p2();
+    void thread_temp1_2_fu_75_p3();
     void thread_ap_NS_fsm();
     void thread_hdltv_gen();
 };

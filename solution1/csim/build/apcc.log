@@ -1,6 +1,6 @@
 INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
-INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Sun Feb 23 00:13:17 PST 2020
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Feb 26 02:18:07 PST 2020
 INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
 INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution1/csim/build'
-INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/6265251582445597119743
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/30126291582712287359229
 INFO: [APCC 202-1] APCC is done.

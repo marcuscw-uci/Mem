@@ -3,7 +3,7 @@
 
 <trans_list>
 
-<trans id="23" from="1" to="2">
+<trans id="22" from="1" to="2">
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
@@ -23,9 +23,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="15" bw="7" op_0_bw="7" op_1_bw="7">
+<Node id="13" bw="7" op_0_bw="7" op_1_bw="7">
 <![CDATA[
-:8  %wr_addr_read = call i7 @_ssdm_op_Read.ap_auto.i7(i7 %wr_addr) nounwind
+:7  %wr_addr_read = call i7 @_ssdm_op_Read.ap_auto.i7(i7 %wr_addr) nounwind
 
 ]]></Node>
 <StgValue><ssdm name="wr_addr_read"/></StgValue>
@@ -38,9 +38,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="16" bw="64" op_0_bw="7">
+<Node id="14" bw="64" op_0_bw="7">
 <![CDATA[
-:9  %sext_ln9 = sext i7 %wr_addr_read to i64
+:8  %sext_ln9 = sext i7 %wr_addr_read to i64
 
 ]]></Node>
 <StgValue><ssdm name="sext_ln9"/></StgValue>
@@ -53,9 +53,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="17" bw="7" op_0_bw="8" op_1_bw="64" op_2_bw="64">
+<Node id="15" bw="7" op_0_bw="8" op_1_bw="64" op_2_bw="64">
 <![CDATA[
-:10  %saved_addr = getelementptr inbounds [128 x i8]* @saved, i64 0, i64 %sext_ln9
+:9  %saved_addr = getelementptr inbounds [128 x i8]* @saved, i64 0, i64 %sext_ln9
 
 ]]></Node>
 <StgValue><ssdm name="saved_addr"/></StgValue>
@@ -68,9 +68,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="18" bw="8" op_0_bw="7">
+<Node id="16" bw="8" op_0_bw="7">
 <![CDATA[
-:11  %temp1 = load i8* %saved_addr, align 1
+:10  %temp1 = load i8* %saved_addr, align 1
 
 ]]></Node>
 <StgValue><ssdm name="temp1"/></StgValue>
@@ -86,7 +86,7 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="7" bw="0" op_0_bw="0" op_1_bw="7">
+<Node id="6" bw="0" op_0_bw="0" op_1_bw="7">
 <![CDATA[
 :0  call void (...)* @_ssdm_op_SpecBitsMap(i7 %wr_addr) nounwind, !map !7
 
@@ -101,9 +101,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="8" bw="0" op_0_bw="0" op_1_bw="7">
+<Node id="7" bw="0" op_0_bw="0" op_1_bw="1">
 <![CDATA[
-:1  call void (...)* @_ssdm_op_SpecBitsMap(i7 %rd_addr) nounwind, !map !13
+:1  call void (...)* @_ssdm_op_SpecBitsMap(i1 %we) nounwind, !map !13
 
 ]]></Node>
 <StgValue><ssdm name="specbitsmap_ln0"/></StgValue>
@@ -116,9 +116,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="9" bw="0" op_0_bw="0" op_1_bw="1">
+<Node id="8" bw="0" op_0_bw="0" op_1_bw="1">
 <![CDATA[
-:2  call void (...)* @_ssdm_op_SpecBitsMap(i1 %we) nounwind, !map !17
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i1 %re) nounwind, !map !17
 
 ]]></Node>
 <StgValue><ssdm name="specbitsmap_ln0"/></StgValue>
@@ -131,9 +131,9 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="10" bw="0" op_0_bw="0" op_1_bw="1">
+<Node id="9" bw="0" op_0_bw="0" op_1_bw="8">
 <![CDATA[
-:3  call void (...)* @_ssdm_op_SpecBitsMap(i1 %re) nounwind, !map !21
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i8* %out_r) nounwind, !map !21
 
 ]]></Node>
 <StgValue><ssdm name="specbitsmap_ln0"/></StgValue>
@@ -146,12 +146,12 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="11" bw="0" op_0_bw="0" op_1_bw="8">
+<Node id="10" bw="0" op_0_bw="0" op_1_bw="0">
 <![CDATA[
-:4  call void (...)* @_ssdm_op_SpecBitsMap(i8* %out_r) nounwind, !map !25
+:4  call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @mem_str) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specbitsmap_ln0"/></StgValue>
+<StgValue><ssdm name="spectopmodule_ln0"/></StgValue>
 </operation>
 
 <operation id="12" st_id="2" stage="1" lat="1">
@@ -161,12 +161,12 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="12" bw="0" op_0_bw="0" op_1_bw="0">
+<Node id="11" bw="1" op_0_bw="1" op_1_bw="1">
 <![CDATA[
-:5  call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @mem_str) nounwind
+:5  %re_read = call i1 @_ssdm_op_Read.ap_auto.i1(i1 %re) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="spectopmodule_ln0"/></StgValue>
+<StgValue><ssdm name="re_read"/></StgValue>
 </operation>
 
 <operation id="13" st_id="2" stage="1" lat="1">
@@ -176,102 +176,103 @@
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="13" bw="1" op_0_bw="1" op_1_bw="1">
+<Node id="12" bw="1" op_0_bw="1" op_1_bw="1">
 <![CDATA[
-:6  %re_read = call i1 @_ssdm_op_Read.ap_auto.i1(i1 %re) nounwind
-
-]]></Node>
-<StgValue><ssdm name="re_read"/></StgValue>
-</operation>
-
-<operation id="14" st_id="2" stage="1" lat="1">
-<core>NULL</core>
-<MemPortIdVec></MemPortIdVec>
-<condition id="-1">
-<or_exp><and_exp></and_exp></or_exp>
-</condition>
-
-<Node id="14" bw="1" op_0_bw="1" op_1_bw="1">
-<![CDATA[
-:7  %we_read = call i1 @_ssdm_op_Read.ap_auto.i1(i1 %we) nounwind
+:6  %we_read = call i1 @_ssdm_op_Read.ap_auto.i1(i1 %we) nounwind
 
 ]]></Node>
 <StgValue><ssdm name="we_read"/></StgValue>
 </operation>
 
-<operation id="15" st_id="2" stage="1" lat="2">
+<operation id="14" st_id="2" stage="1" lat="2">
 <core>RAM</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="18" bw="8" op_0_bw="7">
+<Node id="16" bw="8" op_0_bw="7">
 <![CDATA[
-:11  %temp1 = load i8* %saved_addr, align 1
+:10  %temp1 = load i8* %saved_addr, align 1
 
 ]]></Node>
 <StgValue><ssdm name="temp1"/></StgValue>
 </operation>
 
-<operation id="16" st_id="2" stage="1" lat="1">
+<operation id="15" st_id="2" stage="1" lat="1">
 <core>AddSub</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="19" bw="8" op_0_bw="8" op_1_bw="8">
+<Node id="17" bw="8" op_0_bw="8" op_1_bw="8">
 <![CDATA[
-:12  %temp1_1 = add i8 %temp1, 1
+:11  %temp1_1 = add i8 %temp1, 1
 
 ]]></Node>
 <StgValue><ssdm name="temp1_1"/></StgValue>
 </operation>
 
-<operation id="17" st_id="2" stage="1" lat="1">
+<operation id="16" st_id="2" stage="1" lat="1">
 <core>Sel</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="20" bw="8" op_0_bw="1" op_1_bw="8" op_2_bw="8">
+<Node id="18" bw="8" op_0_bw="1" op_1_bw="8" op_2_bw="8">
 <![CDATA[
-:13  %temp1_3 = select i1 %we_read, i8 %temp1_1, i8 %temp1
+:12  %temp1_2 = select i1 %we_read, i8 %temp1_1, i8 %temp1
 
 ]]></Node>
-<StgValue><ssdm name="temp1_3"/></StgValue>
+<StgValue><ssdm name="temp1_2"/></StgValue>
 </operation>
 
-<operation id="18" st_id="2" stage="1" lat="1">
+<operation id="17" st_id="2" stage="1" lat="1">
 <core>RAM</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="21" bw="0" op_0_bw="8" op_1_bw="7" op_2_bw="8">
+<Node id="19" bw="0" op_0_bw="8" op_1_bw="7" op_2_bw="8">
 <![CDATA[
-:14  store i8 %temp1_3, i8* %saved_addr, align 1
+:13  store i8 %temp1_2, i8* %saved_addr, align 1
 
 ]]></Node>
 <StgValue><ssdm name="store_ln14"/></StgValue>
 </operation>
 
-<operation id="19" st_id="2" stage="1" lat="1">
+<operation id="18" st_id="2" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="22" bw="0" op_0_bw="1" op_1_bw="0" op_2_bw="0">
+<Node id="20" bw="0" op_0_bw="1" op_1_bw="0" op_2_bw="0">
 <![CDATA[
-:15  br i1 %re_read, label %1, label %._crit_edge
+:14  br i1 %re_read, label %1, label %._crit_edge
 
 ]]></Node>
-<StgValue><ssdm name="br_ln18"/></StgValue>
+<StgValue><ssdm name="br_ln16"/></StgValue>
+</operation>
+
+<operation id="19" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="-1">
+<or_exp><and_exp><literal name="re_read" val="1"/>
+</and_exp></or_exp>
+</condition>
+
+<Node id="22" bw="0" op_0_bw="0" op_1_bw="8" op_2_bw="8">
+<![CDATA[
+:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %temp1_2) nounwind
+
+]]></Node>
+<StgValue><ssdm name="write_ln17"/></StgValue>
 </operation>
 
 <operation id="20" st_id="2" stage="1" lat="1">
@@ -282,43 +283,27 @@
 </and_exp></or_exp>
 </condition>
 
-<Node id="24" bw="0" op_0_bw="0" op_1_bw="8" op_2_bw="8">
+<Node id="23" bw="0" op_0_bw="0">
 <![CDATA[
-:0  call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %temp1_3) nounwind
+:1  br label %._crit_edge
 
 ]]></Node>
-<StgValue><ssdm name="write_ln19"/></StgValue>
+<StgValue><ssdm name="br_ln18"/></StgValue>
 </operation>
 
 <operation id="21" st_id="2" stage="1" lat="1">
 <core>NULL</core>
 <MemPortIdVec></MemPortIdVec>
 <condition id="-1">
-<or_exp><and_exp><literal name="re_read" val="1"/>
-</and_exp></or_exp>
-</condition>
-
-<Node id="25" bw="0" op_0_bw="0">
-<![CDATA[
-:1  br label %._crit_edge
-
-]]></Node>
-<StgValue><ssdm name="br_ln20"/></StgValue>
-</operation>
-
-<operation id="22" st_id="2" stage="1" lat="1">
-<core>NULL</core>
-<MemPortIdVec></MemPortIdVec>
-<condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="27" bw="0">
+<Node id="25" bw="0">
 <![CDATA[
 ._crit_edge:0  ret void
 
 ]]></Node>
-<StgValue><ssdm name="ret_ln23"/></StgValue>
+<StgValue><ssdm name="ret_ln21"/></StgValue>
 </operation>
 </state>
 </state_list>

@@ -24,16 +24,8 @@
         "interfaceRef": "wr_addr"
       }
     },
-    "rd_addr": {
-      "index": "1",
-      "type": {
-        "dataType": "int7",
-        "dataWidth": "7",
-        "interfaceRef": "rd_addr"
-      }
-    },
     "we": {
-      "index": "2",
+      "index": "1",
       "type": {
         "dataType": "int1",
         "dataWidth": "1",
@@ -41,7 +33,7 @@
       }
     },
     "re": {
-      "index": "3",
+      "index": "2",
       "type": {
         "dataType": "int1",
         "dataWidth": "1",
@@ -49,7 +41,7 @@
       }
     },
     "out": {
-      "index": "4",
+      "index": "3",
       "type": {
         "kinds": ["pointer"],
         "dataType": "int8",
@@ -138,17 +130,6 @@
       "bundle_name": "out_r",
       "bundle_role": "default"
     },
-    "rd_addr": {
-      "type": "data",
-      "dir": "in",
-      "width": "7",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "7"
-        }},
-      "bundle_name": "rd_addr",
-      "bundle_role": "default"
-    },
     "re": {
       "type": "data",
       "dir": "in",
@@ -209,10 +190,6 @@
       "width": "1"
     },
     "wr_addr": {
-      "dir": "in",
-      "width": "7"
-    },
-    "rd_addr": {
       "dir": "in",
       "width": "7"
     },
@@ -277,7 +254,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-02-24 00:14:22 PST",
+    "Time": "2020-02-26 02:19:12 PST",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.1"
   }

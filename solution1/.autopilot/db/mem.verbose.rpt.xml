@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'mem'" level="0">
-<item name = "Date">Mon Feb 24 00:14:16 2020
+<item name = "Date">Wed Feb 26 02:19:03 2020
 </item>
 <item name = "Version">2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)</item>
 <item name = "Project">Mem</item>
@@ -78,8 +78,8 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="temp1_1_fu_71_p2">+, 0, 0, 15, 8, 1</column>
-<column name="temp1_3_fu_77_p3">select, 0, 0, 8, 1, 8</column>
+<column name="temp1_1_fu_69_p2">+, 0, 0, 15, 8, 1</column>
+<column name="temp1_2_fu_75_p3">select, 0, 0, 8, 1, 8</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
@@ -91,7 +91,7 @@
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
 <column name="ap_CS_fsm">2, 0, 2, 0</column>
-<column name="saved_addr_reg_87">7, 0, 7, 0</column>
+<column name="saved_addr_reg_85">7, 0, 7, 0</column>
 </table>
 </item>
 </section>
@@ -108,7 +108,6 @@
 <column name="ap_idle">out, 1, ap_ctrl_hs, mem, return value</column>
 <column name="ap_ready">out, 1, ap_ctrl_hs, mem, return value</column>
 <column name="wr_addr">in, 7, ap_none, wr_addr, scalar</column>
-<column name="rd_addr">in, 7, ap_none, rd_addr, scalar</column>
 <column name="we">in, 1, ap_none, we, scalar</column>
 <column name="re">in, 1, ap_none, re, scalar</column>
 <column name="out_r">out, 8, ap_vld, out_r, pointer</column>
