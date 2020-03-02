@@ -136,7 +136,6 @@
 # 7 "<command line>" 2
 # 1 "<built-in>" 2
 # 1 "Mem/.settings/mem.c" 2
-
 # 1 "Mem/.settings/mem.h" 1
 # 1 "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_cint.h" 1
 # 83 "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_cint.h"
@@ -4290,23 +4289,41 @@ typedef unsigned int __attribute__ ((bitwidth(64))) uint64;
 # 84 "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_cint.h" 2
 # 2 "Mem/.settings/mem.h" 2
 
+
+static const int ADDRESSES = 128;
+
 void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
-# 3 "Mem/.settings/mem.c" 2
+# 2 "Mem/.settings/mem.c" 2
 
 
 
-void mem(int7 wr_addr, int1 we, int1 re, int8 *out){
- static int8 saved[128];
+void mem(int7 addr, int1 we, int1 re, int8 *out){
+ static int8 saved[ADDRESSES];
+ static int8 tempOutAddr = 0;
+ static int8 tempOutVal = 0;
+ int8 temp1 = saved[addr];
 
- int8 temp1 = saved[wr_addr];
 
  if(we){
   temp1++;
+  saved[addr] = temp1;
+ }else{
+  saved[addr] = temp1;
  }
- saved[wr_addr] = temp1;
 
- if(re){
-  *out = saved[wr_addr];
+
+ if(temp1 >= tempOutVal){
+  tempOutAddr = addr;
+  tempOutVal = temp1;
+  if(re){
+   *out = addr;
+  }
+ }
+
+ else{
+  if(re){
+   *out = tempOutAddr;
+  }
  }
 
 

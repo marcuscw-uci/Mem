@@ -17,7 +17,7 @@ port (
     ap_done : OUT STD_LOGIC;
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
-    wr_addr : IN STD_LOGIC_VECTOR (6 downto 0);
+    addr : IN STD_LOGIC_VECTOR (6 downto 0);
     we : IN STD_LOGIC_VECTOR (0 downto 0);
     re : IN STD_LOGIC_VECTOR (0 downto 0);
     out_r : OUT STD_LOGIC_VECTOR (7 downto 0);
@@ -28,13 +28,14 @@ end;
 architecture behav of mem is 
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "mem,hls_ip_2019_1,{HLS_INPUT_TYPE=c,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7vx485t-ffg1157-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=7.196000,HLS_SYN_LAT=1,HLS_SYN_TPT=none,HLS_SYN_MEM=1,HLS_SYN_DSP=0,HLS_SYN_FF=9,HLS_SYN_LUT=53,HLS_VERSION=2019_1}";
+    "mem,hls_ip_2019_1,{HLS_INPUT_TYPE=c,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7vx485t-ffg1157-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=7.196000,HLS_SYN_LAT=1,HLS_SYN_TPT=none,HLS_SYN_MEM=1,HLS_SYN_DSP=0,HLS_SYN_FF=24,HLS_SYN_LUT=79,HLS_VERSION=2019_1}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (1 downto 0) := "01";
     constant ap_ST_fsm_state2 : STD_LOGIC_VECTOR (1 downto 0) := "10";
     constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
     constant ap_const_lv32_1 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
+    constant ap_const_lv1_0 : STD_LOGIC_VECTOR (0 downto 0) := "0";
     constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
     constant ap_const_lv8_1 : STD_LOGIC_VECTOR (7 downto 0) := "00000001";
     constant ap_const_boolean_1 : BOOLEAN := true;
@@ -48,13 +49,20 @@ architecture behav of mem is
     signal saved_ce0 : STD_LOGIC;
     signal saved_we0 : STD_LOGIC;
     signal saved_q0 : STD_LOGIC_VECTOR (7 downto 0);
-    signal saved_addr_reg_85 : STD_LOGIC_VECTOR (6 downto 0);
-    signal sext_ln9_fu_64_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal re_read_read_fu_32_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal tempOutVal : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
+    signal tempOutAddr : STD_LOGIC_VECTOR (6 downto 0) := "0000000";
+    signal saved_addr_reg_128 : STD_LOGIC_VECTOR (6 downto 0);
+    signal sext_ln9_fu_68_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal temp1_2_fu_79_p3 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
-    signal temp1_2_fu_75_p3 : STD_LOGIC_VECTOR (7 downto 0);
-    signal temp1_1_fu_69_p2 : STD_LOGIC_VECTOR (7 downto 0);
+    signal icmp_ln20_fu_92_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal re_read_read_fu_36_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal sext_ln21_fu_98_p1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal sext_ln30_fu_117_p1 : STD_LOGIC_VECTOR (7 downto 0);
+    signal sext_ln9_fu_68_p0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal temp1_1_fu_73_p2 : STD_LOGIC_VECTOR (7 downto 0);
+    signal sext_ln21_fu_98_p0 : STD_LOGIC_VECTOR (6 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (1 downto 0);
 
     component mem_saved IS
@@ -86,7 +94,7 @@ begin
         address0 => saved_address0,
         ce0 => saved_ce0,
         we0 => saved_we0,
-        d0 => temp1_2_fu_75_p3,
+        d0 => temp1_2_fu_79_p3,
         q0 => saved_q0);
 
 
@@ -108,7 +116,16 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1))) then
-                saved_addr_reg_85 <= sext_ln9_fu_64_p1(7 - 1 downto 0);
+                saved_addr_reg_128 <= sext_ln9_fu_68_p1(7 - 1 downto 0);
+            end if;
+        end if;
+    end process;
+    process (ap_clk)
+    begin
+        if (ap_clk'event and ap_clk = '1') then
+            if (((icmp_ln20_fu_92_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+                tempOutAddr <= addr;
+                tempOutVal <= temp1_2_fu_79_p3;
             end if;
         end if;
     end process;
@@ -160,25 +177,41 @@ begin
         end if; 
     end process;
 
-    out_r <= temp1_2_fu_75_p3;
+    icmp_ln20_fu_92_p2 <= "1" when (signed(temp1_2_fu_79_p3) < signed(tempOutVal)) else "0";
 
-    out_r_ap_vld_assign_proc : process(re_read_read_fu_32_p2, ap_CS_fsm_state2)
+    out_r_assign_proc : process(ap_CS_fsm_state2, icmp_ln20_fu_92_p2, re_read_read_fu_36_p2, sext_ln21_fu_98_p1, sext_ln30_fu_117_p1)
     begin
-        if (((re_read_read_fu_32_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then 
+        if (((re_read_read_fu_36_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
+            if ((icmp_ln20_fu_92_p2 = ap_const_lv1_1)) then 
+                out_r <= sext_ln30_fu_117_p1;
+            elsif ((icmp_ln20_fu_92_p2 = ap_const_lv1_0)) then 
+                out_r <= sext_ln21_fu_98_p1;
+            else 
+                out_r <= "XXXXXXXX";
+            end if;
+        else 
+            out_r <= "XXXXXXXX";
+        end if; 
+    end process;
+
+
+    out_r_ap_vld_assign_proc : process(ap_CS_fsm_state2, icmp_ln20_fu_92_p2, re_read_read_fu_36_p2)
+    begin
+        if ((((re_read_read_fu_36_p2 = ap_const_lv1_1) and (icmp_ln20_fu_92_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state2)) or ((re_read_read_fu_36_p2 = ap_const_lv1_1) and (icmp_ln20_fu_92_p2 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_state2)))) then 
             out_r_ap_vld <= ap_const_logic_1;
         else 
             out_r_ap_vld <= ap_const_logic_0;
         end if; 
     end process;
 
-    re_read_read_fu_32_p2 <= re;
+    re_read_read_fu_36_p2 <= re;
 
-    saved_address0_assign_proc : process(ap_CS_fsm_state1, saved_addr_reg_85, sext_ln9_fu_64_p1, ap_CS_fsm_state2)
+    saved_address0_assign_proc : process(ap_CS_fsm_state1, saved_addr_reg_128, sext_ln9_fu_68_p1, ap_CS_fsm_state2)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            saved_address0 <= saved_addr_reg_85;
+            saved_address0 <= saved_addr_reg_128;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state1)) then 
-            saved_address0 <= sext_ln9_fu_64_p1(7 - 1 downto 0);
+            saved_address0 <= sext_ln9_fu_68_p1(7 - 1 downto 0);
         else 
             saved_address0 <= "XXXXXXX";
         end if; 
@@ -204,10 +237,16 @@ begin
         end if; 
     end process;
 
-        sext_ln9_fu_64_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(wr_addr),64));
+    sext_ln21_fu_98_p0 <= addr;
+        sext_ln21_fu_98_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(sext_ln21_fu_98_p0),8));
 
-    temp1_1_fu_69_p2 <= std_logic_vector(unsigned(saved_q0) + unsigned(ap_const_lv8_1));
-    temp1_2_fu_75_p3 <= 
-        temp1_1_fu_69_p2 when (we(0) = '1') else 
+        sext_ln30_fu_117_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(tempOutAddr),8));
+
+    sext_ln9_fu_68_p0 <= addr;
+        sext_ln9_fu_68_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(sext_ln9_fu_68_p0),64));
+
+    temp1_1_fu_73_p2 <= std_logic_vector(unsigned(saved_q0) + unsigned(ap_const_lv8_1));
+    temp1_2_fu_79_p3 <= 
+        temp1_1_fu_73_p2 when (we(0) = '1') else 
         saved_q0;
 end behav;

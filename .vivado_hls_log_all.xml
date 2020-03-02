@@ -12,14 +12,19 @@
   <warningLogs>
     <logs>
       <synLog>
-        <logs message="WARNING: [SYN 201-107] Renaming port name 'mem/out' to 'mem/out_r' to avoid the conflict with HDL keywords or other object names." projectName="Mem" solutionName="solution1" date="2020-02-26T02:19:01.718-0800" type="Warning"/>
-        <logs message="WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'." projectName="Mem" solutionName="solution1" date="2020-02-26T02:18:51.056-0800" type="Warning"/>
-        <logs message="WARNING: [HLS 200-40] Cannot find library '/state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/Virtex-7/Virtex-7.lib'." projectName="Mem" solutionName="solution1" date="2020-02-26T02:18:49.402-0800" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Register 'tempOutAddr' is power-on initialization." projectName="Mem" solutionName="solution1" date="2020-03-01T22:53:58.765-0800" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Register 'tempOutVal' is power-on initialization." projectName="Mem" solutionName="solution1" date="2020-03-01T22:53:58.752-0800" type="Warning"/>
+        <logs message="WARNING: [SYN 201-107] Renaming port name 'mem/out' to 'mem/out_r' to avoid the conflict with HDL keywords or other object names." projectName="Mem" solutionName="solution1" date="2020-03-01T22:53:57.056-0800" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'." projectName="Mem" solutionName="solution1" date="2020-03-01T22:53:45.957-0800" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Cannot find library '/state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/Virtex-7/Virtex-7.lib'." projectName="Mem" solutionName="solution1" date="2020-03-01T22:53:44.357-0800" type="Warning"/>
       </synLog>
       <simLog/>
       <mgLog/>
       <packageLog/>
-      <csimLog/>
+      <csimLog>
+        <logs message="WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'." projectName="Mem" solutionName="solution1" date="2020-03-01T22:56:14.602-0800" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Cannot find library '/state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/Virtex-7/Virtex-7.lib'." projectName="Mem" solutionName="solution1" date="2020-03-01T22:56:13.256-0800" type="Warning"/>
+      </csimLog>
     </logs>
   </warningLogs>
 </vivadoHLSLog:LogRoot>

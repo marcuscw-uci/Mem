@@ -1,6 +1,6 @@
 <InterfaceSummary>
 <RtlPorts>
-<name>wr_addr</name>
+<name>addr</name>
 <CType>
 <TypeName>int7</TypeName>
 <TypeWidth>7</TypeWidth>

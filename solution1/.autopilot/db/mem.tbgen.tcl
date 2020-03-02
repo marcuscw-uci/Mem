@@ -14,13 +14,13 @@ set isEnableWaveformDebug 1
 set C_modelName {mem}
 set C_modelType { void 0 }
 set C_modelArgList {
-	{ wr_addr int 7 regular  }
+	{ addr int 7 regular  }
 	{ we int 1 regular  }
 	{ re int 1 regular  }
 	{ out_r int 8 regular {pointer 1}  }
 }
 set C_modelArgMapList {[ 
-	{ "Name" : "wr_addr", "interface" : "wire", "bitwidth" : 7, "direction" : "READONLY", "bitSlice":[{"low":0,"up":6,"cElement": [{"cName": "wr_addr","cData": "int7","bit_use": { "low": 0,"up": 6},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
+	{ "Name" : "addr", "interface" : "wire", "bitwidth" : 7, "direction" : "READONLY", "bitSlice":[{"low":0,"up":6,"cElement": [{"cName": "addr","cData": "int7","bit_use": { "low": 0,"up": 6},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
  	{ "Name" : "we", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "we","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
  	{ "Name" : "re", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "re","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
  	{ "Name" : "out_r", "interface" : "wire", "bitwidth" : 8, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "out","cData": "int8","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
@@ -33,7 +33,7 @@ set portList {
 	{ ap_done sc_out sc_logic 1 predone -1 } 
 	{ ap_idle sc_out sc_logic 1 done -1 } 
 	{ ap_ready sc_out sc_logic 1 ready -1 } 
-	{ wr_addr sc_in sc_lv 7 signal 0 } 
+	{ addr sc_in sc_lv 7 signal 0 } 
 	{ we sc_in sc_lv 1 signal 1 } 
 	{ re sc_in sc_lv 1 signal 2 } 
 	{ out_r sc_out sc_lv 8 signal 3 } 
@@ -46,7 +46,7 @@ set NewPortList {[
  	{ "name": "ap_done", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "predone", "bundle":{"name": "ap_done", "role": "default" }} , 
  	{ "name": "ap_idle", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "done", "bundle":{"name": "ap_idle", "role": "default" }} , 
  	{ "name": "ap_ready", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "ready", "bundle":{"name": "ap_ready", "role": "default" }} , 
- 	{ "name": "wr_addr", "direction": "in", "datatype": "sc_lv", "bitwidth":7, "type": "signal", "bundle":{"name": "wr_addr", "role": "default" }} , 
+ 	{ "name": "addr", "direction": "in", "datatype": "sc_lv", "bitwidth":7, "type": "signal", "bundle":{"name": "addr", "role": "default" }} , 
  	{ "name": "we", "direction": "in", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "we", "role": "default" }} , 
  	{ "name": "re", "direction": "in", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "re", "role": "default" }} , 
  	{ "name": "out_r", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "out_r", "role": "default" }} , 
@@ -67,21 +67,25 @@ set RtlHierarchyInfo {[
 		"InDataflowNetwork" : "0",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "wr_addr", "Type" : "None", "Direction" : "I"},
+			{"Name" : "addr", "Type" : "None", "Direction" : "I"},
 			{"Name" : "we", "Type" : "None", "Direction" : "I"},
 			{"Name" : "re", "Type" : "None", "Direction" : "I"},
 			{"Name" : "out_r", "Type" : "Vld", "Direction" : "O"},
-			{"Name" : "saved", "Type" : "Memory", "Direction" : "IO"}]},
+			{"Name" : "saved", "Type" : "Memory", "Direction" : "IO"},
+			{"Name" : "tempOutVal", "Type" : "OVld", "Direction" : "IO"},
+			{"Name" : "tempOutAddr", "Type" : "OVld", "Direction" : "IO"}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.saved_U", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	mem {
-		wr_addr {Type I LastRead 0 FirstWrite -1}
+		addr {Type I LastRead 0 FirstWrite -1}
 		we {Type I LastRead 1 FirstWrite -1}
 		re {Type I LastRead 1 FirstWrite -1}
 		out_r {Type O LastRead -1 FirstWrite 1}
-		saved {Type IO LastRead -1 FirstWrite -1}}}
+		saved {Type IO LastRead -1 FirstWrite -1}
+		tempOutVal {Type IO LastRead -1 FirstWrite -1}
+		tempOutAddr {Type IO LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 
@@ -94,7 +98,7 @@ set PipelineEnableSignalInfo {[
 ]}
 
 set Spec2ImplPortList { 
-	wr_addr { ap_none {  { wr_addr in_data 0 7 } } }
+	addr { ap_none {  { addr in_data 0 7 } } }
 	we { ap_none {  { we in_data 0 1 } } }
 	re { ap_none {  { re in_data 0 1 } } }
 	out_r { ap_vld {  { out_r out_data 1 8 }  { out_r_ap_vld out_vld 1 1 } } }

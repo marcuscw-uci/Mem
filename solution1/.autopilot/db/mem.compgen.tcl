@@ -98,14 +98,14 @@ set axilite_register_dict [dict create]
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
     id 2 \
-    name wr_addr \
+    name addr \
     type other \
     dir I \
     reset_level 1 \
     sync_rst true \
-    corename dc_wr_addr \
+    corename dc_addr \
     op interface \
-    ports { wr_addr { I 7 vector } } \
+    ports { addr { I 7 vector } } \
 } "
 }
 
