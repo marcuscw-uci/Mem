@@ -11,10 +11,11 @@
 <TopModelName>mem</TopModelName>
 <TargetClockPeriod>10.00</TargetClockPeriod>
 <ClockUncertainty>1.25</ClockUncertainty>
+<TargetInitiationInterval>2</TargetInitiationInterval>
 </UserAssignments>
 
 <PerformanceEstimates>
-<PipelineType>none</PipelineType>
+<PipelineType>function</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
 <EstimatedClockPeriod>7.196</EstimatedClockPeriod>
@@ -24,6 +25,8 @@
 <Best-caseLatency>1</Best-caseLatency>
 <Average-caseLatency>1</Average-caseLatency>
 <Worst-caseLatency>1</Worst-caseLatency>
+<PipelineInitiationInterval>2</PipelineInitiationInterval>
+<PipelineDepth>2</PipelineDepth>
 <Interval-min>2</Interval-min>
 <Interval-max>2</Interval-max>
 </SummaryOfOverallLatency>
@@ -32,7 +35,7 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>1</BRAM_18K>
-<FF>24</FF>
+<FF>31</FF>
 <LUT>79</LUT>
 <URAM>0</URAM>
 <DSP48E>0</DSP48E>

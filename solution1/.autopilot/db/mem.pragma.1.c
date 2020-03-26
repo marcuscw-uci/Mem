@@ -4298,6 +4298,8 @@ void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
 
 
 void mem(int7 addr, int1 we, int1 re, int8 *out){
+_ssdm_op_SpecPipeline(2, 1, 1, 0, "");
+
  static int8 saved[ADDRESSES];
  static int8 tempOutAddr = 0;
  static int8 tempOutVal = 0;

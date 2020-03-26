@@ -1,7 +1,0 @@
-0.6
-2019.1
-May 24 2019
-14:51:52
-/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/mem.autotb.v,1580945505,systemVerilog,,,,apatb_mem_top,/state/opt/Xilinx/Vivado/2019.1/data/xsim/ip/xsim_ip.ini,axi_protocol_checker_v1_1_12;axi_protocol_checker_v1_1_13;axis_protocol_checker_v1_1_11;axis_protocol_checker_v1_1_12;ieee_proposed=./ieee_proposed;smartconnect_v1_0;unisims_ver;xil_defaultlib;xpm,,,,,,
-/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/mem.v,1580945449,systemVerilog,,,,mem,/state/opt/Xilinx/Vivado/2019.1/data/xsim/ip/xsim_ip.ini,axi_protocol_checker_v1_1_12;axi_protocol_checker_v1_1_13;axis_protocol_checker_v1_1_11;axis_protocol_checker_v1_1_12;ieee_proposed=./ieee_proposed;smartconnect_v1_0;unisims_ver;xil_defaultlib;xpm,,,,,,
-/data11/home/marcuscw/Desktop/Mem/solution1/sim/verilog/mem_stored.v,1580945451,systemVerilog,,,,mem_stored;mem_stored_ram,/state/opt/Xilinx/Vivado/2019.1/data/xsim/ip/xsim_ip.ini,axi_protocol_checker_v1_1_12;axi_protocol_checker_v1_1_13;axis_protocol_checker_v1_1_11;axis_protocol_checker_v1_1_12;ieee_proposed=./ieee_proposed;smartconnect_v1_0;unisims_ver;xil_defaultlib;xpm,,,,,,

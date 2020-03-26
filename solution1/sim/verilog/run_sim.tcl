@@ -55,7 +55,7 @@ cd ../
 
 ::AP::printMsg INFO COSIM 323 COSIM_323_1007
 
-::AP::printMsg INFO COSIM 15 COSIM_15_1011
+::AP::printMsg INFO COSIM 15 COSIM_15_1008
 
 cd ../verilog
 
@@ -63,9 +63,16 @@ file delete -force ".exit.err"
 file delete -force ".aesl_error"
 file delete -force "err.log"
 
-if {[file isfile run_xsim.sh]} {
-	set ret [catch {eval exec "sh ./run_xsim.sh | tee temp2.log" >&@ stdout} err]
+if {[file isfile compile_modelsim.sh]} {
+	catch {eval exec ./compile_modelsim.sh >&@ stdout} err
+
+	if {$err != ""} {
+		::AP::printMsg ERR COSIM 306 COSIM_306_1017 $err
+		return -code error -errorcode $::errorCode
+	}
 }
+
+set ret [catch {eval exec "vsim -c -do cosim.modelsim.scr | tee temp2.log" >@ stdout} err]
 
 cd ../tv/rtldatafile
 

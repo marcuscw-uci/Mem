@@ -3,4 +3,4 @@
 
 static const int ADDRESSES = 128;
 
-void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
+void mem(uint7 wr_addr, uint1 we, uint1 re, uint8 *out);

@@ -247,32 +247,64 @@ proc sim {} {
 		file delete -force  $user_err_file
 	}
 	
-	set info_code 15
-	set tool_name "XSIM"
-	cosim_message INFO $info_code $tool_name
-	if {$::AESL_AUTOSIM::gDebug == 1} {
-		puts stdout "[debug_prompt arg .run_sim.tcl] \"sh ./run_xsim.sh\"";
+	if {[file isfile compile_modelsim.sh]} {
+		if {$::AESL_AUTOSIM::gDebug == 1} {
+			puts stdout "[debug_prompt arg .run_sim.tcl] \"./compile_modelsim.sh\"";
+		}
+		
+		catch {eval exec "./compile_modelsim.sh" >&@ stdout} err
+		
+		if {$err != ""} {
+			cosim_message ERROR 306 $err
+			return -code error -errorcode 25
+		}
 	}
 	
-	set cmdret [catch {eval exec "sh ./run_xsim.sh | tee temp.log" >&@ stdout} err]
+	set info_code 15
+	set tool_name "Modelsim"
+	cosim_message INFO $info_code $tool_name
+	
+	if {$::AESL_AUTOSIM::gDebug == 1} {
+		puts stdout "[debug_prompt arg .run_sim.tcl] \"vsim -c -do cosim.modelsim.scr\"";
+	}
+	
+	set cmdret [catch {eval exec "vsim -c -do cosim.modelsim.scr | tee temp.log" >&@ stdout} err]
+	
+	if {[string first "Unable to checkout a license" $err] != -1} {
+		set fil [open ../../.temp11.log a]
+		puts $fil $err
+		close $fil
+		
+		cosim_message ERROR 307 $tool_name
+		puts_err 14 "Cannot obtain Modelsim 'vsim' license"
+		return -code error -errorcode 26
+	}
+	
+	if {[string first "** Fatal:" $err] != -1} {
+		set fil [open ../../.temp11.log a]
+		puts $fil $err
+		close $fil
+		
+		cosim_message ERROR 307 $tool_name
+		return -code error -errorcode 26
+	}
 	
 	cpfilecontent temp.log ../../.temp11.log
 	
 	if {[file exist temp.log]} {
 		set cmdret [catch {eval exec "grep \"Error: License unavailable\" temp.log"} err]
-		set cmdret2 [catch {eval exec "grep \"You do not have a valid license\" temp.log"} err]
-		set cmdret3 [catch {eval exec "grep \"KERNEL: Fatal error\" temp.log"} err]
-		set cmdret4 [catch {eval exec "grep \"ERROR:\" temp.log"} err]
+		set cmdret2 [catch {eval exec "grep \"Error: You do not have a valid license\" temp.log"} err]
+		set cmdret3 [catch {eval exec "grep \"VSIM: Error:\" temp.log"} err]
 		
 		file delete temp.log
 		
 		if {$cmdret == 0 || $cmdret2 == 0} {
 			cosim_message ERROR 307 $tool_name
-			return -code error -errorcode 29
+			return -code error -errorcode 26
 		}
 		
-		if {$cmdret3 == 0 || $cmdret4 == 0} {
-			return -code error -errorcode 29
+		if {$cmdret3 == 0} {
+			return -code error -errorcode 26
 		}
 	}
 	

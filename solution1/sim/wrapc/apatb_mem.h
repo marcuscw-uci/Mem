@@ -3,7 +3,8 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // ==============================================================
 
-extern int AESL_WRAP_mem (
-int addr,
-int we,
-int data);
+extern void AESL_WRAP_mem (
+int7 addr,
+int1 we,
+int1 re,
+int8* out);

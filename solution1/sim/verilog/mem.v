@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="mem,hls_ip_2019_1,{HLS_INPUT_TYPE=c,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7vx485t-ffg1157-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=1.570000,HLS_SYN_LAT=2,HLS_SYN_TPT=none,HLS_SYN_MEM=0,HLS_SYN_DSP=0,HLS_SYN_FF=67,HLS_SYN_LUT=58,HLS_VERSION=2019_1}" *)
+(* CORE_GENERATION_INFO="mem,hls_ip_2019_1,{HLS_INPUT_TYPE=c,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7vx485t-ffg1157-1,HLS_INPUT_CLOCK=2.780000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=1.868000,HLS_SYN_LAT=3,HLS_SYN_TPT=none,HLS_SYN_MEM=1,HLS_SYN_DSP=0,HLS_SYN_FF=42,HLS_SYN_LUT=91,HLS_VERSION=2019_1}" *)
 
 module mem (
         ap_clk,
@@ -18,13 +18,15 @@ module mem (
         ap_ready,
         addr,
         we,
-        data,
-        ap_return
+        re,
+        out_r,
+        out_r_ap_vld
 );
 
-parameter    ap_ST_fsm_state1 = 3'd1;
-parameter    ap_ST_fsm_state2 = 3'd2;
-parameter    ap_ST_fsm_state3 = 3'd4;
+parameter    ap_ST_fsm_state1 = 4'd1;
+parameter    ap_ST_fsm_state2 = 4'd2;
+parameter    ap_ST_fsm_state3 = 4'd4;
+parameter    ap_ST_fsm_state4 = 4'd8;
 
 input   ap_clk;
 input   ap_rst;
@@ -32,47 +34,62 @@ input   ap_start;
 output   ap_done;
 output   ap_idle;
 output   ap_ready;
-input  [31:0] addr;
-input  [31:0] we;
-input  [31:0] data;
-output  [31:0] ap_return;
+input  [6:0] addr;
+input  [0:0] we;
+input  [0:0] re;
+output  [7:0] out_r;
+output   out_r_ap_vld;
 
 reg ap_done;
 reg ap_idle;
 reg ap_ready;
+reg[7:0] out_r;
+reg out_r_ap_vld;
 
-(* fsm_encoding = "none" *) reg   [2:0] ap_CS_fsm;
+(* fsm_encoding = "none" *) reg   [3:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
-reg   [2:0] stored_address0;
-reg    stored_ce0;
-reg    stored_we0;
-wire   [31:0] stored_q0;
+reg   [6:0] saved_address0;
+reg    saved_ce0;
+reg    saved_we0;
+wire   [7:0] saved_q0;
+reg   [7:0] tempOutVal;
+reg   [6:0] tempOutAddr;
+reg   [6:0] saved_addr_reg_123;
+reg   [7:0] temp1_reg_128;
 wire    ap_CS_fsm_state2;
-wire  signed [63:0] sext_ln11_fu_72_p1;
-wire   [0:0] icmp_ln10_fu_66_p2;
-wire  signed [63:0] sext_ln14_fu_77_p1;
-wire  signed [31:0] sext_ln11_fu_72_p0;
-wire  signed [31:0] sext_ln14_fu_77_p0;
+wire   [7:0] temp1_2_fu_78_p3;
+reg   [7:0] temp1_2_reg_134;
 wire    ap_CS_fsm_state3;
-reg   [2:0] ap_NS_fsm;
+wire  signed [63:0] sext_ln9_fu_68_p1;
+wire    ap_CS_fsm_state4;
+wire   [0:0] icmp_ln20_fu_89_p2;
+wire   [0:0] re_read_read_fu_42_p2;
+wire  signed [7:0] sext_ln21_fu_94_p1;
+wire  signed [7:0] sext_ln30_fu_112_p1;
+wire  signed [6:0] sext_ln9_fu_68_p0;
+wire   [7:0] temp1_1_fu_73_p2;
+wire  signed [6:0] sext_ln21_fu_94_p0;
+reg   [3:0] ap_NS_fsm;
 
 // power-on initialization
 initial begin
-#0 ap_CS_fsm = 3'd1;
+#0 ap_CS_fsm = 4'd1;
+#0 tempOutVal = 8'd0;
+#0 tempOutAddr = 7'd0;
 end
 
-mem_stored #(
-    .DataWidth( 32 ),
-    .AddressRange( 8 ),
-    .AddressWidth( 3 ))
-stored_U(
+mem_saved #(
+    .DataWidth( 8 ),
+    .AddressRange( 128 ),
+    .AddressWidth( 7 ))
+saved_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .address0(stored_address0),
-    .ce0(stored_ce0),
-    .we0(stored_we0),
-    .d0(data),
-    .q0(stored_q0)
+    .address0(saved_address0),
+    .ce0(saved_ce0),
+    .we0(saved_we0),
+    .d0(temp1_2_reg_134),
+    .q0(saved_q0)
 );
 
 always @ (posedge ap_clk) begin
@@ -83,8 +100,33 @@ always @ (posedge ap_clk) begin
     end
 end
 
-always @ (*) begin
+always @ (posedge ap_clk) begin
+    if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
+        saved_addr_reg_123 <= sext_ln9_fu_68_p1;
+    end
+end
+
+always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state3)) begin
+        temp1_2_reg_134 <= temp1_2_fu_78_p3;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        temp1_reg_128 <= saved_q0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln20_fu_89_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state4))) begin
+        tempOutAddr <= addr;
+        tempOutVal <= temp1_2_reg_134;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
         ap_done = 1'b1;
     end else begin
         ap_done = 1'b0;
@@ -100,7 +142,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state3)) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -108,28 +150,50 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state2)) begin
-        stored_address0 = sext_ln14_fu_77_p1;
+    if (((re_read_read_fu_42_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state4))) begin
+        if ((icmp_ln20_fu_89_p2 == 1'd1)) begin
+            out_r = sext_ln30_fu_112_p1;
+        end else if ((icmp_ln20_fu_89_p2 == 1'd0)) begin
+            out_r = sext_ln21_fu_94_p1;
+        end else begin
+            out_r = 'bx;
+        end
+    end else begin
+        out_r = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((((re_read_read_fu_42_p2 == 1'd1) & (icmp_ln20_fu_89_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state4)) | ((re_read_read_fu_42_p2 == 1'd1) & (icmp_ln20_fu_89_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state4)))) begin
+        out_r_ap_vld = 1'b1;
+    end else begin
+        out_r_ap_vld = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        saved_address0 = saved_addr_reg_123;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
-        stored_address0 = sext_ln11_fu_72_p1;
+        saved_address0 = sext_ln9_fu_68_p1;
     end else begin
-        stored_address0 = 'bx;
+        saved_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state2) | ((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1)))) begin
-        stored_ce0 = 1'b1;
+    if (((1'b1 == ap_CS_fsm_state4) | ((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1)))) begin
+        saved_ce0 = 1'b1;
     end else begin
-        stored_ce0 = 1'b0;
+        saved_ce0 = 1'b0;
     end
 end
 
 always @ (*) begin
-    if (((ap_start == 1'b1) & (icmp_ln10_fu_66_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state1))) begin
-        stored_we0 = 1'b1;
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        saved_we0 = 1'b1;
     end else begin
-        stored_we0 = 1'b0;
+        saved_we0 = 1'b0;
     end
 end
 
@@ -146,6 +210,9 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state3;
         end
         ap_ST_fsm_state3 : begin
+            ap_NS_fsm = ap_ST_fsm_state4;
+        end
+        ap_ST_fsm_state4 : begin
             ap_NS_fsm = ap_ST_fsm_state1;
         end
         default : begin
@@ -160,16 +227,24 @@ assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
 
 assign ap_CS_fsm_state3 = ap_CS_fsm[32'd2];
 
-assign ap_return = stored_q0;
+assign ap_CS_fsm_state4 = ap_CS_fsm[32'd3];
 
-assign icmp_ln10_fu_66_p2 = ((we == 32'd0) ? 1'b1 : 1'b0);
+assign icmp_ln20_fu_89_p2 = (($signed(temp1_2_reg_134) < $signed(tempOutVal)) ? 1'b1 : 1'b0);
 
-assign sext_ln11_fu_72_p0 = addr;
+assign re_read_read_fu_42_p2 = re;
 
-assign sext_ln11_fu_72_p1 = sext_ln11_fu_72_p0;
+assign sext_ln21_fu_94_p0 = addr;
 
-assign sext_ln14_fu_77_p0 = addr;
+assign sext_ln21_fu_94_p1 = sext_ln21_fu_94_p0;
 
-assign sext_ln14_fu_77_p1 = sext_ln14_fu_77_p0;
+assign sext_ln30_fu_112_p1 = $signed(tempOutAddr);
+
+assign sext_ln9_fu_68_p0 = addr;
+
+assign sext_ln9_fu_68_p1 = sext_ln9_fu_68_p0;
+
+assign temp1_1_fu_73_p2 = (temp1_reg_128 + 8'd1);
+
+assign temp1_2_fu_78_p3 = ((we[0:0] === 1'b1) ? temp1_1_fu_73_p2 : temp1_reg_128);
 
 endmodule //mem

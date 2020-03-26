@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'mem'" level="0">
-<item name = "Date">Sun Mar  1 22:53:59 2020
+<item name = "Date">Mon Mar 23 16:49:44 2020
 </item>
 <item name = "Version">2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)</item>
 <item name = "Project">Mem</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">1, 1, 1, 1, none</column>
+<column name="">1, 1, 2, 2, function</column>
 </table>
 </item>
 <item name = "Detail">
@@ -52,7 +52,7 @@
 <column name="Instance">-, -, -, -, -</column>
 <column name="Memory">1, -, 0, 0, 0</column>
 <column name="Multiplexer">-, -, -, 45, -</column>
-<column name="Register">-, -, 24, -, -</column>
+<column name="Register">-, -, 31, -, -</column>
 <specialColumn name="Available">2060, 2800, 607200, 303600, 0</specialColumn>
 <specialColumn name="Utilization (%)">~0, 0, ~0, ~0, 0</specialColumn>
 </table>
@@ -78,9 +78,9 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="temp1_1_fu_73_p2">+, 0, 0, 15, 8, 1</column>
-<column name="icmp_ln20_fu_92_p2">icmp, 0, 0, 11, 8, 8</column>
-<column name="temp1_2_fu_79_p3">select, 0, 0, 8, 1, 8</column>
+<column name="temp1_1_fu_83_p2">+, 0, 0, 15, 8, 1</column>
+<column name="icmp_ln22_fu_102_p2">icmp, 0, 0, 11, 8, 8</column>
+<column name="temp1_2_fu_89_p3">select, 0, 0, 8, 1, 8</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
@@ -92,8 +92,9 @@
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="addr_read_reg_132">7, 0, 7, 0</column>
 <column name="ap_CS_fsm">2, 0, 2, 0</column>
-<column name="saved_addr_reg_128">7, 0, 7, 0</column>
+<column name="saved_addr_reg_138">7, 0, 7, 0</column>
 <column name="tempOutAddr">7, 0, 7, 0</column>
 <column name="tempOutVal">8, 0, 8, 0</column>
 </table>

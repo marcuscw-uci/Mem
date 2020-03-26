@@ -12,9 +12,12 @@
     "Package": "-ffg1157",
     "Speed": "-1"
   },
-  "HlsSolution": {
-    
-  },
+  "HlsSolution": {"Config": [
+      "config_sdx -target=none",
+      "config_export -vivado_optimization_level=2",
+      "config_export -vivado_phys_opt=place",
+      "config_export -vivado_report_level=0"
+    ]},
   "Args": {
     "addr": {
       "index": "0",
@@ -57,7 +60,7 @@
     "ClockName": "ap_clk",
     "ClockPeriod": "10",
     "IsCombLogic": "0",
-    "II": "x",
+    "II": "2",
     "Latency": "1",
     "Uncertainty": "1.25"
   },
@@ -227,8 +230,8 @@
           "LatencyAvg": "1",
           "LatencyWorst": "1",
           "PipelineII": "2",
-          "PipelineDepth": "",
-          "PipelineType": "none"
+          "PipelineDepth": "2",
+          "PipelineType": "function"
         },
         "Timing": {
           "Target": "10.00",
@@ -237,7 +240,7 @@
         },
         "Area": {
           "BRAM_18K": "1",
-          "FF": "24",
+          "FF": "31",
           "LUT": "79",
           "URAM": "0",
           "DSP48E": "0"
@@ -254,7 +257,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-03-01 22:54:08 PST",
+    "Time": "2020-03-23 16:49:51 PDT",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.1"
   }

@@ -1,5 +1,0 @@
-sv work "glbl.v"
-sv xil_defaultlib "mem.autotb.v"
-sv xil_defaultlib "mem.v"
-sv xil_defaultlib "mem_stored.v"
-

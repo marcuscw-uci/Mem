@@ -1,41 +1,37 @@
 #include "mem.h"
 
+void mem(uint7 addr, uint1 we, uint1 re, uint8 *out){
 
-
-void mem(int7 addr, int1 we, int1 re, int8 *out){
-	static int8 saved[ADDRESSES];
-	static int8 tempOutAddr = 0;
-	static int8 tempOutVal = 0;
-	int8 temp1 = saved[addr];
+	static uint8 saved[ADDRESSES];
+	static uint7 tempOutAddr = 0;
+	static uint8 tempOutVal = 0;
+	uint8 temp1 = saved[addr];
 
 
 	if(we){
 		temp1++;
-		saved[addr] = temp1;
-	}else{
-		saved[addr] = temp1;
-	}
 
 
-	if(temp1 >= tempOutVal){
-		tempOutAddr = addr;
-		tempOutVal = temp1;
-		if(re){
-			*out = addr;
+		if(temp1 >= tempOutVal){
+			tempOutAddr = addr;
+			tempOutVal = temp1;
+			if(re){
+				*out = addr;
+			}
+
+		}else{
+			if(re){
+				*out = tempOutAddr;
+			}
 		}
-	}
 
-	else{
+		saved[addr] = temp1;
+
+	}else{
 		if(re){
 			*out = tempOutAddr;
-		}
+			}
 	}
 
 
 }
-
-
-
-
-
-

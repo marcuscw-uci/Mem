@@ -12,28 +12,29 @@
 `define AUTOTB_PER_RESULT_TRANS_FILE "mem.performance.result.transaction.xml"
 `define AUTOTB_TOP_INST AESL_inst_apatb_mem_top
 `define AUTOTB_MAX_ALLOW_LATENCY  15000000
-`define AUTOTB_CLOCK_PERIOD_DIV2 5.00
+`define AUTOTB_CLOCK_PERIOD_DIV2 1.39
 
 `define AESL_DEPTH_addr 1
 `define AESL_DEPTH_we 1
-`define AESL_DEPTH_data 1
+`define AESL_DEPTH_re 1
+`define AESL_DEPTH_out_r 1
 `define AUTOTB_TVIN_addr  "../tv/cdatafile/c.mem.autotvin_addr.dat"
 `define AUTOTB_TVIN_we  "../tv/cdatafile/c.mem.autotvin_we.dat"
-`define AUTOTB_TVIN_data  "../tv/cdatafile/c.mem.autotvin_data.dat"
+`define AUTOTB_TVIN_re  "../tv/cdatafile/c.mem.autotvin_re.dat"
 `define AUTOTB_TVIN_addr_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvin_addr.dat"
 `define AUTOTB_TVIN_we_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvin_we.dat"
-`define AUTOTB_TVIN_data_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvin_data.dat"
-`define AUTOTB_TVOUT_ap_return  "../tv/cdatafile/c.mem.autotvout_ap_return.dat"
-`define AUTOTB_TVOUT_ap_return_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvout_ap_return.dat"
+`define AUTOTB_TVIN_re_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvin_re.dat"
+`define AUTOTB_TVOUT_out_r  "../tv/cdatafile/c.mem.autotvout_out_r.dat"
+`define AUTOTB_TVOUT_out_r_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvout_out_r.dat"
 module `AUTOTB_TOP;
 
-parameter AUTOTB_TRANSACTION_NUM = 2;
+parameter AUTOTB_TRANSACTION_NUM = 9;
 parameter PROGRESS_TIMEOUT = 10000000;
-parameter LATENCY_ESTIMATION = 2;
+parameter LATENCY_ESTIMATION = 3;
 parameter LENGTH_addr = 1;
 parameter LENGTH_we = 1;
-parameter LENGTH_data = 1;
-parameter LENGTH_ap_return = 1;
+parameter LENGTH_re = 1;
+parameter LENGTH_out_r = 1;
 
 task read_token;
     input integer fp;
@@ -67,10 +68,11 @@ wire ap_start;
 wire ap_done;
 wire ap_idle;
 wire ap_ready;
-wire [31 : 0] addr;
-wire [31 : 0] we;
-wire [31 : 0] data;
-wire [31 : 0] ap_return;
+wire [6 : 0] addr;
+wire [0 : 0] we;
+wire [0 : 0] re;
+wire [7 : 0] out_r;
+wire  out_r_ap_vld;
 integer done_cnt = 0;
 integer AESL_ready_cnt = 0;
 integer ready_cnt = 0;
@@ -94,8 +96,9 @@ wire ap_rst_n;
     .ap_ready(ap_ready),
     .addr(addr),
     .we(we),
-    .data(data),
-    .ap_return(ap_return));
+    .re(re),
+    .out_r(out_r),
+    .out_r_ap_vld(out_r_ap_vld));
 
 // Assignment for control signal
 assign ap_clk = AESL_clock;
@@ -128,7 +131,7 @@ assign AESL_continue = tb_continue;
         end
     end
 // The signal of port addr
-reg [31: 0] AESL_REG_addr = 0;
+reg [6: 0] AESL_REG_addr = 0;
 assign addr = AESL_REG_addr;
 initial begin : read_file_process_addr
     integer fp;
@@ -182,7 +185,7 @@ end
 
 
 // The signal of port we
-reg [31: 0] AESL_REG_we = 0;
+reg [0: 0] AESL_REG_we = 0;
 assign we = AESL_REG_we;
 initial begin : read_file_process_we
     integer fp;
@@ -235,10 +238,10 @@ initial begin : read_file_process_we
 end
 
 
-// The signal of port data
-reg [31: 0] AESL_REG_data = 0;
-assign data = AESL_REG_data;
-initial begin : read_file_process_data
+// The signal of port re
+reg [0: 0] AESL_REG_re = 0;
+assign re = AESL_REG_re;
+initial begin : read_file_process_re
     integer fp;
     integer err;
     integer ret;
@@ -249,9 +252,9 @@ initial begin : read_file_process_data
     integer transaction_idx;
     transaction_idx = 0;
     wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_data,"r");
+    fp = $fopen(`AUTOTB_TVIN_re,"r");
     if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_data);
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_re);
         $display("ERROR: Simulation using HLS TB failed.");
         $finish;
     end
@@ -274,7 +277,7 @@ initial begin : read_file_process_data
                 # 0.2;
             end
         if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_data);
+            ret = $sscanf(token, "0x%x", AESL_REG_re);
               if (ret != 1) begin
                   $display("Failed to parse token!");
                 $display("ERROR: Simulation using HLS TB failed.");
@@ -289,7 +292,20 @@ initial begin : read_file_process_data
 end
 
 
-initial begin : write_file_process_ap_return
+reg AESL_REG_out_r_ap_vld = 0;
+// The signal of port out_r
+reg [7: 0] AESL_REG_out_r = 0;
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset)
+        AESL_REG_out_r = 0; 
+    else if(out_r_ap_vld) begin
+        AESL_REG_out_r <= out_r;
+        AESL_REG_out_r_ap_vld <= 1;
+    end
+end 
+
+initial begin : write_file_process_out_r
     integer fp;
     integer fp_size;
     integer err;
@@ -297,14 +313,14 @@ initial begin : write_file_process_ap_return
     integer i;
     integer hls_stream_size;
     integer proc_rand;
-    integer ap_return_count;
+    integer out_r_count;
     reg [127:0] token;
     integer transaction_idx;
     reg [8 * 5:1] str;
     wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVOUT_ap_return_out_wrapc,"w");
+    fp = $fopen(`AUTOTB_TVOUT_out_r_out_wrapc,"w");
     if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_ap_return_out_wrapc);
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVOUT_out_r_out_wrapc);
         $display("ERROR: Simulation using HLS TB failed.");
         $finish;
     end
@@ -315,14 +331,19 @@ initial begin : write_file_process_ap_return
           while(AESL_done !== 1) begin
               @(posedge AESL_clock);
           end
+        # 0.4;
         $fdisplay(fp,"[[transaction]] %d", transaction_idx);
-          $fdisplay(fp,"0x%x", ap_return);
+        if(AESL_REG_out_r_ap_vld)  begin
+          $fdisplay(fp,"0x%x", AESL_REG_out_r);
+        AESL_REG_out_r_ap_vld = 0;
+        end
     transaction_idx = transaction_idx + 1;
       $fdisplay(fp,"[[/transaction]]");
     end
     $fdisplay(fp,"[[[/runtime]]]");
     $fclose(fp);
 end
+
 
 initial begin : generate_AESL_ready_cnt_proc
     AESL_ready_cnt = 0;
@@ -392,12 +413,12 @@ reg [31:0] size_addr_backup;
 reg end_we;
 reg [31:0] size_we;
 reg [31:0] size_we_backup;
-reg end_data;
-reg [31:0] size_data;
-reg [31:0] size_data_backup;
-reg end_ap_return;
-reg [31:0] size_ap_return;
-reg [31:0] size_ap_return_backup;
+reg end_re;
+reg [31:0] size_re;
+reg [31:0] size_re_backup;
+reg end_out_r;
+reg [31:0] size_out_r;
+reg [31:0] size_out_r_backup;
 
 initial begin : initial_process
     integer proc_rand;

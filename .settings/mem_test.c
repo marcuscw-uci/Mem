@@ -3,27 +3,24 @@
 
 
 int main(){
-	int8 out;
-	mem(1,1,1,&out);
-	mem(2,1,1,&out);
-	mem(3,1,1,&out);
-	printf("%d\n", out);
+	uint8 out;
 
-	mem(5,1,1,&out);
-	printf("%d\n", out);
+	/*for(uint7 i = 0; ; i++){
+		mem(i,1,1,&out);
+		if(out != i) return 1;
 
-	mem(5,1,1,&out);
-	mem(5,1,1,&out);
+		if(i == 127) break;
+	}*/
+	for(uint7 i = 0; ;i++){
+		for(int j = 0; j < i + 1; j++){
+			mem(i,1,1,&out);
 
-	printf("%d\n", out);
+		}
 
-	mem(3,1,1,&out);
-	printf("%d\n", out);
+		if(out != i) return 1;
+		if(i == 127) break;
 
-	mem(2,1,1,&out);
-	mem(2,1,0,&out);
-
-	printf("%d\n", out);
+	}
 
 
 }

@@ -25,7 +25,7 @@ set sim_ConstFileTvOut        "mem.autotvout.dat"
 set sim_ConstFileHdlTvIn      "mem.hdltvin.dat"
 set sim_ConstFileHdlTvOut     "mem.hdltvout.dat"
 set sim_GateLevelSim          0
-set sim_GTool                 "xsim"
+set sim_GTool                 "modelsim"
 set sim_GAutowrap             1
 set sim_GTvIn                 "../../sim/tv/mem.autotvin.dat"
 set sim_GTvOut                "../../sim/tv/mem.autotvout.dat"
