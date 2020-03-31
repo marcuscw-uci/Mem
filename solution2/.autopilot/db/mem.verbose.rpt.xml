@@ -1,0 +1,248 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'mem'" level="0">
+<item name = "Date">Wed Mar 25 22:21:26 2020
+</item>
+<item name = "Version">2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)</item>
+<item name = "Project">Mem</item>
+<item name = "Solution">solution2</item>
+<item name = "Product family">virtex7</item>
+<item name = "Target device">xc7vx485t-ffg1157-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">2.78, 2.514, 0.35</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">1, 1, 1, 1, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 26, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, 581, -</column>
+<column name="Register">-, -, 1049, -, -</column>
+<specialColumn name="Available">2060, 2800, 607200, 303600, 0</specialColumn>
+<specialColumn name="Utilization (%)">0, 0, ~0, ~0, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="temp1_1_fu_1351_p2">+, 0, 0, 15, 8, 1</column>
+<column name="icmp_ln15_fu_1361_p2">icmp, 0, 0, 11, 8, 8</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">15, 3, 1, 3</column>
+<column name="out_r">21, 4, 8, 32</column>
+<column name="temp1_reg_569">545, 128, 8, 1024</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">2, 0, 2, 0</column>
+<column name="saved">8, 0, 8, 0</column>
+<column name="saved_0">8, 0, 8, 0</column>
+<column name="saved_1">8, 0, 8, 0</column>
+<column name="saved_10">8, 0, 8, 0</column>
+<column name="saved_11">8, 0, 8, 0</column>
+<column name="saved_12">8, 0, 8, 0</column>
+<column name="saved_126">8, 0, 8, 0</column>
+<column name="saved_127">8, 0, 8, 0</column>
+<column name="saved_128">8, 0, 8, 0</column>
+<column name="saved_129">8, 0, 8, 0</column>
+<column name="saved_13">8, 0, 8, 0</column>
+<column name="saved_130">8, 0, 8, 0</column>
+<column name="saved_131">8, 0, 8, 0</column>
+<column name="saved_132">8, 0, 8, 0</column>
+<column name="saved_133">8, 0, 8, 0</column>
+<column name="saved_134">8, 0, 8, 0</column>
+<column name="saved_135">8, 0, 8, 0</column>
+<column name="saved_136">8, 0, 8, 0</column>
+<column name="saved_137">8, 0, 8, 0</column>
+<column name="saved_138">8, 0, 8, 0</column>
+<column name="saved_139">8, 0, 8, 0</column>
+<column name="saved_14">8, 0, 8, 0</column>
+<column name="saved_140">8, 0, 8, 0</column>
+<column name="saved_141">8, 0, 8, 0</column>
+<column name="saved_142">8, 0, 8, 0</column>
+<column name="saved_143">8, 0, 8, 0</column>
+<column name="saved_144">8, 0, 8, 0</column>
+<column name="saved_145">8, 0, 8, 0</column>
+<column name="saved_146">8, 0, 8, 0</column>
+<column name="saved_147">8, 0, 8, 0</column>
+<column name="saved_148">8, 0, 8, 0</column>
+<column name="saved_149">8, 0, 8, 0</column>
+<column name="saved_15">8, 0, 8, 0</column>
+<column name="saved_150">8, 0, 8, 0</column>
+<column name="saved_151">8, 0, 8, 0</column>
+<column name="saved_152">8, 0, 8, 0</column>
+<column name="saved_16">8, 0, 8, 0</column>
+<column name="saved_17">8, 0, 8, 0</column>
+<column name="saved_18">8, 0, 8, 0</column>
+<column name="saved_19">8, 0, 8, 0</column>
+<column name="saved_2">8, 0, 8, 0</column>
+<column name="saved_20">8, 0, 8, 0</column>
+<column name="saved_21">8, 0, 8, 0</column>
+<column name="saved_22">8, 0, 8, 0</column>
+<column name="saved_23">8, 0, 8, 0</column>
+<column name="saved_24">8, 0, 8, 0</column>
+<column name="saved_25">8, 0, 8, 0</column>
+<column name="saved_26">8, 0, 8, 0</column>
+<column name="saved_27">8, 0, 8, 0</column>
+<column name="saved_28">8, 0, 8, 0</column>
+<column name="saved_29">8, 0, 8, 0</column>
+<column name="saved_3">8, 0, 8, 0</column>
+<column name="saved_30">8, 0, 8, 0</column>
+<column name="saved_31">8, 0, 8, 0</column>
+<column name="saved_32">8, 0, 8, 0</column>
+<column name="saved_33">8, 0, 8, 0</column>
+<column name="saved_34">8, 0, 8, 0</column>
+<column name="saved_35">8, 0, 8, 0</column>
+<column name="saved_36">8, 0, 8, 0</column>
+<column name="saved_37">8, 0, 8, 0</column>
+<column name="saved_38">8, 0, 8, 0</column>
+<column name="saved_39">8, 0, 8, 0</column>
+<column name="saved_4">8, 0, 8, 0</column>
+<column name="saved_40">8, 0, 8, 0</column>
+<column name="saved_41">8, 0, 8, 0</column>
+<column name="saved_42">8, 0, 8, 0</column>
+<column name="saved_43">8, 0, 8, 0</column>
+<column name="saved_44">8, 0, 8, 0</column>
+<column name="saved_45">8, 0, 8, 0</column>
+<column name="saved_46">8, 0, 8, 0</column>
+<column name="saved_47">8, 0, 8, 0</column>
+<column name="saved_48">8, 0, 8, 0</column>
+<column name="saved_49">8, 0, 8, 0</column>
+<column name="saved_5">8, 0, 8, 0</column>
+<column name="saved_50">8, 0, 8, 0</column>
+<column name="saved_51">8, 0, 8, 0</column>
+<column name="saved_52">8, 0, 8, 0</column>
+<column name="saved_53">8, 0, 8, 0</column>
+<column name="saved_54">8, 0, 8, 0</column>
+<column name="saved_55">8, 0, 8, 0</column>
+<column name="saved_56">8, 0, 8, 0</column>
+<column name="saved_57">8, 0, 8, 0</column>
+<column name="saved_58">8, 0, 8, 0</column>
+<column name="saved_59">8, 0, 8, 0</column>
+<column name="saved_6">8, 0, 8, 0</column>
+<column name="saved_60">8, 0, 8, 0</column>
+<column name="saved_61">8, 0, 8, 0</column>
+<column name="saved_62">8, 0, 8, 0</column>
+<column name="saved_63">8, 0, 8, 0</column>
+<column name="saved_64">8, 0, 8, 0</column>
+<column name="saved_65">8, 0, 8, 0</column>
+<column name="saved_66">8, 0, 8, 0</column>
+<column name="saved_67">8, 0, 8, 0</column>
+<column name="saved_68">8, 0, 8, 0</column>
+<column name="saved_69">8, 0, 8, 0</column>
+<column name="saved_7">8, 0, 8, 0</column>
+<column name="saved_70">8, 0, 8, 0</column>
+<column name="saved_71">8, 0, 8, 0</column>
+<column name="saved_72">8, 0, 8, 0</column>
+<column name="saved_73">8, 0, 8, 0</column>
+<column name="saved_74">8, 0, 8, 0</column>
+<column name="saved_75">8, 0, 8, 0</column>
+<column name="saved_76">8, 0, 8, 0</column>
+<column name="saved_77">8, 0, 8, 0</column>
+<column name="saved_78">8, 0, 8, 0</column>
+<column name="saved_79">8, 0, 8, 0</column>
+<column name="saved_8">8, 0, 8, 0</column>
+<column name="saved_80">8, 0, 8, 0</column>
+<column name="saved_81">8, 0, 8, 0</column>
+<column name="saved_82">8, 0, 8, 0</column>
+<column name="saved_83">8, 0, 8, 0</column>
+<column name="saved_84">8, 0, 8, 0</column>
+<column name="saved_85">8, 0, 8, 0</column>
+<column name="saved_86">8, 0, 8, 0</column>
+<column name="saved_87">8, 0, 8, 0</column>
+<column name="saved_88">8, 0, 8, 0</column>
+<column name="saved_89">8, 0, 8, 0</column>
+<column name="saved_9">8, 0, 8, 0</column>
+<column name="saved_90">8, 0, 8, 0</column>
+<column name="saved_91">8, 0, 8, 0</column>
+<column name="saved_92">8, 0, 8, 0</column>
+<column name="saved_93">8, 0, 8, 0</column>
+<column name="saved_94">8, 0, 8, 0</column>
+<column name="saved_95">8, 0, 8, 0</column>
+<column name="saved_96">8, 0, 8, 0</column>
+<column name="saved_97">8, 0, 8, 0</column>
+<column name="saved_98">8, 0, 8, 0</column>
+<column name="saved_99">8, 0, 8, 0</column>
+<column name="temp1_reg_569">8, 0, 8, 0</column>
+<column name="tempOutAddr">7, 0, 7, 0</column>
+<column name="tempOutVal">8, 0, 8, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, mem, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, mem, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, mem, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, mem, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, mem, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, mem, return value</column>
+<column name="addr">in, 7, ap_none, addr, scalar</column>
+<column name="we">in, 1, ap_none, we, scalar</column>
+<column name="re">in, 1, ap_none, re, scalar</column>
+<column name="out_r">out, 8, ap_vld, out_r, pointer</column>
+<column name="out_r_ap_vld">out, 1, ap_vld, out_r, pointer</column>
+</table>
+</item>
+</section>
+</profile>

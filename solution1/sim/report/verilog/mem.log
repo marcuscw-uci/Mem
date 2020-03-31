@@ -1,0 +1,110 @@
+INFO: [COSIM-47] Using Modelsim for RTL simulation.
+INFO: [COSIM-14] Instrumenting C test bench ...
+   Build using "/state/opt/Xilinx/Vivado/2019.1/tps/lnx64/gcc-6.2.0/bin/g++"
+   Compiling apatb_mem.cpp
+   Compiling (apcc) mem.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Mar 11 15:11:04 PDT 2020
+INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
+INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution1/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/24249621583964664631019
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) mem_test.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Mar 11 15:11:11 PDT 2020
+INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
+INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution1/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/24252191583964671215578
+INFO: [APCC 202-1] APCC is done.
+   Generating cosim.tv.exe
+INFO: [COSIM-302] Starting C TB testing ... 
+INFO: [COSIM-333] Generating C post check test bench ...
+INFO: [COSIM-12] Generating RTL test bench ...
+INFO: [COSIM-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM-323] Starting verilog simulation. 
+INFO: [COSIM-15] Starting Modelsim ...
+3
+5
+5
+5
+5
+Reading pref.tcl
+
+# 10.7c
+
+# do cosim.modelsim.scr
+# 
+#     set fl [open ".exit.err" w]
+#     puts $fl "Elaboration errors in executing modelsim simulator"
+#     close $fl
+#     quit
+# 
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 17 2018
+# vmap -c -modelsimini /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1/modelsim.ini 
+# Copying /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1/modelsim.ini to modelsim.ini
+# ** Warning: Copied /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1/modelsim.ini to modelsim.ini.
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 17 2018
+# vmap work work 
+# Modifying modelsim.ini
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:21 on Mar 11,2020
+# vlog -sv -work work glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 15:11:22 on Mar 11,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:22 on Mar 11,2020
+# vlog -sv -work work mem.autotb.v 
+# -- Compiling module apatb_mem_top
+# 
+# Top level modules:
+# 	apatb_mem_top
+# End time: 15:11:22 on Mar 11,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:22 on Mar 11,2020
+# vlog -sv -work work mem.v 
+# -- Compiling module mem
+# 
+# Top level modules:
+# 	mem
+# End time: 15:11:23 on Mar 11,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:23 on Mar 11,2020
+# vlog -sv -work work mem_saved.v 
+# -- Compiling module mem_saved_ram
+# -- Compiling module mem_saved
+# 
+# Top level modules:
+# 	mem_saved
+# End time: 15:11:23 on Mar 11,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -debugDB -t 10ps -voptargs=""+acc"" -L work -L unisims_ver -L xpm apatb_mem_top glbl -suppress 6630 -wlf mem.wlf 
+# Start time: 15:11:23 on Mar 11,2020
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Error (suppressible): (vopt-19) Failed to access library '/data11/home/psundara/xilinx/compiled_libraries/v2019.1/unisims_ver' at "/data11/home/psundara/xilinx/compiled_libraries/v2019.1/unisims_ver".
+# Permission denied. (errno = EACCES)
+# ** Error (suppressible): (vopt-19) Failed to access library '/data11/home/psundara/xilinx/compiled_libraries/v2019.1/xpm' at "/data11/home/psundara/xilinx/compiled_libraries/v2019.1/xpm".
+# Permission denied. (errno = EACCES)
+# ** Note: (vopt-143) Recognized 1 FSM in module "mem(fast)".
+# ** Note: (vopt-4301) Memory core inferred for signal 'ram' width=8, depth=128, type=RAM at location mem_saved.v:19
+# Error loading design
+# Error: Error loading design
+#        Executing onElabError command(s): 
+#     set fl [open ".exit.err" w]
+#     puts $fl "Elaboration errors in executing modelsim simulator"
+#     close $fl
+#     quit
+# 
+# End time: 15:11:26 on Mar 11,2020, Elapsed time: 0:00:03
+# Errors: 2, Warnings: 0
+ERROR: [COSIM-4] *** C/RTL co-simulation finished: FAIL ***

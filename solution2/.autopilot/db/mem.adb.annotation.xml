@@ -1,0 +1,7 @@
+<annotationInfo>
+<item  id="536" filename="Mem/.settings/mem.c" linenumber="32" name="zext_ln32" contextFuncName="mem" moduleName="mem" rtlName="zext_ln32_fu_1346_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="/data11/home/marcuscw/Desktop"><\/item>
+<item  id="542" filename="Mem/.settings/mem.c" linenumber="12" name="temp1_1" contextFuncName="mem" moduleName="mem" rtlName="temp1_1_fu_1351_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="15" fileDirectory="/data11/home/marcuscw/Desktop"><\/item>
+<item  id="544" filename="Mem/.settings/mem.c" linenumber="15" name="icmp_ln15" contextFuncName="mem" moduleName="mem" rtlName="icmp_ln15_fu_1361_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="11" fileDirectory="/data11/home/marcuscw/Desktop"><\/item>
+<item  id="551" filename="Mem/.settings/mem.c" linenumber="19" name="zext_ln19" contextFuncName="mem" moduleName="mem" rtlName="zext_ln19_fu_1378_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="/data11/home/marcuscw/Desktop"><\/item>
+<item  id="559" filename="Mem/.settings/mem.c" linenumber="24" name="zext_ln24" contextFuncName="mem" moduleName="mem" rtlName="zext_ln24_fu_1382_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="/data11/home/marcuscw/Desktop"><\/item>
+</annotationInfo>

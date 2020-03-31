@@ -1,0 +1,46 @@
+# ==============================================================
+# Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.1 (64-bit)
+# Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+# ==============================================================
+onElabError {
+    set fl [open ".exit.err" w]
+    puts $fl "Elaboration errors in executing modelsim simulator"
+    close $fl
+    quit
+}
+onerror {
+    set fl [open ".exit.err" w]
+    puts $fl "Errors in executing modelsim simulator"
+    close $fl
+    quit
+}
+onbreak {
+    quit
+}
+
+if 0 {
+    vdel -all
+}
+
+if {[file exist [file join /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1 modelsim.ini]]} {
+    vmap -c -modelsimini [file join /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1 modelsim.ini]
+} else {
+    puts "ERROR: Please make sure the modelsim.ini is in the path /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1."
+    exit -force
+}
+
+vlib work
+vmap work work
+
+vlog -sv -work work "glbl.v"
+vlog -sv -work work "mem.autotb.v"
+vlog -sv -work work "mem.v"
+vlog -sv -work work "mem_saved.v"
+
+vsim -debugDB -t 10ps -voptargs="+acc"  -L work -L unisims_ver -L xpm apatb_mem_top glbl -suppress 6630 -wlf mem.wlf 
+set WildcardFilter [lsearch -not -all -inline $WildcardFilter Parameter]
+add wave -r /*
+set StdArithNoWarnings 1
+set NumericStdNoWarnings 1
+run -all
+abort

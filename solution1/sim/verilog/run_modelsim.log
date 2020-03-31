@@ -1,0 +1,80 @@
+3
+5
+5
+5
+5
+Reading pref.tcl
+
+# 10.7c
+
+# do cosim.modelsim.scr
+# 
+#     set fl [open ".exit.err" w]
+#     puts $fl "Elaboration errors in executing modelsim simulator"
+#     close $fl
+#     quit
+# 
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 17 2018
+# vmap -c -modelsimini /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1/modelsim.ini 
+# Copying /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1/modelsim.ini to modelsim.ini
+# ** Warning: Copied /DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1/modelsim.ini to modelsim.ini.
+# QuestaSim-64 vmap 10.7c Lib Mapping Utility 2018.08 Aug 17 2018
+# vmap work work 
+# Modifying modelsim.ini
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:21 on Mar 11,2020
+# vlog -sv -work work glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 15:11:22 on Mar 11,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:22 on Mar 11,2020
+# vlog -sv -work work mem.autotb.v 
+# -- Compiling module apatb_mem_top
+# 
+# Top level modules:
+# 	apatb_mem_top
+# End time: 15:11:22 on Mar 11,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:22 on Mar 11,2020
+# vlog -sv -work work mem.v 
+# -- Compiling module mem
+# 
+# Top level modules:
+# 	mem
+# End time: 15:11:23 on Mar 11,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 15:11:23 on Mar 11,2020
+# vlog -sv -work work mem_saved.v 
+# -- Compiling module mem_saved_ram
+# -- Compiling module mem_saved
+# 
+# Top level modules:
+# 	mem_saved
+# End time: 15:11:23 on Mar 11,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -debugDB -t 10ps -voptargs=""+acc"" -L work -L unisims_ver -L xpm apatb_mem_top glbl -suppress 6630 -wlf mem.wlf 
+# Start time: 15:11:23 on Mar 11,2020
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Error (suppressible): (vopt-19) Failed to access library '/data11/home/psundara/xilinx/compiled_libraries/v2019.1/unisims_ver' at "/data11/home/psundara/xilinx/compiled_libraries/v2019.1/unisims_ver".
+# Permission denied. (errno = EACCES)
+# ** Error (suppressible): (vopt-19) Failed to access library '/data11/home/psundara/xilinx/compiled_libraries/v2019.1/xpm' at "/data11/home/psundara/xilinx/compiled_libraries/v2019.1/xpm".
+# Permission denied. (errno = EACCES)
+# ** Note: (vopt-143) Recognized 1 FSM in module "mem(fast)".
+# ** Note: (vopt-4301) Memory core inferred for signal 'ram' width=8, depth=128, type=RAM at location mem_saved.v:19
+# Error loading design
+# Error: Error loading design
+#        Executing onElabError command(s): 
+#     set fl [open ".exit.err" w]
+#     puts $fl "Elaboration errors in executing modelsim simulator"
+#     close $fl
+#     quit
+# 
+# End time: 15:11:26 on Mar 11,2020, Elapsed time: 0:00:03
+# Errors: 2, Warnings: 0
