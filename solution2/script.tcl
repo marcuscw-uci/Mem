@@ -10,6 +10,8 @@ add_files -tb Mem/.settings/mem_test.c -cflags "-Wno-unknown-pragmas" -csimflags
 open_solution "solution2"
 set_part {xc7vx485t-ffg1157-1}
 create_clock -period 2.78 -name default
+config_sdx -target none
+config_export -vivado_optimization_level 2 -vivado_phys_opt place -vivado_report_level 0
 set_clock_uncertainty 12.5%
 source "./Mem/solution2/directives.tcl"
 csim_design

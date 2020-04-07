@@ -4296,43 +4296,48 @@ void mem(uint7 wr_addr, uint1 we, uint1 re, uint8 *out);
 # 2 "Mem/.settings/mem.c" 2
 
 void mem(uint7 addr, uint1 we, uint1 re, uint8 *out){
-_ssdm_op_SpecLatency(0, 1, "");
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
 # 3 "Mem/.settings/mem.c"
 
 
  static uint8 saved[ADDRESSES];
-_ssdm_SpecArrayPartition( &saved, 1, "COMPLETE", 0, "");
+_ssdm_SpecDependence( &saved, 0, 0, -1, 0, 1);
+# 5 "Mem/.settings/mem.c"
+
+_ssdm_op_SpecResource(&saved, "", "RAM_2P_LUTRAM", "", -1, "", "", "", "", "");
 # 5 "Mem/.settings/mem.c"
 
  static uint7 tempOutAddr = 0;
  static uint8 tempOutVal = 0;
- uint8 temp1 = saved[addr];
-
+ uint8 temp = saved[addr];
 
  if(we){
-  temp1++;
 
+  temp++;
 
-  if(temp1 >= tempOutVal){
+  if(temp >= tempOutVal){
+   tempOutVal = temp;
    tempOutAddr = addr;
-   tempOutVal = temp1;
    if(re){
     *out = addr;
    }
-
   }else{
    if(re){
     *out = tempOutAddr;
-   }
+   }else;
   }
 
-  saved[addr] = temp1;
+  saved[addr] = temp;
+
+
 
  }else{
   if(re){
    *out = tempOutAddr;
-   }
+  }else;
  }
+
+
 
 
 }

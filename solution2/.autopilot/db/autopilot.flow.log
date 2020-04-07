@@ -1,4 +1,4 @@
-INFO-FLOW: Workspace /data11/home/marcuscw/Desktop/Mem/solution2 opened at Wed Mar 25 22:21:05 PDT 2020
+INFO-FLOW: Workspace /data11/home/marcuscw/Desktop/Mem/solution2 opened at Mon Apr 06 22:36:30 PDT 2020
 Execute     config_clock -quiet -name default -period 2.78 -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 2.78ns.
 Execute     config_clock -quiet -name default -uncertainty 0.347 -unit % 
@@ -62,7 +62,7 @@ Execute     source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virt
 Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx_fp.gen 
 Execute     set_part xc7vx485t-ffg1157-1 
 Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data single -quiet 
-Command       ap_part_info done; 1.05 sec.
+Command       ap_part_info done; 1.16 sec.
 Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
 Execute       add_library xilinx/virtex7/virtex7:xc7vx485t:-ffg1157:-1 
 Execute         get_default_platform 
@@ -80,7 +80,7 @@ Execute         get_default_platform
 INFO: [HLS 200-10] Setting target device to 'xc7vx485t-ffg1157-1'
 Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
 Execute       get_default_platform 
-Command     set_part done; 1.21 sec.
+Command     set_part done; 1.37 sec.
 Execute     ap_part_info -data single -name xc7vx485t-ffg1157-1 
 Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data resources 
 Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
@@ -88,7 +88,27 @@ Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info
 Execute     config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
 Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
 Execute     config_chip_info -quiet -speed slow 
-Command   open_solution done; 1.57 sec.
+Execute     config_sdx -target=none 
+Execute       send_msg_by_id INFO @200-435@%s%s 'config_sdx -target' config_export -vivado_optimization_level=2 
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+Execute       config_export -vivado_optimization_level=2 
+Execute         get_config_export -vivado_impl_strategy 
+Execute         get_config_export -vivado_phys_opt 
+Execute       get_config_compile -pipeline_loops 
+Execute       get_config_compile -name_max_length 
+Execute       get_config_schedule -enable_dsp_full_reg 
+Execute       get_config_rtl -register_reset_num 
+Execute       get_config_rtl -module_auto_prefix 
+Execute       get_config_interface -m_axi_addr64 
+Execute       send_msg_by_id INFO @200-435@%s%s 'config_sdx -target' set_clock_uncertainty default 
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+Execute       set_clock_uncertainty default 
+Execute     config_export -vivado_optimization_level=2 
+Execute       get_config_export -vivado_impl_strategy 
+Execute       get_config_export -vivado_phys_opt 
+Execute     config_export -vivado_phys_opt=place 
+Execute     config_export -vivado_report_level=0 
+Command   open_solution done; 1.86 sec.
 Execute   set_part xc7vx485t-ffg1157-1 
 Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data single -quiet 
 Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
@@ -103,22 +123,40 @@ Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info
 Execute       config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
 Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
 Execute       config_chip_info -quiet -speed slow 
-Command     add_library done; 0.13 sec.
 Execute     add_library xilinx/virtex7/virtex7_fpv6 
 Execute       get_default_platform 
 Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
 Execute     get_default_platform 
-Command   set_part done; 0.22 sec.
+Command   set_part done; 0.2 sec.
 Execute   create_clock -period 2.78 -name default 
+Execute   config_sdx -target none 
+Execute     send_msg_by_id INFO @200-435@%s%s 'config_sdx -target' config_export -vivado_optimization_level=2 
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+Execute     config_export -vivado_optimization_level=2 
+Execute       get_config_export -vivado_impl_strategy 
+Execute       get_config_export -vivado_phys_opt 
+Execute     get_config_compile -pipeline_loops 
+Execute     get_config_compile -name_max_length 
+Execute     get_config_schedule -enable_dsp_full_reg 
+Execute     get_config_rtl -register_reset_num 
+Execute     get_config_rtl -module_auto_prefix 
+Execute     get_config_interface -m_axi_addr64 
+Execute     send_msg_by_id INFO @200-435@%s%s 'config_sdx -target' set_clock_uncertainty default 
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+Execute     set_clock_uncertainty default 
+Execute   config_export -vivado_optimization_level 2 -vivado_phys_opt place -vivado_report_level 0 
+Execute     get_config_export -vivado_impl_strategy 
 Execute   set_clock_uncertainty 12.5% 
 Execute   source ./Mem/solution2/directives.tcl 
-Execute     set_directive_latency -max 1 mem 
-INFO-FLOW: Setting directive 'LATENCY' max=1 
-Execute     set_directive_array_partition -type complete -dim 1 mem saved 
-INFO-FLOW: Setting directive 'LATENCY' max=1 
-INFO-FLOW: Setting directive 'ARRAY_PARTITION' partition=positionBooleanCmd variable=positionBooleanTextRequiredsaved complete=positionBoolean0type dim=1 
-Command     set_directive_array_partition done; 0.25 sec.
-Command   ap_source done; 0.28 sec.
+Execute     set_directive_resource -core RAM_2P_LUTRAM mem saved 
+INFO-FLOW: Setting directive 'RESOURCE' variable=positionBooleanTextRequiredsaved core=RAM_2P_LUTRAM 
+Execute     set_directive_pipeline -II 1 mem 
+INFO-FLOW: Setting directive 'RESOURCE' variable=positionBooleanTextRequiredsaved core=RAM_2P_LUTRAM 
+INFO-FLOW: Setting directive 'PIPELINE' II=1 
+Execute     set_directive_dependence -variable saved -type inter -dependent false mem 
+INFO-FLOW: Setting directive 'RESOURCE' variable=positionBooleanTextRequiredsaved core=RAM_2P_LUTRAM 
+INFO-FLOW: Setting directive 'PIPELINE' II=1 
+INFO-FLOW: Setting directive 'DEPENDENCE' variable=saved inter=positionBoolean0type false=positionBoolean0dependent 
 Execute   csynth_design 
 Execute     get_config_compile -dump_cfg 
 Execute     get_config_compile -effort 
@@ -144,36 +182,39 @@ INFO-FLOW: Running: GCC PP
 INFO-FLOW: Source preprocessing
 Execute       clang  -fno-limit-debug-info -gcc-toolchain "/state/opt/Xilinx/Vivado/2019.1/lnx64/tools/gcc" -hls  -fno-exceptions  -D__llvm__  -E "Mem/.settings/mem.c"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -std=gnu89   -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot" -I "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__  -o "/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c" 
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -E Mem/.settings/mem.c -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -std=gnu89 -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot -I /state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c
-Command       clang done; 1.62 sec.
+Command       clang done; 1.83 sec.
 Execute       tidy_31 xilinx-xfmat-array-geometry /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c std=gnu89 
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-xfmat-array-geometry -quiet -fix /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0
 INFO-FLOW: Syntax Checking before pre-processing...
 Execute       clang -syntaxcheck -src /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c  -fno-limit-debug-info -gcc-toolchain "/state/opt/Xilinx/Vivado/2019.1/lnx64/tools/gcc" -hls    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -std=gnu89   -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot" -I "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__  "/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c"  -o "/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/useless.bc"  
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/gcc -hls -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -std=gnu89 -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot -I /state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/useless.bc
-Command       clang done; 1.63 sec.
-INFO-FLOW: Done: GCC PP time: 3.3 seconds per iteration
-INFO-FLOW: Setting directive 'LATENCY' max=1 
-INFO-FLOW: Setting directive 'ARRAY_PARTITION' partition=positionBooleanCmd variable=positionBooleanTextRequiredsaved complete=positionBoolean0type dim=1 
+Command       clang done; 1.96 sec.
+INFO-FLOW: Done: GCC PP time: 3.8 seconds per iteration
+INFO-FLOW: Setting directive 'RESOURCE' variable=positionBooleanTextRequiredsaved core=RAM_2P_LUTRAM 
+INFO-FLOW: Setting directive 'PIPELINE' II=1 
+INFO-FLOW: Setting directive 'DEPENDENCE' variable=saved inter=positionBoolean0type false=positionBoolean0dependent 
 Execute       source /state/opt/Xilinx/Vivado/2019.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
 Execute       source /state/opt/Xilinx/Vivado/2019.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
 Execute         source /state/opt/Xilinx/Vivado/2019.1/tps/tcl/tcllib1.11.1/try/try.tcl 
-INFO-FLOW: Setting directive 'LATENCY' max=1 
-INFO-FLOW: Setting directive 'ARRAY_PARTITION' partition=positionBooleanCmd variable=positionBooleanTextRequiredsaved complete=positionBoolean0type dim=1 
+INFO-FLOW: Setting directive 'RESOURCE' variable=positionBooleanTextRequiredsaved core=RAM_2P_LUTRAM 
+INFO-FLOW: Setting directive 'PIPELINE' II=1 
+INFO-FLOW: Setting directive 'DEPENDENCE' variable=saved inter=positionBoolean0type false=positionBoolean0dependent 
 Execute       list_core -type functional_unit 
 Execute       tidy_31 xilinx-systemc-detector /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c std=gnu89 -directive=/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/.systemc_flag 
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-systemc-detector -import-directive=/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/.systemc_flag -quiet -fix-errors /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0
 INFO-FLOW: Running: tidy-3.1 CDT preprocess
 Execute       tidy_31 xilinx-directive2pragma /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c std=gnu89 -directive=/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/all.directive.json 
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-directive2pragma -import-directive=/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/all.directive.json -quiet -fix-errors /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0
-Command       tidy_31 done; 0.25 sec.
+Command       tidy_31 done; 0.33 sec.
 Execute       get_config_dataflow -strict_mode 
 Execute       ap_eval exec -ignorestderr /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/xilinx-dataflow-lawyer.mem.pp.0.c.diag.yml /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -- -std=gnu99 -fhls -ferror-limit=0 -fstrict-dataflow > /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/xilinx-dataflow-lawyer.mem.pp.0.c.out.log 2> /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/xilinx-dataflow-lawyer.mem.pp.0.c.err.log 
 Execute       tidy_31 -errorcheck xilinx-constantarray-param,xilinx-resource-pragma-transformer,xilinx-xfmat-array-geometry /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c std=gnu89 
 Execute         ap_eval exec -ignorestderr /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/tidy-3.1 -export-fixes=/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/tidy-3.1.mem.pp.0.c.diag.yml -header-filter=.* -checks=-*,xilinx-constantarray-param,xilinx-resource-pragma-transformer,xilinx-xfmat-array-geometry -quiet -fix-errors /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0 > /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/tidy-3.1.mem.pp.0.c.out.log 2> /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/tidy-3.1.mem.pp.0.c.err.log 
-Command         ap_eval done; 0.11 sec.
+Command         ap_eval done; 0.15 sec.
 Execute         ap_eval exec -ignorestderr /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/xilinx-legacy-rewriter /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0 > /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/xilinx-legacy-rewriter.mem.pp.0.c.out.log 2> /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/xilinx-legacy-rewriter.mem.pp.0.c.err.log 
-Command       tidy_31 done; 0.25 sec.
-INFO-FLOW: Done: tidy-3.1 CDT preprocess time: 0.6 seconds per iteration
+Command         ap_eval done; 0.38 sec.
+Command       tidy_31 done; 0.61 sec.
+INFO-FLOW: Done: tidy-3.1 CDT preprocess time: 1.1 seconds per iteration
 INFO-FLOW: Pragma Handling...
 Execute       tidy_31 xilinx-ssdm-intrinsics-arguments /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pragma.1.c std=gnu89 
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-ssdm-intrinsics-arguments -quiet -fix-errors /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pragma.1.c -- -std=gnu89 -fhls -ferror-limit=0
@@ -181,47 +222,43 @@ Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info
 INFO-FLOW: Processing labels
 Execute       clang -src /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pragma.2.c  -fno-limit-debug-info -gcc-toolchain /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions  -D__llvm__  -w  "/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pragma.2.c"    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -std=gnu89  -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot" -I "/state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o "/data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.bc" 
 INFO-FLOW: exec /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain /state/opt/Xilinx/Vivado/2019.1/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions -D__llvm__ -w /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.pragma.2.c -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -std=gnu89 -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot -I /state/opt/Xilinx/Vivado/2019.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.bc
-Command       clang done; 1.54 sec.
+Command       clang done; 1.85 sec.
 INFO-FLOW: Linking Debug ...
 Execute       llvm-ld /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.g.bc -hls-opt -except-internalize mem -L/state/opt/Xilinx/Vivado/2019.1/lnx64/lib -lhlsm -lhlsmc++ -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g 
-Command       llvm-ld done; 0.86 sec.
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79907 ; free virtual = 173250
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79907 ; free virtual = 173251
+Command       llvm-ld done; 1.07 sec.
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38087 ; free virtual = 134048
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38087 ; free virtual = 134048
 Execute       get_config_sdx -target 
 Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
 Execute         cleanup_all_models 
 INFO: [HLS 200-10] Starting code transformations ...
 Execute         transform -promote-dbg-pointer /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.pp.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.pp.0.bc -f 
 Execute         llvm-ld /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.pp.0.bc -disable-opt -L/state/opt/Xilinx/Vivado/2019.1/lnx64/lib -lfloatconversion -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.0 
-Command         llvm-ld done; 0.88 sec.
+Command         llvm-ld done; 0.91 sec.
 INFO-FLOW: Running Standard Transforms...
 Execute         transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -mem2reg -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -prune-eh -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top mem -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -auto-shift-reg-idiom -promote-dbg-pointer -norm-name /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.0.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.1.bc -f -phase std-opt 
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79907 ; free virtual = 173250
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38061 ; free virtual = 134031
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO-FLOW: Checking Synthesizability 1/2..
 Execute         transform -hls -syn-check -check-rec-only -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -pag -array-normalize -instcombine -dce -warn-fifo-pointer -array-seg-normalize -instcombine -dce -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -resolve-double-ptr -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce -check-dspbuiltin /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.1.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.2.prechk.bc -f 
+Command         transform done; 0.12 sec.
 INFO-FLOW: Checking Synthesizability 2/2..
 Execute         transform -syn-check /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.2.prechk.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.2.bc -f -phase syn-check 
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79907 ; free virtual = 173250
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38062 ; free virtual = 134032
 INFO-FLOW: Compiler optimizing ...
 INFO-FLOW: Share syncheck's 1.bc for syn flow: copy /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.g.1.bc to /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.1.bc
 INFO-FLOW: Presyn 1...
 Execute         transform -hls -tmp /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db -interface-port-rename -type-info -function-uniquify -directive-preproc -mem2reg -dse -dce -disaggr -scalarrepl -norm-name -deadargelim -mem2reg -instcombine -dce -simplifycfg -auto-rom-infer -dce -function-uniquify -resource-proc -clib-intrinsic-prepare -dce -func-buffer -dce -pag -array-normalize -func-legal -instcombine -gvn -constprop -dce -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -ptrArgReplace -mem2reg -dce -array-seg-normalize -deadargelim -instcombine -dce -pointer-simplify -dce -port-alignment -dce -interface-preproc -data-pack -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -loop-simplify -indvars -instcombine -gvn -loop-simplify -mem2reg -dce -find-region -instcombine -auto-loop-pipeline -inst-simplify -interface-preproc -cfgopt -instcombine -indvars -auto-loop-unroll -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -clean-region -attach-range -gvn -inst-simplify -constprop -simplifycfg -dce -pointer-simplify -dce -globalopt -constprop -dce -array-promote -constprop -dce -ptrArgReplace -mem2reg -simplifycfg -dce -auto-par -instcombine -dce -array-transform-check -array-reshape -instcombine -simplifycfg -dce -ptrArgReplace -deadargelim -mem2reg -instcombine -simplifycfg -dce -indvars -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -duplicate-dataflow-processes -globaldce -instcombine -array-partition -instcombine -simplifycfg -dce -ptrArgReplace -global-constprop -deadargelim -mem2reg -func-legal -dce -global-constprop -deadargelim -mem2reg -simplifycfg -dce -merge-param -deadargelim -globalopt -constprop -dce -array-promote -constprop -dce -ptrArgReplace -mem2reg -simplifycfg -dce -mem-intrinsic-preproc -dce -global-internalize -global-privatize -mem2reg -globaldce -promote-global-argument -ptrArgReplace -mem2reg -dce -globalopt -mergereturn -simplify-global-access -mem2reg -dce -pointer-simplify -dce -functionattrs -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -dce -norm-name -function-inline -complex-op-raise -inst-simplify -globaldce -func-inst -constprop -instcombine -simplifycfg -dce -func-legal -dce -loop-bound -arraycheck -bitwidthmin -on-by-dataflow -loop-delete -instcombine -simplifycfg -globaldce -dce -gvn -deadargelim -dce -loop-simplify -clean-region -simplifycfg -propagate-stable-arguments -loop-stream -instcombine -simplifycfg -dce -globaldce -duplicate-dataflow-processes -stream-intrinsic-preproc -dce -check-ap-stream -loop-simplify -eliminate-keepreads -extract-dataflow-in-loop -loop-simplify -dce -gvn -deadargelim -dse -check-dataflow-syntax -legalize-stream-variable -legalize-global -extract-subproc -dce -dead-channel-elimination -canonicalize-gep -globaldce -dce -gvn -deadargelim -annotate-dataflow-channels -scalar-propagation -deadargelim -globaldce -mem2reg -check-dataflow-channels -function-stream -dce -globaldce -prop-fifo-spec -internal-stream-gen -canonicalize-gep -globaldce -dce -gvn -deadargelim -mergereturn -indvars -loop-simplify -instcombine -array-stream -array-seg-normalize -array-partition -func-legal -instcombine -simplifycfg -dce -bundle-memfifo-ops -deadargelim -function-uniquify -directive-preproc -mem2reg -dse -dce -group-axi-access -licm -simplifycfg -dce -loop-delete -norm-name /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.1.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.1.tmp.bc -f 
-WARNING: [XFORM 203-104] Completely partitioning array 'saved'  accessed through non-constant indices on dimension 1 (Mem/.settings/mem.c:8:27), which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
-INFO: [XFORM 203-101] Partitioning array 'saved'  in dimension 1 completely.
-Command         transform done; 0.23 sec.
 INFO-FLOW: Presyn 2...
 Execute         transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -auto-burst -norm-name /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.1.tmp.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.2.bc -f -phase presyn 
-INFO: [XFORM 203-603] Inlining function 'aesl_mux_load.128i8P.i7' into 'mem' (Mem/.settings/mem.c:8).
-Command         transform done; 0.23 sec.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79890 ; free virtual = 173234
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38045 ; free virtual = 134015
 INFO-FLOW: Building ssdm...
 Execute         transform -hls -function-uniquify -auto-function-inline -globaldce -ptrArgReplace -mem2reg -dce -reset-lda -loop-simplify -indvars -licm -loop-dep -loop-bound -licm -loop-simplify -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg -loop-simplify -array-burst -promote-global-argument -dce -ptrLegalization -axi4-lower -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -disaggr -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -auto-rom-infer -array-flatten -dce -instcombine -check-doubleptr -loop-rot -constprop -cfgopt -simplifycfg -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -bitwidthmin -deadargelim -dce -canonicalize-dataflow -dce -scalar-propagation -deadargelim -globaldce -mem2reg -read-loop-dep -interface-preproc -directive-preproc -interface-gen -bram-byte-enable -deadargelim -inst-simplify -dce -gvn -mem2reg -instcombine -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -complex-op-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg -loop-simplify -mergereturn -inst-simplify -inst-rectify -dce -load-elim -bitop-lower -loop-rewind -pointer-simplify -dce -cfgopt -dce -loop-bound -loop-dep -read-loop-dep -dce -check-stream -norm-name -legalize -validate-dataflow -inst-clarity -bitwidth -dump-loop-dep-to-ir -check-all-ssdm -cdfg-build /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.2.bc -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
-Command         transform done; 0.43 sec.
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79876 ; free virtual = 173220
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'saved'.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38045 ; free virtual = 134015
 INFO-FLOW: Finish building internal data model.
-Command       opt_and_import_c done; 2.4 sec.
-Command     elaborate done; 9.48 sec.
+Command       opt_and_import_c done; 1.96 sec.
+Command     elaborate done; 11.08 sec.
 Execute     autosyn -from_csynth_design=1 
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO-FLOW: Synthesizing C/C++ design ...
@@ -247,18 +284,13 @@ INFO: [HLS 200-10] -------------------------------------------------------------
 Execute       set_default_model mem 
 Execute       schedule -model mem 
 INFO: [SCHED 204-11] Starting scheduling ...
-WARNING: [SCHED 204-21] Estimated clock period (2.514ns) exceeds the target (target clock period: 2.78ns, clock uncertainty: 0.347ns, effective delay budget: 2.433ns).
-WARNING: [SCHED 204-21] The critical path in module 'mem' consists of the following:
-	'phi' operation ('temp1', aesl_mux_load.128i8P.i7:1->Mem/.settings/mem.c:8) with incoming values : ('saved_126_load', aesl_mux_load.128i8P.i7:253->Mem/.settings/mem.c:8) ('saved_127_load', aesl_mux_load.128i8P.i7:251->Mem/.settings/mem.c:8) ('saved_128_load', aesl_mux_load.128i8P.i7:249->Mem/.settings/mem.c:8) ('saved_129_load', aesl_mux_load.128i8P.i7:247->Mem/.settings/mem.c:8) ('saved_130_load', aesl_mux_load.128i8P.i7:245->Mem/.settings/mem.c:8) ('saved_131_load', aesl_mux_load.128i8P.i7:243->Mem/.settings/mem.c:8) ('saved_132_load', aesl_mux_load.128i8P.i7:241->Mem/.settings/mem.c:8) ('saved_133_load', aesl_mux_load.128i8P.i7:239->Mem/.settings/mem.c:8) ('saved_134_load', aesl_mux_load.128i8P.i7:237->Mem/.settings/mem.c:8) ('saved_135_load', aesl_mux_load.128i8P.i7:235->Mem/.settings/mem.c:8) ('saved_136_load', aesl_mux_load.128i8P.i7:233->Mem/.settings/mem.c:8) ('saved_137_load', aesl_mux_load.128i8P.i7:231->Mem/.settings/mem.c:8) ('saved_138_load', aesl_mux_load.128i8P.i7:229->Mem/.settings/mem.c:8) ('saved_139_load', aesl_mux_load.128i8P.i7:227->Mem/.settings/mem.c:8) ('saved_140_load', aesl_mux_load.128i8P.i7:225->Mem/.settings/mem.c:8) ('saved_141_load', aesl_mux_load.128i8P.i7:223->Mem/.settings/mem.c:8) ('saved_142_load', aesl_mux_load.128i8P.i7:221->Mem/.settings/mem.c:8) ('saved_143_load', aesl_mux_load.128i8P.i7:219->Mem/.settings/mem.c:8) ('saved_144_load', aesl_mux_load.128i8P.i7:217->Mem/.settings/mem.c:8) ('saved_145_load', aesl_mux_load.128i8P.i7:215->Mem/.settings/mem.c:8) ('saved_146_load', aesl_mux_load.128i8P.i7:213->Mem/.settings/mem.c:8) ('saved_147_load', aesl_mux_load.128i8P.i7:211->Mem/.settings/mem.c:8) ('saved_148_load', aesl_mux_load.128i8P.i7:209->Mem/.settings/mem.c:8) ('saved_149_load', aesl_mux_load.128i8P.i7:207->Mem/.settings/mem.c:8) ('saved_150_load', aesl_mux_load.128i8P.i7:205->Mem/.settings/mem.c:8) ('saved_151_load', aesl_mux_load.128i8P.i7:203->Mem/.settings/mem.c:8) ('saved_152_load', aesl_mux_load.128i8P.i7:201->Mem/.settings/mem.c:8) ('saved_99_load', aesl_mux_load.128i8P.i7:199->Mem/.settings/mem.c:8) ('saved_98_load', aesl_mux_load.128i8P.i7:197->Mem/.settings/mem.c:8) ('saved_97_load', aesl_mux_load.128i8P.i7:195->Mem/.settings/mem.c:8) ('saved_96_load', aesl_mux_load.128i8P.i7:193->Mem/.settings/mem.c:8) ('saved_95_load', aesl_mux_load.128i8P.i7:191->Mem/.settings/mem.c:8) ('saved_94_load', aesl_mux_load.128i8P.i7:189->Mem/.settings/mem.c:8) ('saved_93_load', aesl_mux_load.128i8P.i7:187->Mem/.settings/mem.c:8) ('saved_92_load', aesl_mux_load.128i8P.i7:185->Mem/.settings/mem.c:8) ('saved_91_load', aesl_mux_load.128i8P.i7:183->Mem/.settings/mem.c:8) ('saved_90_load', aesl_mux_load.128i8P.i7:181->Mem/.settings/mem.c:8) ('saved_89_load', aesl_mux_load.128i8P.i7:179->Mem/.settings/mem.c:8) ('saved_88_load', aesl_mux_load.128i8P.i7:177->Mem/.settings/mem.c:8) ('saved_87_load', aesl_mux_load.128i8P.i7:175->Mem/.settings/mem.c:8) ('saved_86_load', aesl_mux_load.128i8P.i7:173->Mem/.settings/mem.c:8) ('saved_85_load', aesl_mux_load.128i8P.i7:171->Mem/.settings/mem.c:8) ('saved_84_load', aesl_mux_load.128i8P.i7:169->Mem/.settings/mem.c:8) ('saved_83_load', aesl_mux_load.128i8P.i7:167->Mem/.settings/mem.c:8) ('saved_82_load', aesl_mux_load.128i8P.i7:165->Mem/.settings/mem.c:8) ('saved_81_load', aesl_mux_load.128i8P.i7:163->Mem/.settings/mem.c:8) ('saved_80_load', aesl_mux_load.128i8P.i7:161->Mem/.settings/mem.c:8) ('saved_79_load', aesl_mux_load.128i8P.i7:159->Mem/.settings/mem.c:8) ('saved_78_load', aesl_mux_load.128i8P.i7:157->Mem/.settings/mem.c:8) ('saved_77_load', aesl_mux_load.128i8P.i7:155->Mem/.settings/mem.c:8) ('saved_76_load', aesl_mux_load.128i8P.i7:153->Mem/.settings/mem.c:8) ('saved_75_load', aesl_mux_load.128i8P.i7:151->Mem/.settings/mem.c:8) ('saved_74_load', aesl_mux_load.128i8P.i7:149->Mem/.settings/mem.c:8) ('saved_73_load', aesl_mux_load.128i8P.i7:147->Mem/.settings/mem.c:8) ('saved_72_load', aesl_mux_load.128i8P.i7:145->Mem/.settings/mem.c:8) ('saved_71_load', aesl_mux_load.128i8P.i7:143->Mem/.settings/mem.c:8) ('saved_70_load', aesl_mux_load.128i8P.i7:141->Mem/.settings/mem.c:8) ('saved_69_load', aesl_mux_load.128i8P.i7:139->Mem/.settings/mem.c:8) ('saved_68_load', aesl_mux_load.128i8P.i7:137->Mem/.settings/mem.c:8) ('saved_67_load', aesl_mux_load.128i8P.i7:135->Mem/.settings/mem.c:8) ('saved_66_load', aesl_mux_load.128i8P.i7:133->Mem/.settings/mem.c:8) ('saved_65_load', aesl_mux_load.128i8P.i7:131->Mem/.settings/mem.c:8) ('saved_64_load', aesl_mux_load.128i8P.i7:129->Mem/.settings/mem.c:8) ('saved_63_load', aesl_mux_load.128i8P.i7:127->Mem/.settings/mem.c:8) ('saved_62_load', aesl_mux_load.128i8P.i7:125->Mem/.settings/mem.c:8) ('saved_61_load', aesl_mux_load.128i8P.i7:123->Mem/.settings/mem.c:8) ('saved_60_load', aesl_mux_load.128i8P.i7:121->Mem/.settings/mem.c:8) ('saved_59_load', aesl_mux_load.128i8P.i7:119->Mem/.settings/mem.c:8) ('saved_58_load', aesl_mux_load.128i8P.i7:117->Mem/.settings/mem.c:8) ('saved_57_load', aesl_mux_load.128i8P.i7:115->Mem/.settings/mem.c:8) ('saved_56_load', aesl_mux_load.128i8P.i7:113->Mem/.settings/mem.c:8) ('saved_55_load', aesl_mux_load.128i8P.i7:111->Mem/.settings/mem.c:8) ('saved_54_load', aesl_mux_load.128i8P.i7:109->Mem/.settings/mem.c:8) ('saved_53_load', aesl_mux_load.128i8P.i7:107->Mem/.settings/mem.c:8) ('saved_52_load', aesl_mux_load.128i8P.i7:105->Mem/.settings/mem.c:8) ('saved_51_load', aesl_mux_load.128i8P.i7:103->Mem/.settings/mem.c:8) ('saved_50_load', aesl_mux_load.128i8P.i7:101->Mem/.settings/mem.c:8) ('saved_49_load', aesl_mux_load.128i8P.i7:99->Mem/.settings/mem.c:8) ('saved_48_load', aesl_mux_load.128i8P.i7:97->Mem/.settings/mem.c:8) ('saved_47_load', aesl_mux_load.128i8P.i7:95->Mem/.settings/mem.c:8) ('saved_46_load', aesl_mux_load.128i8P.i7:93->Mem/.settings/mem.c:8) ('saved_45_load', aesl_mux_load.128i8P.i7:91->Mem/.settings/mem.c:8) ('saved_44_load', aesl_mux_load.128i8P.i7:89->Mem/.settings/mem.c:8) ('saved_43_load', aesl_mux_load.128i8P.i7:87->Mem/.settings/mem.c:8) ('saved_42_load', aesl_mux_load.128i8P.i7:85->Mem/.settings/mem.c:8) ('saved_41_load', aesl_mux_load.128i8P.i7:83->Mem/.settings/mem.c:8) ('saved_40_load', aesl_mux_load.128i8P.i7:81->Mem/.settings/mem.c:8) ('saved_39_load', aesl_mux_load.128i8P.i7:79->Mem/.settings/mem.c:8) ('saved_38_load', aesl_mux_load.128i8P.i7:77->Mem/.settings/mem.c:8) ('saved_37_load', aesl_mux_load.128i8P.i7:75->Mem/.settings/mem.c:8) ('saved_36_load', aesl_mux_load.128i8P.i7:73->Mem/.settings/mem.c:8) ('saved_35_load', aesl_mux_load.128i8P.i7:71->Mem/.settings/mem.c:8) ('saved_34_load', aesl_mux_load.128i8P.i7:69->Mem/.settings/mem.c:8) ('saved_33_load', aesl_mux_load.128i8P.i7:67->Mem/.settings/mem.c:8) ('saved_32_load', aesl_mux_load.128i8P.i7:65->Mem/.settings/mem.c:8) ('saved_31_load', aesl_mux_load.128i8P.i7:63->Mem/.settings/mem.c:8) ('saved_30_load', aesl_mux_load.128i8P.i7:61->Mem/.settings/mem.c:8) ('saved_29_load', aesl_mux_load.128i8P.i7:59->Mem/.settings/mem.c:8) ('saved_28_load', aesl_mux_load.128i8P.i7:57->Mem/.settings/mem.c:8) ('saved_27_load', aesl_mux_load.128i8P.i7:55->Mem/.settings/mem.c:8) ('saved_26_load', aesl_mux_load.128i8P.i7:53->Mem/.settings/mem.c:8) ('saved_25_load', aesl_mux_load.128i8P.i7:51->Mem/.settings/mem.c:8) ('saved_24_load', aesl_mux_load.128i8P.i7:49->Mem/.settings/mem.c:8) ('saved_23_load', aesl_mux_load.128i8P.i7:47->Mem/.settings/mem.c:8) ('saved_22_load', aesl_mux_load.128i8P.i7:45->Mem/.settings/mem.c:8) ('saved_21_load', aesl_mux_load.128i8P.i7:43->Mem/.settings/mem.c:8) ('saved_20_load', aesl_mux_load.128i8P.i7:41->Mem/.settings/mem.c:8) ('saved_19_load', aesl_mux_load.128i8P.i7:39->Mem/.settings/mem.c:8) ('saved_18_load', aesl_mux_load.128i8P.i7:37->Mem/.settings/mem.c:8) ('saved_17_load', aesl_mux_load.128i8P.i7:35->Mem/.settings/mem.c:8) ('saved_16_load', aesl_mux_load.128i8P.i7:33->Mem/.settings/mem.c:8) ('saved_15_load', aesl_mux_load.128i8P.i7:31->Mem/.settings/mem.c:8) ('saved_14_load', aesl_mux_load.128i8P.i7:29->Mem/.settings/mem.c:8) ('saved_13_load', aesl_mux_load.128i8P.i7:27->Mem/.settings/mem.c:8) ('saved_12_load', aesl_mux_load.128i8P.i7:25->Mem/.settings/mem.c:8) ('saved_11_load', aesl_mux_load.128i8P.i7:23->Mem/.settings/mem.c:8) ('saved_10_load', aesl_mux_load.128i8P.i7:21->Mem/.settings/mem.c:8) ('saved_9_load', aesl_mux_load.128i8P.i7:19->Mem/.settings/mem.c:8) ('saved_8_load', aesl_mux_load.128i8P.i7:17->Mem/.settings/mem.c:8) ('saved_7_load', aesl_mux_load.128i8P.i7:15->Mem/.settings/mem.c:8) ('saved_6_load', aesl_mux_load.128i8P.i7:13->Mem/.settings/mem.c:8) ('saved_5_load', aesl_mux_load.128i8P.i7:11->Mem/.settings/mem.c:8) ('saved_4_load', aesl_mux_load.128i8P.i7:9->Mem/.settings/mem.c:8) ('saved_3_load', aesl_mux_load.128i8P.i7:7->Mem/.settings/mem.c:8) ('saved_2_load', aesl_mux_load.128i8P.i7:5->Mem/.settings/mem.c:8) ('saved_1_load', aesl_mux_load.128i8P.i7:3->Mem/.settings/mem.c:8) ('saved_0_load', aesl_mux_load.128i8P.i7:1->Mem/.settings/mem.c:8) ('saved_load', aesl_mux_load.128i8P.i7:255->Mem/.settings/mem.c:8) [530]  (0 ns)
-	'add' operation ('temp1', Mem/.settings/mem.c:12) [542]  (1.39 ns)
-	'icmp' operation ('icmp_ln15', Mem/.settings/mem.c:15) [544]  (1.12 ns)
+INFO: [SCHED 204-61] Pipelining function 'mem'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
 INFO: [SCHED 204-11] Finished scheduling.
-Command       schedule done; 0.39 sec.
-INFO: [HLS 200-111]  Elapsed time: 12.4 seconds; current allocated memory: 118.395 MB.
+INFO: [HLS 200-111]  Elapsed time: 13.82 seconds; current allocated memory: 102.753 MB.
 Execute       syn_report -verbosereport -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.verbose.sched.rpt 
-Command       syn_report done; 0.17 sec.
 Execute       db_write -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.sched.adb -f 
-Command       db_write done; 0.33 sec.
+Command       db_write done; 0.15 sec.
 INFO-FLOW: Finish scheduling mem.
 Execute       set_default_model mem 
 Execute       bind -model mem 
@@ -268,12 +300,10 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-Command       bind done; 0.15 sec.
-INFO: [HLS 200-111]  Elapsed time: 0.87 seconds; current allocated memory: 115.985 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.39 seconds; current allocated memory: 102.914 MB.
 Execute       syn_report -verbosereport -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.verbose.bind.rpt 
-Command       syn_report done; 0.38 sec.
 Execute       db_write -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.bind.adb -f 
-Command       db_write done; 0.46 sec.
+Command       db_write done; 0.14 sec.
 INFO-FLOW: Finish binding mem.
 Execute       get_model_list mem -filter all-wo-channel 
 INFO-FLOW: Preprocessing for RTLGen ...
@@ -290,158 +320,29 @@ INFO: [RTGEN 206-500] Setting interface mode on port 'mem/we' to 'ap_none'.
 INFO: [RTGEN 206-500] Setting interface mode on port 'mem/re' to 'ap_none'.
 INFO: [RTGEN 206-500] Setting interface mode on port 'mem/out_r' to 'ap_vld'.
 INFO: [RTGEN 206-500] Setting interface mode on function 'mem' to 'ap_ctrl_hs'.
-WARNING: [RTGEN 206-101] Register 'saved_0' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_1' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_2' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_3' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_4' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_5' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_6' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_7' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_8' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_9' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_10' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_11' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_12' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_13' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_14' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_15' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_16' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_17' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_18' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_19' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_20' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_21' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_22' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_23' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_24' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_25' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_26' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_27' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_28' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_29' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_30' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_31' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_32' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_33' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_34' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_35' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_36' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_37' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_38' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_39' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_40' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_41' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_42' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_43' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_44' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_45' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_46' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_47' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_48' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_49' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_50' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_51' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_52' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_53' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_54' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_55' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_56' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_57' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_58' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_59' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_60' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_61' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_62' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_63' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_64' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_65' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_66' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_67' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_68' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_69' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_70' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_71' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_72' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_73' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_74' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_75' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_76' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_77' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_78' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_79' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_80' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_81' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_82' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_83' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_84' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_85' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_86' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_87' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_88' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_89' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_90' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_91' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_92' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_93' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_94' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_95' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_96' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_97' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_98' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_99' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_152' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_151' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_150' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_149' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_148' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_147' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_146' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_145' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_144' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_143' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_142' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_141' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_140' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_139' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_138' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_137' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_136' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_135' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_134' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_133' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_132' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_131' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_130' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_129' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_128' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_127' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved_126' is power-on initialization.
-WARNING: [RTGEN 206-101] Register 'saved' is power-on initialization.
 WARNING: [RTGEN 206-101] Register 'tempOutAddr' is power-on initialization.
 WARNING: [RTGEN 206-101] Register 'tempOutVal' is power-on initialization.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'mem'.
-Command       create_rtl_model done; 6.09 sec.
-INFO: [HLS 200-111]  Elapsed time: 7.04 seconds; current allocated memory: 117.979 MB.
+Command       create_rtl_model done; 0.24 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.62 seconds; current allocated memory: 103.301 MB.
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.rtl_wrap.cfg.tcl 
 Execute       gen_rtl mem -istop -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /data11/home/marcuscw/Desktop/Mem/solution2/syn/systemc/mem -synmodules mem 
-Command       gen_rtl done; 0.15 sec.
+Command       gen_rtl done; 0.25 sec.
 Execute       gen_rtl mem -istop -style xilinx -f -lang vhdl -o /data11/home/marcuscw/Desktop/Mem/solution2/syn/vhdl/mem 
+Command       gen_rtl done; 0.13 sec.
 Execute       gen_rtl mem -istop -style xilinx -f -lang vlog -o /data11/home/marcuscw/Desktop/Mem/solution2/syn/verilog/mem 
 Execute       syn_report -csynth -model mem -o /data11/home/marcuscw/Desktop/Mem/solution2/syn/report/mem_csynth.rpt 
 Execute       syn_report -rtlxml -model mem -o /data11/home/marcuscw/Desktop/Mem/solution2/syn/report/mem_csynth.xml 
-Command       syn_report done; 0.17 sec.
 Execute       syn_report -verbosereport -model mem -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.verbose.rpt 
-Command       syn_report done; 0.17 sec.
+Command       syn_report done; 0.11 sec.
 Execute       db_write -model mem -f -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.adb 
-Command       db_write done; 0.29 sec.
+Command       db_write done; 0.19 sec.
 Execute       gen_tb_info mem -p /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem 
-Command       gen_tb_info done; 0.59 sec.
+Command       gen_tb_info done; 0.27 sec.
 Execute       export_constraint_db -f -tool general -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.constraint.tcl 
 Execute       syn_report -designview -model mem -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.design.xml 
 Execute       get_config_rtl -disable_wave_debug 
 Execute       syn_report -wcfg -model mem -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem_dataflow_ana.wcfg 
-Command       syn_report done; 0.14 sec.
 Execute       syn_report -protoinst -model mem -o /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.protoinst 
 Execute       get_config_debug -directory 
 Execute       sc_get_clocks mem 
@@ -450,9 +351,12 @@ Execute       sc_get_portdomain mem
 INFO-FLOW: Model list for RTL component generation: mem
 INFO-FLOW: Handling components in module [mem] ... 
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.compgen.tcl 
+INFO-FLOW: Found component mem_saved.
+INFO-FLOW: Append model mem_saved
 INFO-FLOW: Append model mem
 INFO-FLOW: Generating RTL model list ...
-INFO-FLOW: All models in this session: mem
+INFO-FLOW: All models in this session: mem_saved mem
+INFO-FLOW: To file: write model mem_saved
 INFO-FLOW: To file: write model mem
 INFO-FLOW: Finished generating RTL model list.
 
@@ -497,6 +401,10 @@ Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info -quiet
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/global.setting.tcl 
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/global.setting.tcl 
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.compgen.tcl 
+INFO: [RTMG 210-278] Implementing memory 'mem_saved_ram (RAM_2P_LUTRAM)' using distributed RAMs with power-on initialization.
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data names -quiet 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info -quiet 
+Command       ap_source done; 0.4 sec.
 INFO-FLOW: DBG:CMD:     auto_generate -export -impltomg_flag -rtl both -tool Vivado -pcore_version 1.00.a -phase csynth_design -d /data11/home/marcuscw/Desktop/Mem/solution2
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/global.setting.tcl 
 INFO-FLOW: DBG:CMD: read_platform_lib /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/global.setting.tcl
@@ -521,8 +429,8 @@ Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilin
 Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/xfft.gen 
 Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/xfir.gen 
 Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/dsp48.gen 
-Command         ap_source done; 0.12 sec.
-Command       ap_source done; 0.12 sec.
+Command         ap_source done; 0.13 sec.
+Command       ap_source done; 0.13 sec.
 Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
 Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx_fp.gen 
 INFO-FLOW: DBG:CMD:       initCTypeInfo top_module=mem xml_exists=0
@@ -560,7 +468,7 @@ Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data names -quiet
 Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info -quiet 
 Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data names -quiet 
 Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info -quiet 
-Command       ap_source done; 0.22 sec.
+Command       ap_source done; 0.13 sec.
 Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data names -quiet 
 Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info -quiet 
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.pcores/verilog_sim
@@ -577,7 +485,7 @@ Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/m
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/mem.tbgen.tcl 
 INFO-FLOW: DBG:CMD:       hasPcoreIpAdapter=false #gSsdmPorts=10
 INFO-FLOW: DBG:CMD: Skipping loadAnalyze_DB, #g_database=4
-INFO-FLOW: DBG:CMD:       generate_json is_phase_csynth=1 g_has_adaptors=false generate_bd_files=0 #modelList=1 #gSsdmPorts=10
+INFO-FLOW: DBG:CMD:       generate_json is_phase_csynth=1 g_has_adaptors=false generate_bd_files=0 #modelList=2 #gSsdmPorts=10
 Execute       source /state/opt/Xilinx/Vivado/2019.1/tps/tcl/tcllib1.11.1/fileutil/fileutil.tcl 
 Execute         source /state/opt/Xilinx/Vivado/2019.1/tps/tcl/tcllib1.11.1/cmdline/cmdline.tcl 
 Execute       source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/global.setting.tcl 
@@ -607,10 +515,137 @@ Execute       get_config_rtl -stall_sig_gen
 Execute       get_config_rtl -profile 
 INFO-FLOW: DBG:CMD: add_json_sdx_info kernel file does not exist, skipping opencl info: /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/kernel.internal.xml
 INFO-FLOW: DBG:CMD:       delete-temp-dirs (skipped for debug)
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:10 ; elapsed = 00:00:27 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 79818 ; free virtual = 173170
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 882.203 ; gain = 194.973 ; free physical = 38037 ; free virtual = 134008
 INFO: [VHDL 208-304] Generating VHDL RTL for mem.
 INFO: [VLOG 209-307] Generating Verilog RTL for mem.
-Command     autosyn done; 14.78 sec.
-Command   csynth_design done; 24.27 sec.
-Command ap_source done; 26.42 sec.
+Command     autosyn done; 7.83 sec.
+Command   csynth_design done; 18.92 sec.
+Command ap_source done; 21.21 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /data11/home/marcuscw/Desktop/Mem/solution2 opened at Mon Apr 06 22:37:04 PDT 2020
+Execute     config_clock -quiet -name default -period 2.78 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 2.78ns.
+Execute     config_clock -quiet -name default -uncertainty 0.347 -unit % 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 0.347ns.
+WARNING: [HLS 200-40] Cannot find library '/state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/Virtex-7/Virtex-7.lib'.
+WARNING: [HLS 200-40] Cannot find library 'xilinx/Virtex-7/Virtex-7'.
+Execute     open_platform DefaultPlatform 
+Execute     import_lib /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virtex7/virtex7 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx.lib 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/xilinx_interface.lib 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/plb46.lib 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/fsl.lib 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/axi4.lib 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/maxi.lib 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/saxilite.lib 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/dsp48.lib 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/xfir.lib 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/xfft.lib 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/dds_compiler.lib 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx.hlp 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/target_info.tcl 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/maxi.hlp 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/saxilite.hlp 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/dsp48.hlp 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virtex7/dsp48e1.hlp 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx.hlp 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/target_info.tcl 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/maxi.hlp 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/saxilite.hlp 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/dsp48.hlp 
+Execute     source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virtex7/virtex7.gen 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/fsl.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/saxilite.gen 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/maxi.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/util.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/dsp48.gen 
+Command       ap_source done; 0.14 sec.
+Command     ap_source done; 0.14 sec.
+Execute     open_platform DefaultPlatform 
+Execute     import_lib /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virtex7/virtex7_fpv6 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx_fp.lib 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx_fp.hlp 
+Execute         source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx.hlp 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/target_info.tcl 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute             source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/maxi.hlp 
+Execute             source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/interface/saxilite.hlp 
+Execute           source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/dsp48.hlp 
+Execute     source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+Execute       source /state/opt/Xilinx/Vivado/2019.1/common/technology/xilinx/common/xilinx_fp.gen 
+Execute     set_part xc7vx485t-ffg1157-1 
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data single -quiet 
+Command       ap_part_info done; 1.1 sec.
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       add_library xilinx/virtex7/virtex7:xc7vx485t:-ffg1157:-1 
+Execute         get_default_platform 
+Execute         license_isbetapart xc7vx485t 
+Command         license_isbetapart done; error code: 1; 
+Execute         ap_part_info -data single -name xc7vx485t-ffg1157-1 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data resources 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute         config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
+Execute         ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute         config_chip_info -quiet -speed slow 
+Execute       add_library xilinx/virtex7/virtex7_fpv6 
+Execute         get_default_platform 
+INFO: [HLS 200-10] Setting target device to 'xc7vx485t-ffg1157-1'
+Execute       ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute       get_default_platform 
+Command     set_part done; 1.33 sec.
+Execute     ap_part_info -data single -name xc7vx485t-ffg1157-1 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data resources 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     config_chip_info -quiet -resource {SLICE 75900} {LUT 303600} {FF 607200} {DSP48E 2800} {BRAM 2060} {URAM 0} 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     config_chip_info -quiet -speed slow 
+Execute     config_sdx -target=none 
+Execute       send_msg_by_id INFO @200-435@%s%s 'config_sdx -target' config_export -vivado_optimization_level=2 
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+Execute       config_export -vivado_optimization_level=2 
+Execute         get_config_export -vivado_impl_strategy 
+Execute         get_config_export -vivado_phys_opt 
+Execute       get_config_compile -pipeline_loops 
+Execute       get_config_compile -name_max_length 
+Execute       get_config_schedule -enable_dsp_full_reg 
+Execute       get_config_rtl -register_reset_num 
+Execute       get_config_rtl -module_auto_prefix 
+Execute       get_config_interface -m_axi_addr64 
+Execute       send_msg_by_id INFO @200-435@%s%s 'config_sdx -target' set_clock_uncertainty default 
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+Execute       set_clock_uncertainty default 
+Execute     config_export -vivado_optimization_level=2 
+Execute       get_config_export -vivado_impl_strategy 
+Execute       get_config_export -vivado_phys_opt 
+Execute     config_export -vivado_phys_opt=place 
+Execute     config_export -vivado_report_level=0 
+Command   open_solution done; 1.89 sec.
+Execute   csim_design -quiet 
+Execute     source /data11/home/marcuscw/Desktop/Mem/solution2/.autopilot/db/global.setting.tcl 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     is_encrypted /data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c 
+Execute     is_xip /data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c 
+Execute     is_encrypted /data11/home/marcuscw/Desktop/Mem/.settings/mem.c 
+Execute     is_xip /data11/home/marcuscw/Desktop/Mem/.settings/mem.c 
+Execute     ap_part_info -name xc7vx485t-ffg1157-1 -data info 
+Execute     source run_sim.tcl 
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+Command   csim_design done; 10.01 sec.
+Command ap_source done; 11.91 sec.
 Execute cleanup_all 

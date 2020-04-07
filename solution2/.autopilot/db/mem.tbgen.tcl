@@ -4,8 +4,8 @@ set isTaskLevelControl 1
 set isCombinational 0
 set isDatapathOnly 0
 set isFreeRunPipelineModule 0
-set isPipelined 0
-set pipeline_type none
+set isPipelined 1
+set pipeline_type function
 set FunctionProtocol ap_ctrl_hs
 set isOneStateSeq 0
 set ProfileFlag 0
@@ -53,154 +53,31 @@ set NewPortList {[
  	{ "name": "out_r_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "out_r", "role": "ap_vld" }}  ]}
 
 set RtlHierarchyInfo {[
-	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "",
+	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1"],
 		"CDFG" : "mem",
 		"Protocol" : "ap_ctrl_hs",
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1", "EstimateLatencyMax" : "1",
+		"Pipeline" : "Aligned", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"II" : "1",
+		"VariableLatency" : "0", "ExactLatency" : "3", "EstimateLatencyMin" : "3", "EstimateLatencyMax" : "3",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
 		"InDataflowNetwork" : "0",
 		"HasNonBlockingOperation" : "0",
+		"DependenceCheck" : [
+			{"FromInitialState" : "ap_enable_state1_pp0_iter0_stage0", "FromInitialIteration" : "ap_enable_reg_pp0_iter0", "FromInitialOperation" : "ap_enable_operation_10", "FromInitialSV" : "0", "FromFinalState" : "ap_enable_state2_pp0_iter1_stage0", "FromFinalIteration" : "ap_enable_reg_pp0_iter1", "FromFinalOperation" : "ap_enable_operation_12", "FromFinalSV" : "1", "FromAddress" : "saved_address0", "FromType" : "R", "ToInitialState" : "ap_enable_state4_pp0_iter3_stage0", "ToInitialIteration" : "ap_enable_reg_pp0_iter3", "ToInitialNextIteration" : "null", "ToInitialOperation" : "ap_enable_operation_42", "ToInitialSV" : "3", "ToFinalState" : "ap_enable_state4_pp0_iter3_stage0", "ToFinalIteration" : "ap_enable_reg_pp0_iter3", "ToFinalOperation" : "ap_enable_operation_42", "ToFinalSV" : "3", "ToAddress" : "saved_address1", "ToType" : "W", "PipelineBlock" : "ap_block_pp0", "AddressWidth" : "7", "II" : "1", "Pragma" : "(Mem/.settings/mem.c:6:1)", "Type" : "WAR"},
+			{"FromInitialState" : "ap_enable_state4_pp0_iter3_stage0", "FromInitialIteration" : "ap_enable_reg_pp0_iter3", "FromInitialOperation" : "ap_enable_operation_42", "FromInitialSV" : "3", "FromFinalState" : "ap_enable_state4_pp0_iter3_stage0", "FromFinalIteration" : "ap_enable_reg_pp0_iter3", "FromFinalOperation" : "ap_enable_operation_42", "FromFinalSV" : "3", "FromAddress" : "saved_address1", "FromType" : "W", "ToInitialState" : "ap_enable_state1_pp0_iter0_stage0", "ToInitialIteration" : "ap_enable_reg_pp0_iter0", "ToInitialNextIteration" : "ap_enable_reg_pp0_iter1", "ToInitialOperation" : "ap_enable_operation_10", "ToInitialSV" : "0", "ToFinalState" : "ap_enable_state2_pp0_iter1_stage0", "ToFinalIteration" : "ap_enable_reg_pp0_iter1", "ToFinalOperation" : "ap_enable_operation_12", "ToFinalSV" : "1", "ToAddress" : "saved_address0", "ToType" : "R", "PipelineBlock" : "ap_block_pp0", "AddressWidth" : "7", "II" : "1", "Pragma" : "(Mem/.settings/mem.c:6:1)", "Type" : "RAW", "StateEnableSignalListForFifoShift" : ["ap_enable_state1_pp0_iter0_stage0", "ap_enable_state2_pp0_iter1_stage0", "ap_enable_state4_pp0_iter3_stage0"]}],
 		"Port" : [
 			{"Name" : "addr", "Type" : "None", "Direction" : "I"},
 			{"Name" : "we", "Type" : "None", "Direction" : "I"},
 			{"Name" : "re", "Type" : "None", "Direction" : "I"},
 			{"Name" : "out_r", "Type" : "Vld", "Direction" : "O"},
-			{"Name" : "saved_0", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_1", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_2", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_3", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_4", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_5", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_6", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_7", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_8", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_9", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_10", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_11", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_12", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_13", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_14", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_15", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_16", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_17", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_18", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_19", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_20", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_21", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_22", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_23", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_24", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_25", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_26", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_27", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_28", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_29", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_30", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_31", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_32", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_33", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_34", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_35", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_36", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_37", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_38", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_39", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_40", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_41", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_42", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_43", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_44", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_45", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_46", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_47", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_48", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_49", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_50", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_51", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_52", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_53", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_54", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_55", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_56", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_57", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_58", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_59", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_60", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_61", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_62", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_63", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_64", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_65", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_66", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_67", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_68", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_69", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_70", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_71", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_72", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_73", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_74", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_75", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_76", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_77", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_78", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_79", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_80", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_81", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_82", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_83", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_84", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_85", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_86", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_87", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_88", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_89", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_90", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_91", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_92", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_93", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_94", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_95", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_96", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_97", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_98", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_99", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_152", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_151", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_150", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_149", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_148", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_147", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_146", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_145", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_144", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_143", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_142", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_141", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_140", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_139", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_138", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_137", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_136", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_135", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_134", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_133", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_132", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_131", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_130", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_129", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_128", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_127", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved_126", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "saved", "Type" : "OVld", "Direction" : "IO"},
+			{"Name" : "saved", "Type" : "Memory", "Direction" : "IO"},
 			{"Name" : "tempOutAddr", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "tempOutVal", "Type" : "OVld", "Direction" : "IO"}]}]}
+			{"Name" : "tempOutVal", "Type" : "OVld", "Direction" : "IO"}]},
+	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.saved_U", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
@@ -208,134 +85,7 @@ set ArgLastReadFirstWriteLatency {
 		addr {Type I LastRead 0 FirstWrite -1}
 		we {Type I LastRead 0 FirstWrite -1}
 		re {Type I LastRead 0 FirstWrite -1}
-		out_r {Type O LastRead -1 FirstWrite 1}
-		saved_0 {Type IO LastRead -1 FirstWrite -1}
-		saved_1 {Type IO LastRead -1 FirstWrite -1}
-		saved_2 {Type IO LastRead -1 FirstWrite -1}
-		saved_3 {Type IO LastRead -1 FirstWrite -1}
-		saved_4 {Type IO LastRead -1 FirstWrite -1}
-		saved_5 {Type IO LastRead -1 FirstWrite -1}
-		saved_6 {Type IO LastRead -1 FirstWrite -1}
-		saved_7 {Type IO LastRead -1 FirstWrite -1}
-		saved_8 {Type IO LastRead -1 FirstWrite -1}
-		saved_9 {Type IO LastRead -1 FirstWrite -1}
-		saved_10 {Type IO LastRead -1 FirstWrite -1}
-		saved_11 {Type IO LastRead -1 FirstWrite -1}
-		saved_12 {Type IO LastRead -1 FirstWrite -1}
-		saved_13 {Type IO LastRead -1 FirstWrite -1}
-		saved_14 {Type IO LastRead -1 FirstWrite -1}
-		saved_15 {Type IO LastRead -1 FirstWrite -1}
-		saved_16 {Type IO LastRead -1 FirstWrite -1}
-		saved_17 {Type IO LastRead -1 FirstWrite -1}
-		saved_18 {Type IO LastRead -1 FirstWrite -1}
-		saved_19 {Type IO LastRead -1 FirstWrite -1}
-		saved_20 {Type IO LastRead -1 FirstWrite -1}
-		saved_21 {Type IO LastRead -1 FirstWrite -1}
-		saved_22 {Type IO LastRead -1 FirstWrite -1}
-		saved_23 {Type IO LastRead -1 FirstWrite -1}
-		saved_24 {Type IO LastRead -1 FirstWrite -1}
-		saved_25 {Type IO LastRead -1 FirstWrite -1}
-		saved_26 {Type IO LastRead -1 FirstWrite -1}
-		saved_27 {Type IO LastRead -1 FirstWrite -1}
-		saved_28 {Type IO LastRead -1 FirstWrite -1}
-		saved_29 {Type IO LastRead -1 FirstWrite -1}
-		saved_30 {Type IO LastRead -1 FirstWrite -1}
-		saved_31 {Type IO LastRead -1 FirstWrite -1}
-		saved_32 {Type IO LastRead -1 FirstWrite -1}
-		saved_33 {Type IO LastRead -1 FirstWrite -1}
-		saved_34 {Type IO LastRead -1 FirstWrite -1}
-		saved_35 {Type IO LastRead -1 FirstWrite -1}
-		saved_36 {Type IO LastRead -1 FirstWrite -1}
-		saved_37 {Type IO LastRead -1 FirstWrite -1}
-		saved_38 {Type IO LastRead -1 FirstWrite -1}
-		saved_39 {Type IO LastRead -1 FirstWrite -1}
-		saved_40 {Type IO LastRead -1 FirstWrite -1}
-		saved_41 {Type IO LastRead -1 FirstWrite -1}
-		saved_42 {Type IO LastRead -1 FirstWrite -1}
-		saved_43 {Type IO LastRead -1 FirstWrite -1}
-		saved_44 {Type IO LastRead -1 FirstWrite -1}
-		saved_45 {Type IO LastRead -1 FirstWrite -1}
-		saved_46 {Type IO LastRead -1 FirstWrite -1}
-		saved_47 {Type IO LastRead -1 FirstWrite -1}
-		saved_48 {Type IO LastRead -1 FirstWrite -1}
-		saved_49 {Type IO LastRead -1 FirstWrite -1}
-		saved_50 {Type IO LastRead -1 FirstWrite -1}
-		saved_51 {Type IO LastRead -1 FirstWrite -1}
-		saved_52 {Type IO LastRead -1 FirstWrite -1}
-		saved_53 {Type IO LastRead -1 FirstWrite -1}
-		saved_54 {Type IO LastRead -1 FirstWrite -1}
-		saved_55 {Type IO LastRead -1 FirstWrite -1}
-		saved_56 {Type IO LastRead -1 FirstWrite -1}
-		saved_57 {Type IO LastRead -1 FirstWrite -1}
-		saved_58 {Type IO LastRead -1 FirstWrite -1}
-		saved_59 {Type IO LastRead -1 FirstWrite -1}
-		saved_60 {Type IO LastRead -1 FirstWrite -1}
-		saved_61 {Type IO LastRead -1 FirstWrite -1}
-		saved_62 {Type IO LastRead -1 FirstWrite -1}
-		saved_63 {Type IO LastRead -1 FirstWrite -1}
-		saved_64 {Type IO LastRead -1 FirstWrite -1}
-		saved_65 {Type IO LastRead -1 FirstWrite -1}
-		saved_66 {Type IO LastRead -1 FirstWrite -1}
-		saved_67 {Type IO LastRead -1 FirstWrite -1}
-		saved_68 {Type IO LastRead -1 FirstWrite -1}
-		saved_69 {Type IO LastRead -1 FirstWrite -1}
-		saved_70 {Type IO LastRead -1 FirstWrite -1}
-		saved_71 {Type IO LastRead -1 FirstWrite -1}
-		saved_72 {Type IO LastRead -1 FirstWrite -1}
-		saved_73 {Type IO LastRead -1 FirstWrite -1}
-		saved_74 {Type IO LastRead -1 FirstWrite -1}
-		saved_75 {Type IO LastRead -1 FirstWrite -1}
-		saved_76 {Type IO LastRead -1 FirstWrite -1}
-		saved_77 {Type IO LastRead -1 FirstWrite -1}
-		saved_78 {Type IO LastRead -1 FirstWrite -1}
-		saved_79 {Type IO LastRead -1 FirstWrite -1}
-		saved_80 {Type IO LastRead -1 FirstWrite -1}
-		saved_81 {Type IO LastRead -1 FirstWrite -1}
-		saved_82 {Type IO LastRead -1 FirstWrite -1}
-		saved_83 {Type IO LastRead -1 FirstWrite -1}
-		saved_84 {Type IO LastRead -1 FirstWrite -1}
-		saved_85 {Type IO LastRead -1 FirstWrite -1}
-		saved_86 {Type IO LastRead -1 FirstWrite -1}
-		saved_87 {Type IO LastRead -1 FirstWrite -1}
-		saved_88 {Type IO LastRead -1 FirstWrite -1}
-		saved_89 {Type IO LastRead -1 FirstWrite -1}
-		saved_90 {Type IO LastRead -1 FirstWrite -1}
-		saved_91 {Type IO LastRead -1 FirstWrite -1}
-		saved_92 {Type IO LastRead -1 FirstWrite -1}
-		saved_93 {Type IO LastRead -1 FirstWrite -1}
-		saved_94 {Type IO LastRead -1 FirstWrite -1}
-		saved_95 {Type IO LastRead -1 FirstWrite -1}
-		saved_96 {Type IO LastRead -1 FirstWrite -1}
-		saved_97 {Type IO LastRead -1 FirstWrite -1}
-		saved_98 {Type IO LastRead -1 FirstWrite -1}
-		saved_99 {Type IO LastRead -1 FirstWrite -1}
-		saved_152 {Type IO LastRead -1 FirstWrite -1}
-		saved_151 {Type IO LastRead -1 FirstWrite -1}
-		saved_150 {Type IO LastRead -1 FirstWrite -1}
-		saved_149 {Type IO LastRead -1 FirstWrite -1}
-		saved_148 {Type IO LastRead -1 FirstWrite -1}
-		saved_147 {Type IO LastRead -1 FirstWrite -1}
-		saved_146 {Type IO LastRead -1 FirstWrite -1}
-		saved_145 {Type IO LastRead -1 FirstWrite -1}
-		saved_144 {Type IO LastRead -1 FirstWrite -1}
-		saved_143 {Type IO LastRead -1 FirstWrite -1}
-		saved_142 {Type IO LastRead -1 FirstWrite -1}
-		saved_141 {Type IO LastRead -1 FirstWrite -1}
-		saved_140 {Type IO LastRead -1 FirstWrite -1}
-		saved_139 {Type IO LastRead -1 FirstWrite -1}
-		saved_138 {Type IO LastRead -1 FirstWrite -1}
-		saved_137 {Type IO LastRead -1 FirstWrite -1}
-		saved_136 {Type IO LastRead -1 FirstWrite -1}
-		saved_135 {Type IO LastRead -1 FirstWrite -1}
-		saved_134 {Type IO LastRead -1 FirstWrite -1}
-		saved_133 {Type IO LastRead -1 FirstWrite -1}
-		saved_132 {Type IO LastRead -1 FirstWrite -1}
-		saved_131 {Type IO LastRead -1 FirstWrite -1}
-		saved_130 {Type IO LastRead -1 FirstWrite -1}
-		saved_129 {Type IO LastRead -1 FirstWrite -1}
-		saved_128 {Type IO LastRead -1 FirstWrite -1}
-		saved_127 {Type IO LastRead -1 FirstWrite -1}
-		saved_126 {Type IO LastRead -1 FirstWrite -1}
+		out_r {Type O LastRead -1 FirstWrite 3}
 		saved {Type IO LastRead -1 FirstWrite -1}
 		tempOutAddr {Type IO LastRead -1 FirstWrite -1}
 		tempOutVal {Type IO LastRead -1 FirstWrite -1}}}
@@ -343,11 +93,12 @@ set ArgLastReadFirstWriteLatency {
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "1", "Max" : "1"}
-	, {"Name" : "Interval", "Min" : "2", "Max" : "2"}
+	{"Name" : "Latency", "Min" : "3", "Max" : "3"}
+	, {"Name" : "Interval", "Min" : "1", "Max" : "1"}
 ]}
 
 set PipelineEnableSignalInfo {[
+	{"Pipeline" : "0", "EnableSignal" : "ap_enable_pp0"}
 ]}
 
 set Spec2ImplPortList { 

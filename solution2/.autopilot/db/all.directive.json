@@ -6,9 +6,28 @@
           "label": "",
           "functionLabel": "",
           "pragma": {
-            "name": "LATENCY",
+            "name": "RESOURCE",
+            "option": [
+              {
+                "name": "variable",
+                "value": "saved",
+                "positionalBoolean": "4"
+              },
+              {
+                "name": "core",
+                "value": "RAM_2P_LUTRAM"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "mem",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "PIPELINE",
             "option": [{
-                "name": "max",
+                "name": "II",
                 "value": "1"
               }]
           }
@@ -18,21 +37,21 @@
           "label": "",
           "functionLabel": "",
           "pragma": {
-            "name": "ARRAY_PARTITION",
+            "name": "DEPENDENCE",
             "option": [
               {
                 "name": "variable",
-                "value": "saved",
-                "positionalBoolean": "4"
+                "value": "saved"
               },
               {
-                "name": "complete",
+                "name": "inter",
                 "value": "",
                 "positionalBoolean": "type"
               },
               {
-                "name": "dim",
-                "value": "1"
+                "name": "false",
+                "value": "",
+                "positionalBoolean": "dependent"
               }
             ]
           }

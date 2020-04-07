@@ -13,13 +13,21 @@
     "Speed": "-1"
   },
   "HlsSolution": {
+    "Config": [
+      "config_sdx -target=none",
+      "config_export -vivado_optimization_level=2",
+      "config_export -vivado_phys_opt=place",
+      "config_export -vivado_report_level=0"
+    ],
     "DirectiveTcl": [
-      "set_directive_latency mem -max 1",
-      "set_directive_array_partition mem "
+      "set_directive_resource mem ",
+      "set_directive_pipeline mem -II 1",
+      "set_directive_dependence mem "
     ],
     "DirectiveInfo": [
-      "latency mem {{max 1}} {}",
-      "array_partition mem {{partition positionBooleanCmd} {variable positionBooleanTextRequiredsaved} {complete positionBoolean0type} {dim 1}} {}"
+      "resource mem {{variable positionBooleanTextRequiredsaved} {core RAM_2P_LUTRAM}} {}",
+      "pipeline mem {{II 1}} {}",
+      "dependence mem {{variable saved} {inter positionBoolean0type} {false positionBoolean0dependent}} {}"
     ]
   },
   "Args": {
@@ -64,8 +72,8 @@
     "ClockName": "ap_clk",
     "ClockPeriod": "2.78",
     "IsCombLogic": "0",
-    "II": "x",
-    "Latency": "1",
+    "II": "1",
+    "Latency": "3",
     "Uncertainty": "0.347"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 2.780 [get_ports ap_clk]"]},
@@ -82,8 +90,15 @@
   },
   "Files": {
     "CSource": ["..\/.settings\/mem.c"],
-    "Vhdl": ["impl\/vhdl\/mem.vhd"],
-    "Verilog": ["impl\/verilog\/mem.v"],
+    "Vhdl": [
+      "impl\/vhdl\/mem_saved.vhd",
+      "impl\/vhdl\/mem.vhd"
+    ],
+    "Verilog": [
+      "impl\/verilog\/mem_saved.v",
+      "impl\/verilog\/mem_saved_ram.dat",
+      "impl\/verilog\/mem.v"
+    ],
     "Misc": ["impl\/misc\/logo.png"],
     "DesignXml": "\/data11\/home\/marcuscw\/Desktop\/Mem\/solution2\/.autopilot\/db\/mem.design.xml",
     "DebugDir": "\/data11\/home\/marcuscw\/Desktop\/Mem\/solution2\/.debug",
@@ -217,28 +232,28 @@
     "Info": {"mem": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
-        "isPipelined": "0",
+        "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       }},
     "Metrics": {"mem": {
         "Latency": {
-          "LatencyBest": "1",
-          "LatencyAvg": "1",
-          "LatencyWorst": "1",
-          "PipelineII": "2",
-          "PipelineDepth": "",
-          "PipelineType": "none"
+          "LatencyBest": "3",
+          "LatencyAvg": "3",
+          "LatencyWorst": "3",
+          "PipelineII": "1",
+          "PipelineDepth": "4",
+          "PipelineType": "function"
         },
         "Timing": {
           "Target": "2.78",
           "Uncertainty": "0.35",
-          "Estimate": "2.514"
+          "Estimate": "1.476"
         },
         "Area": {
-          "FF": "1049",
-          "LUT": "607",
           "BRAM_18K": "0",
+          "FF": "323",
+          "LUT": "205",
           "DSP48E": "0",
           "URAM": "0"
         }
@@ -254,7 +269,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-03-25 22:21:31 PDT",
+    "Time": "2020-04-06 22:36:50 PDT",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.1"
   }

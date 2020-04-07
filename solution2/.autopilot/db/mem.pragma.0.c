@@ -4296,43 +4296,48 @@ void mem(uint7 wr_addr, uint1 we, uint1 re, uint8 *out);
 # 2 "Mem/.settings/mem.c" 2
 
 void mem(uint7 addr, uint1 we, uint1 re, uint8 *out){
-#pragma HLS LATENCY max=1
+#pragma HLS PIPELINE II=1
 # 3 "Mem/.settings/mem.c"
 
 
  static uint8 saved[ADDRESSES];
-#pragma HLS ARRAY_PARTITION variable=&saved complete dim=1
+#pragma HLS DEPENDENCE variable=&saved inter false
+# 5 "Mem/.settings/mem.c"
+
+#pragma HLS RESOURCE variable=&saved core=RAM_2P_LUTRAM
 # 5 "Mem/.settings/mem.c"
 
  static uint7 tempOutAddr = 0;
  static uint8 tempOutVal = 0;
- uint8 temp1 = saved[addr];
-
+ uint8 temp = saved[addr];
 
  if(we){
-  temp1++;
 
+  temp++;
 
-  if(temp1 >= tempOutVal){
+  if(temp >= tempOutVal){
+   tempOutVal = temp;
    tempOutAddr = addr;
-   tempOutVal = temp1;
    if(re){
     *out = addr;
    }
-
   }else{
    if(re){
     *out = tempOutAddr;
-   }
+   }else;
   }
 
-  saved[addr] = temp1;
+  saved[addr] = temp;
+
+
 
  }else{
   if(re){
    *out = tempOutAddr;
-   }
+  }else;
  }
+
+
 
 
 }
