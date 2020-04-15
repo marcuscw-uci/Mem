@@ -6071,32 +6071,24 @@ extern int getloadavg (double __loadavg[], int __nelem)
 
 static const int ADDRESSES = 128;
 
-void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
+void mem(uint7 wr_addr, uint1 we, uint1 re, uint8 *out);
 # 3 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c" 2
 
 
 int main(){
- int8 out;
+ uint8 out = 0;
+
  mem(1,1,1,&out);
- mem(2,1,1,&out);
- mem(3,1,1,&out);
- printf("%d\n", out);
+ mem(1,1,1,&out);
 
- mem(5,1,1,&out);
- printf("%d\n", out);
-
- mem(5,1,1,&out);
- mem(5,1,1,&out);
-
- printf("%d\n", out);
-
- mem(3,1,1,&out);
- printf("%d\n", out);
 
  mem(2,1,1,&out);
- mem(2,1,0,&out);
+ mem(2,1,1,&out);
 
- printf("%d\n", out);
+ mem(3,1,1,&out);
+ printf("%d", out);
 
+ mem(1,1,1,&out);
+ printf("\n%d", out);
 
 }

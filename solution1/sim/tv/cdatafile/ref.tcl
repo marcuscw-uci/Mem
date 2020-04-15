@@ -4,4 +4,4 @@ set depth_list {
 {re 1}
 {out_r 1}
 }
-set trans_num 9
+set trans_num 6

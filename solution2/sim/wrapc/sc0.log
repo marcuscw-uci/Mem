@@ -2,20 +2,20 @@
    Compiling apatb_mem.cpp
    Compiling (apcc) mem.c_pre.c.tb.c
 INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
-INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Mar 11 15:32:19 PDT 2020
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Apr 15 01:31:41 PDT 2020
 INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
 INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution2/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
-INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/24664681583965939434872
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/10206331586939501946799
 INFO: [APCC 202-1] APCC is done.
    Compiling (apcc) mem_test.c_pre.c.tb.c
 INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
-INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Mar 11 15:32:26 PDT 2020
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Apr 15 01:31:48 PDT 2020
 INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
 INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution2/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
-INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/24667991583965946484876
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/10208771586939508738502
 INFO: [APCC 202-1] APCC is done.
    Generating cosim.tv.exe

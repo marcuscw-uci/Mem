@@ -22,12 +22,12 @@ using namespace std;
 using namespace sc_core;
 using namespace sc_dt;
 
-// apint = int1
-#define int1 bool
-// apint = int7
-#define int7 char
-// apint = int8
-#define int8 char
+// apint = uint1
+#define uint1 bool
+// apint = uint7
+#define uint7 char
+// apint = uint8
+#define uint8 char
 
 // [dump_struct_tree [build_nameSpaceTree] dumpedStructList] ---------->
 
@@ -99,16 +99,16 @@ class INTER_TCL_FILE {
 };
 
 extern "C" void mem (
-int7 addr,
-int1 we,
-int1 re,
-int8* out);
+uint7 addr,
+uint1 we,
+uint1 re,
+uint8* out);
 
 extern "C" void AESL_WRAP_mem (
-int7 addr,
-int1 we,
-int1 re,
-int8* out)
+uint7 addr,
+uint1 we,
+uint1 re,
+uint8* out)
 {
 	refine_signal_handler();
 	fstream wrapc_switch_file_token;
@@ -485,11 +485,11 @@ int8* out)
 }
 
 
-// apint = int1
-#undef int1
+// apint = uint1
+#undef uint1
 
-// apint = int7
-#undef int7
+// apint = uint7
+#undef uint7
 
-// apint = int8
-#undef int8
+// apint = uint8
+#undef uint8

@@ -4307,30 +4307,56 @@ _ssdm_SpecDependence( &saved, 0, 0, -1, 0, 1);
 _ssdm_op_SpecResource(&saved, "", "RAM_2P_LUTRAM", "", -1, "", "", "", "", "");
 # 5 "Mem/.settings/mem.c"
 
+
  static uint7 tempOutAddr = 0;
  static uint8 tempOutVal = 0;
  uint8 temp = saved[addr];
 
+ static uint7 prevAddr;
+ static int store;
+ uint8 temp2 = store;
+
  if(we){
 
-  temp++;
-
-  if(temp >= tempOutVal){
-   tempOutVal = temp;
-   tempOutAddr = addr;
-   if(re){
-    *out = addr;
+  if(addr == prevAddr && tempOutVal != 0){
+   temp2++;
+   store = temp2;
+   if(temp2 >= tempOutVal){
+    tempOutVal = temp2;
+    tempOutAddr = addr;
+    if(re){
+     *out = addr;
+    }
+   }else{
+    if(re){
+     *out = tempOutAddr;
+    }else;
    }
+
+    saved[addr] = temp2;
+    prevAddr = addr;
+
+
   }else{
-   if(re){
-    *out = tempOutAddr;
-   }else;
+
+   temp++;
+   if(temp >= tempOutVal){
+    tempOutVal = temp;
+    tempOutAddr = addr;
+     if(re){
+      *out = addr;
+     }
+   }else{
+    if(re){
+     *out = tempOutAddr;
+    }else;
+   }
+
+    saved[addr] = temp;
+    prevAddr = addr;
+    store = temp;
+
   }
-
-  saved[addr] = temp;
-
-
-
  }else{
   if(re){
    *out = tempOutAddr;

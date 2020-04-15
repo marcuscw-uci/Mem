@@ -22,7 +22,7 @@
     "addr": {
       "index": "0",
       "type": {
-        "dataType": "int7",
+        "dataType": "uint7",
         "dataWidth": "7",
         "interfaceRef": "addr"
       }
@@ -30,7 +30,7 @@
     "we": {
       "index": "1",
       "type": {
-        "dataType": "int1",
+        "dataType": "uint1",
         "dataWidth": "1",
         "interfaceRef": "we"
       }
@@ -38,7 +38,7 @@
     "re": {
       "index": "2",
       "type": {
-        "dataType": "int1",
+        "dataType": "uint1",
         "dataWidth": "1",
         "interfaceRef": "re"
       }
@@ -47,7 +47,7 @@
       "index": "3",
       "type": {
         "kinds": ["pointer"],
-        "dataType": "int8",
+        "dataType": "uint8",
         "dataWidth": "8",
         "interfaceRef": "out_r"
       }
@@ -60,7 +60,7 @@
     "ClockName": "ap_clk",
     "ClockPeriod": "10",
     "IsCombLogic": "0",
-    "II": "2",
+    "II": "x",
     "Latency": "1",
     "Uncertainty": "1.25"
   },
@@ -103,7 +103,7 @@
       "dir": "in",
       "width": "7",
       "ctype": {"DATA": {
-          "Type": "integer signed",
+          "Type": "integer unsigned",
           "Width": "7"
         }},
       "bundle_name": "addr",
@@ -138,7 +138,7 @@
       "dir": "out",
       "width": "8",
       "ctype": {"DATA": {
-          "Type": "integer signed",
+          "Type": "integer unsigned",
           "Width": "8"
         }},
       "bundle_name": "out_r",
@@ -149,7 +149,7 @@
       "dir": "in",
       "width": "1",
       "ctype": {"DATA": {
-          "Type": "integer signed",
+          "Type": "integer unsigned",
           "Width": "1"
         }},
       "bundle_name": "re",
@@ -160,7 +160,7 @@
       "dir": "in",
       "width": "1",
       "ctype": {"DATA": {
-          "Type": "integer signed",
+          "Type": "integer unsigned",
           "Width": "1"
         }},
       "bundle_name": "we",
@@ -230,18 +230,18 @@
           "LatencyAvg": "1",
           "LatencyWorst": "1",
           "PipelineII": "2",
-          "PipelineDepth": "2",
-          "PipelineType": "function"
+          "PipelineDepth": "",
+          "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "1.25",
-          "Estimate": "7.196"
+          "Estimate": "6.721"
         },
         "Area": {
           "BRAM_18K": "1",
-          "FF": "31",
-          "LUT": "79",
+          "FF": "24",
+          "LUT": "77",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -257,7 +257,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-03-23 16:49:51 PDT",
+    "Time": "2020-04-12 22:53:56 PDT",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.1"
   }

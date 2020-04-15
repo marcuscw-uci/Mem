@@ -2,7 +2,7 @@
 <RtlPorts>
 <name>addr</name>
 <CType>
-<TypeName>int7</TypeName>
+<TypeName>uint7</TypeName>
 <TypeWidth>7</TypeWidth>
 <PhysicalWidth>7</PhysicalWidth>
 </CType>
@@ -12,7 +12,7 @@
 <RtlPorts>
 <name>we</name>
 <CType>
-<TypeName>int1</TypeName>
+<TypeName>uint1</TypeName>
 <TypeWidth>1</TypeWidth>
 <PhysicalWidth>1</PhysicalWidth>
 </CType>
@@ -22,7 +22,7 @@
 <RtlPorts>
 <name>re</name>
 <CType>
-<TypeName>int1</TypeName>
+<TypeName>uint1</TypeName>
 <TypeWidth>1</TypeWidth>
 <PhysicalWidth>1</PhysicalWidth>
 </CType>
@@ -32,7 +32,7 @@
 <RtlPorts>
 <name>out_r</name>
 <CType>
-<TypeName>int8</TypeName>
+<TypeName>uint8</TypeName>
 <TypeWidth>8</TypeWidth>
 <PhysicalWidth>8</PhysicalWidth>
 </CType>

@@ -1,4 +1,4 @@
-Report time       : Wed Mar 11 15:11:27 PDT 2020.
+Report time       : Sun Apr 12 22:54:49 PDT 2020.
 Solution          : solution1.
 Simulation tool   : modelsim.
 
@@ -8,5 +8,5 @@ Simulation tool   : modelsim.
 |          |          |      min      |      avg      |      max      |      min      |      avg      |      max      |
 +----------+----------+-----------------------------------------------+-----------------------------------------------+
 |      VHDL|        NA|             NA|             NA|             NA|             NA|             NA|             NA|
-|   Verilog|      Pass|             NA|             NA|             NA|             NA|             NA|             NA|
+|   Verilog|      Pass|              1|              1|              1|              2|              2|              2|
 +----------+----------+-----------------------------------------------+-----------------------------------------------+

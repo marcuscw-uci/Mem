@@ -6075,7 +6075,7 @@ extern int getloadavg (double __loadavg[], int __nelem)
 
 static const int ADDRESSES = 128;
 
-void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
+void mem(uint7 wr_addr, uint1 we, uint1 re, uint8 *out);
 # 3 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c" 2
 
 
@@ -6085,23 +6085,15 @@ void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
 #endif
 # 5 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 int main(){
- int8 out;
+ uint8 out = 0;
+
  
 #ifndef HLS_FASTSIM
 #define mem AESL_WRAP_mem
 #endif
-# 7 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+# 8 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 mem(1,1,1,&out);
 #undef mem
-# 7 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-
- 
-#ifndef HLS_FASTSIM
-#define mem AESL_WRAP_mem
-#endif
-# 8 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(2,1,1,&out);
-#undef mem
 # 8 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 
  
@@ -6109,78 +6101,54 @@ mem(2,1,1,&out);
 #define mem AESL_WRAP_mem
 #endif
 # 9 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(3,1,1,&out);
+mem(1,1,1,&out);
 #undef mem
 # 9 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 
- printf("%d\n", out);
+
 
  
 #ifndef HLS_FASTSIM
 #define mem AESL_WRAP_mem
 #endif
 # 12 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(5,1,1,&out);
-#undef mem
-# 12 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-
- printf("%d\n", out);
-
- 
-#ifndef HLS_FASTSIM
-#define mem AESL_WRAP_mem
-#endif
-# 15 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(5,1,1,&out);
-#undef mem
-# 15 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-
- 
-#ifndef HLS_FASTSIM
-#define mem AESL_WRAP_mem
-#endif
-# 16 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(5,1,1,&out);
-#undef mem
-# 16 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-
-
- printf("%d\n", out);
-
- 
-#ifndef HLS_FASTSIM
-#define mem AESL_WRAP_mem
-#endif
-# 20 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(3,1,1,&out);
-#undef mem
-# 20 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-
- printf("%d\n", out);
-
- 
-#ifndef HLS_FASTSIM
-#define mem AESL_WRAP_mem
-#endif
-# 23 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 mem(2,1,1,&out);
 #undef mem
-# 23 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+# 12 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 
  
 #ifndef HLS_FASTSIM
 #define mem AESL_WRAP_mem
 #endif
-# 24 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
-mem(2,1,0,&out);
+# 13 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+mem(2,1,1,&out);
 #undef mem
-# 24 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+# 13 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 
 
- printf("%d\n", out);
+ 
+#ifndef HLS_FASTSIM
+#define mem AESL_WRAP_mem
+#endif
+# 15 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+mem(3,1,1,&out);
+#undef mem
+# 15 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 
+ printf("%d", out);
+
+ 
+#ifndef HLS_FASTSIM
+#define mem AESL_WRAP_mem
+#endif
+# 18 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+mem(1,1,1,&out);
+#undef mem
+# 18 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+
+ printf("\n%d", out);
 
 }
 #endif
-# 29 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
+# 21 "/data11/home/marcuscw/Desktop/Mem/.settings/mem_test.c"
 

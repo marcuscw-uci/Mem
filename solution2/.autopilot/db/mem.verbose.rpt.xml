@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'mem'" level="0">
-<item name = "Date">Mon Apr  6 22:36:45 2020
+<item name = "Date">Wed Apr 15 01:31:04 2020
 </item>
 <item name = "Version">2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)</item>
 <item name = "Project">Mem</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">2.78, 1.476, 0.35</column>
+<column name="ap_clk">2.78, 2.576, 0.35</column>
 </table>
 </item>
 </section>
@@ -47,12 +47,12 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
 <column name="DSP">-, -, -, -, -</column>
-<column name="Expression">-, -, 0, 40, -</column>
+<column name="Expression">-, -, 0, 106, -</column>
 <column name="FIFO">-, -, -, -, -</column>
 <column name="Instance">-, -, -, -, -</column>
 <column name="Memory">-, -, 16, 16, -</column>
-<column name="Multiplexer">-, -, -, 21, -</column>
-<column name="Register">0, -, 307, 128, -</column>
+<column name="Multiplexer">-, -, -, 66, -</column>
+<column name="Register">0, -, 333, 128, -</column>
 <specialColumn name="Available">2060, 2800, 607200, 303600, 0</specialColumn>
 <specialColumn name="Utilization (%)">0, 0, ~0, ~0, 0</specialColumn>
 </table>
@@ -78,40 +78,62 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="temp_1_fu_91_p2">+, 0, 0, 15, 8, 1</column>
+<column name="temp2_1_fu_136_p2">+, 0, 0, 15, 8, 1</column>
+<column name="temp_1_fu_160_p2">+, 0, 0, 15, 8, 1</column>
 <column name="ap_block_pp0">and, 0, 0, 2, 1, 1</column>
 <column name="ap_block_pp0_stage0_01001">and, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_198">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_137">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_142">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_226">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_280">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_283">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_288">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_293">and, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_state1_pp0_iter0_stage0">and, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_state2_pp0_iter1_stage0">and, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_state4_pp0_iter3_stage0">and, 0, 0, 2, 1, 1</column>
-<column name="icmp_ln14_fu_109_p2">icmp, 0, 0, 11, 8, 8</column>
+<column name="ap_predicate_op58_store_state4">and, 0, 0, 2, 1, 1</column>
+<column name="ap_predicate_op69_store_state4">and, 0, 0, 2, 1, 1</column>
+<column name="icmp_ln17_1_fu_124_p2">icmp, 0, 0, 11, 8, 1</column>
+<column name="icmp_ln17_fu_115_p2">icmp, 0, 0, 11, 7, 7</column>
+<column name="icmp_ln20_fu_148_p2">icmp, 0, 0, 11, 8, 8</column>
+<column name="icmp_ln39_fu_165_p2">icmp, 0, 0, 11, 8, 8</column>
+<column name="or_ln17_fu_130_p2">or, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="out_r">21, 4, 8, 32</column>
+<column name="out_r">33, 6, 8, 48</column>
+<column name="saved_d1">15, 3, 8, 24</column>
+<column name="store">9, 2, 8, 16</column>
+<column name="tempOutVal">9, 2, 8, 16</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
-<column name="addr_read_reg_141">7, 0, 7, 0</column>
+<column name="addr_read_reg_218">7, 0, 7, 0</column>
 <column name="ap_CS_fsm">1, 0, 1, 0</column>
 <column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
 <column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
 <column name="ap_enable_reg_pp0_iter3">1, 0, 1, 0</column>
-<column name="re_read_reg_133">1, 0, 1, 0</column>
-<column name="saved_addr_reg_147">7, 0, 7, 0</column>
+<column name="icmp_ln20_reg_247">1, 0, 1, 0</column>
+<column name="icmp_ln39_reg_256">1, 0, 1, 0</column>
+<column name="or_ln17_reg_238">1, 0, 1, 0</column>
+<column name="prevAddr">7, 0, 7, 0</column>
+<column name="re_read_reg_210">1, 0, 1, 0</column>
+<column name="saved_addr_reg_227">7, 0, 7, 0</column>
+<column name="store">8, 0, 8, 0</column>
+<column name="temp2_1_reg_242">8, 0, 8, 0</column>
 <column name="tempOutAddr">7, 0, 7, 0</column>
 <column name="tempOutVal">8, 0, 8, 0</column>
-<column name="temp_1_reg_158">8, 0, 8, 0</column>
-<column name="temp_reg_153">8, 0, 8, 0</column>
-<column name="we_read_reg_137">1, 0, 1, 0</column>
-<column name="addr_read_reg_141">64, 32, 7, 0</column>
-<column name="re_read_reg_133">64, 32, 1, 0</column>
-<column name="saved_addr_reg_147">64, 32, 7, 0</column>
-<column name="we_read_reg_137">64, 32, 1, 0</column>
+<column name="temp_1_reg_251">8, 0, 8, 0</column>
+<column name="temp_reg_233">8, 0, 8, 0</column>
+<column name="we_read_reg_214">1, 0, 1, 0</column>
+<column name="addr_read_reg_218">64, 32, 7, 0</column>
+<column name="re_read_reg_210">64, 32, 1, 0</column>
+<column name="saved_addr_reg_227">64, 32, 7, 0</column>
+<column name="we_read_reg_214">64, 32, 1, 0</column>
 </table>
 </item>
 </section>

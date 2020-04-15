@@ -9,26 +9,26 @@ z2
 cModel Technology
 Z0 d/data11/home/marcuscw/Desktop/Mem/solution2/sim/verilog
 T_opt
-!s110 1583965962
-V@o0MD8XSOVWVC3F3b1FXb3
+!s110 1586939522
+ViBdLfWLKmQ;Wz9BS6AfFD2
 04 13 4 work apatb_mem_top fast 0
 04 4 4 work glbl fast 0
-=1-80000086fe80-5e696709-6b1ed-25a5bd
+=1-80000086fe80-5e96c681-5917f-f96cd
 o-quiet -auto_acc_if_foreign -work work -L work -L unisims_ver -L xpm -suppress 6630 -debugdb +acc
 Z1 tCvgOpt 0
 n@_opt
 OL;O;10.7c;67
 vapatb_mem_top
 Z2 DXx6 sv_std 3 std 0 22 d=_JfHTnXCN[H5FjiaJJc0
-Z3 !s110 1583965959
+Z3 !s110 1586939520
 !i10b 1
-!s100 QJ]NWDW;noIH;U]iKYQ`Z2
-I^FmAmdE_AZWQ``4VYS9^M1
+!s100 f?hgRc>R70TZT1^OFcFTC1
+Il5^Nk:b18ULz^0E<_XW]H2
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 !s105 mem_autotb_v_unit
 S1
 R0
-w1583965953
+w1586939516
 8mem.autotb.v
 Fmem.autotb.v
 L0 29
@@ -36,7 +36,7 @@ Z5 OL;L;10.7c;67
 r1
 !s85 0
 31
-Z6 !s108 1583965959.000000
+Z6 !s108 1586939520.000000
 !s107 mem.autotb.v|
 !s90 -sv|-work|work|mem.autotb.v|
 !i113 0
@@ -44,7 +44,7 @@ Z7 o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
 vglbl
 R2
-R3
+!s110 1586939519
 !i10b 1
 !s100 Eij@dTg8@6o;iA]b36JSI3
 IdZ]Xe:R57@IUfYA34McKJ1
@@ -60,7 +60,7 @@ R5
 r1
 !s85 0
 31
-!s108 1583965958.000000
+!s108 1586939519.000000
 !s107 glbl.v|
 !s90 -sv|-work|work|glbl.v|
 !i113 0
@@ -70,13 +70,13 @@ vmem
 R2
 R3
 !i10b 1
-!s100 `Zd>7YM;J^`4H@ka>g`^Z3
-Idmd8cGQXV3NzYnoYR1dfW2
+!s100 M^lZh]kD^WQ05J?enEbVR0
+IaP_?^Ef;G>Q@Iagn>`QNY0
 R4
 !s105 mem_v_unit
 S1
 R0
-w1583965601
+w1586939463
 8mem.v
 Fmem.v
 L0 12
@@ -92,49 +92,49 @@ R7
 R1
 vmem_saved
 R2
-Z8 !s110 1583965960
+R3
 !i10b 1
-!s100 OKG<T`U^PN0F_53]:8gRz0
-I48?C4<kBZgCRPzH9dggHH2
+!s100 G=:EH>eP@U5n3<fF7b`A43
+I2`>=Q@?o]FS[FkLRKTzz50
 R4
-Z9 !s105 mem_saved_v_unit
+Z8 !s105 mem_saved_v_unit
 S1
 R0
-Z10 w1583965603
-Z11 8mem_saved.v
-Z12 Fmem_saved.v
-L0 43
+Z9 w1586939466
+Z10 8mem_saved.v
+Z11 Fmem_saved.v
+L0 53
 R5
 r1
 !s85 0
 31
-Z13 !s108 1583965960.000000
-Z14 !s107 mem_saved.v|
-Z15 !s90 -sv|-work|work|mem_saved.v|
+R6
+Z12 !s107 mem_saved.v|
+Z13 !s90 -sv|-work|work|mem_saved.v|
 !i113 0
 R7
 R1
 vmem_saved_ram
 R2
-R8
+R3
 !i10b 1
-!s100 3iI8@lGcd>bJB4[?1gd8K1
-Iah9AEl7h2S8Q>hljI=5D23
+!s100 BilFX]zI_k^LRU@RF79[<1
+I?:5]^D1cZ[XeKzh`HMe3J3
 R4
-R9
+R8
 S1
 R0
+R9
 R10
 R11
-R12
 L0 6
 R5
 r1
 !s85 0
 31
+R6
+R12
 R13
-R14
-R15
 !i113 0
 R7
 R1

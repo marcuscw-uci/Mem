@@ -12,7 +12,7 @@
 `define AUTOTB_PER_RESULT_TRANS_FILE "mem.performance.result.transaction.xml"
 `define AUTOTB_TOP_INST AESL_inst_apatb_mem_top
 `define AUTOTB_MAX_ALLOW_LATENCY  15000000
-`define AUTOTB_CLOCK_PERIOD_DIV2 1.39
+`define AUTOTB_CLOCK_PERIOD_DIV2 5.00
 
 `define AESL_DEPTH_addr 1
 `define AESL_DEPTH_we 1
@@ -28,9 +28,9 @@
 `define AUTOTB_TVOUT_out_r_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvout_out_r.dat"
 module `AUTOTB_TOP;
 
-parameter AUTOTB_TRANSACTION_NUM = 9;
+parameter AUTOTB_TRANSACTION_NUM = 6;
 parameter PROGRESS_TIMEOUT = 10000000;
-parameter LATENCY_ESTIMATION = 3;
+parameter LATENCY_ESTIMATION = 1;
 parameter LENGTH_addr = 1;
 parameter LENGTH_we = 1;
 parameter LENGTH_re = 1;

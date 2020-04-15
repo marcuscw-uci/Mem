@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'mem'
 ================================================================
-* Date:           Mon Apr  6 22:36:43 2020
+* Date:           Wed Apr 15 01:31:02 2020
 
 * Version:        2019.1 (Build 2552052 on Fri May 24 15:28:33 MDT 2019)
 * Project:        Mem
@@ -20,7 +20,7 @@
     +--------+-------+----------+------------+
     |  Clock | Target| Estimated| Uncertainty|
     +--------+-------+----------+------------+
-    |ap_clk  |   2.78|     1.476|        0.35|
+    |ap_clk  |   2.78|     2.576|        0.35|
     +--------+-------+----------+------------+
 
 + Latency (clock cycles): 
@@ -85,49 +85,77 @@ State 1 <SV = 0> <Delay = 1.47>
 ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%re_read = call i1 @_ssdm_op_Read.ap_auto.i1(i1 %re) nounwind" [Mem/.settings/mem.c:3]   --->   Operation 5 'read' 're_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%we_read = call i1 @_ssdm_op_Read.ap_auto.i1(i1 %we) nounwind" [Mem/.settings/mem.c:3]   --->   Operation 6 'read' 'we_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%addr_read = call i7 @_ssdm_op_Read.ap_auto.i7(i7 %addr) nounwind" [Mem/.settings/mem.c:3]   --->   Operation 7 'read' 'addr_read' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%zext_ln8 = zext i7 %addr_read to i64" [Mem/.settings/mem.c:8]   --->   Operation 8 'zext' 'zext_ln8' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%saved_addr = getelementptr inbounds [128 x i8]* @saved, i64 0, i64 %zext_ln8" [Mem/.settings/mem.c:8]   --->   Operation 9 'getelementptr' 'saved_addr' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 10 [2/2] (1.47ns)   --->   "%temp = load i8* %saved_addr, align 1" [Mem/.settings/mem.c:8]   --->   Operation 10 'load' 'temp' <Predicate = true> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
-ST_1 : Operation 11 [1/1] (0.00ns)   --->   "br i1 %we_read, label %1, label %7" [Mem/.settings/mem.c:10]   --->   Operation 11 'br' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%zext_ln9 = zext i7 %addr_read to i64" [Mem/.settings/mem.c:9]   --->   Operation 8 'zext' 'zext_ln9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%saved_addr = getelementptr inbounds [128 x i8]* @saved, i64 0, i64 %zext_ln9" [Mem/.settings/mem.c:9]   --->   Operation 9 'getelementptr' 'saved_addr' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [2/2] (1.47ns)   --->   "%temp = load i8* %saved_addr, align 1" [Mem/.settings/mem.c:9]   --->   Operation 10 'load' 'temp' <Predicate = true> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "br i1 %we_read, label %1, label %15" [Mem/.settings/mem.c:15]   --->   Operation 11 'br' <Predicate = true> <Delay = 0.00>
 
 State 2 <SV = 1> <Delay = 1.47>
-ST_2 : Operation 12 [1/2] (1.47ns)   --->   "%temp = load i8* %saved_addr, align 1" [Mem/.settings/mem.c:8]   --->   Operation 12 'load' 'temp' <Predicate = true> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
+ST_2 : Operation 12 [1/2] (1.47ns)   --->   "%temp = load i8* %saved_addr, align 1" [Mem/.settings/mem.c:9]   --->   Operation 12 'load' 'temp' <Predicate = true> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
 
-State 3 <SV = 2> <Delay = 1.39>
-ST_3 : Operation 13 [1/1] (1.39ns)   --->   "%temp_1 = add i8 %temp, 1" [Mem/.settings/mem.c:12]   --->   Operation 13 'add' 'temp_1' <Predicate = (we_read)> <Delay = 1.39> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.39> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+State 3 <SV = 2> <Delay = 2.57>
+ST_3 : Operation 13 [1/1] (0.00ns)   --->   "%temp2 = load i8* @store, align 1" [Mem/.settings/mem.c:13]   --->   Operation 13 'load' 'temp2' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 14 [1/1] (0.00ns)   --->   "br i1 %re_read, label %16, label %._crit_edge5" [Mem/.settings/mem.c:57]   --->   Operation 14 'br' <Predicate = (!we_read)> <Delay = 0.00>
+ST_3 : Operation 15 [1/1] (0.00ns)   --->   "%prevAddr_load = load i7* @prevAddr, align 1" [Mem/.settings/mem.c:17]   --->   Operation 15 'load' 'prevAddr_load' <Predicate = (we_read)> <Delay = 0.00>
+ST_3 : Operation 16 [1/1] (1.12ns)   --->   "%icmp_ln17 = icmp ne i7 %prevAddr_load, %addr_read" [Mem/.settings/mem.c:17]   --->   Operation 16 'icmp' 'icmp_ln17' <Predicate = (we_read)> <Delay = 1.12> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 17 [1/1] (0.00ns)   --->   "%tempOutVal_load = load i8* @tempOutVal, align 1" [Mem/.settings/mem.c:17]   --->   Operation 17 'load' 'tempOutVal_load' <Predicate = (we_read)> <Delay = 0.00>
+ST_3 : Operation 18 [1/1] (1.12ns)   --->   "%icmp_ln17_1 = icmp eq i8 %tempOutVal_load, 0" [Mem/.settings/mem.c:17]   --->   Operation 18 'icmp' 'icmp_ln17_1' <Predicate = (we_read)> <Delay = 1.12> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 19 [1/1] (0.61ns)   --->   "%or_ln17 = or i1 %icmp_ln17, %icmp_ln17_1" [Mem/.settings/mem.c:17]   --->   Operation 19 'or' 'or_ln17' <Predicate = (we_read)> <Delay = 0.61> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.61> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 20 [1/1] (0.00ns)   --->   "br i1 %or_ln17, label %8, label %2" [Mem/.settings/mem.c:17]   --->   Operation 20 'br' <Predicate = (we_read)> <Delay = 0.00>
+ST_3 : Operation 21 [1/1] (1.39ns)   --->   "%temp2_1 = add i8 %temp2, 1" [Mem/.settings/mem.c:18]   --->   Operation 21 'add' 'temp2_1' <Predicate = (we_read & !or_ln17)> <Delay = 1.39> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.39> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 22 [1/1] (1.18ns)   --->   "store i8 %temp2_1, i8* @store, align 1" [Mem/.settings/mem.c:19]   --->   Operation 22 'store' <Predicate = (we_read & !or_ln17)> <Delay = 1.18>
+ST_3 : Operation 23 [1/1] (1.12ns)   --->   "%icmp_ln20 = icmp ult i8 %temp2_1, %tempOutVal_load" [Mem/.settings/mem.c:20]   --->   Operation 23 'icmp' 'icmp_ln20' <Predicate = (we_read & !or_ln17)> <Delay = 1.12> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "br i1 %icmp_ln20, label %5, label %3" [Mem/.settings/mem.c:20]   --->   Operation 24 'br' <Predicate = (we_read & !or_ln17)> <Delay = 0.00>
+ST_3 : Operation 25 [1/1] (1.18ns)   --->   "store i8 %temp2_1, i8* @tempOutVal, align 1" [Mem/.settings/mem.c:21]   --->   Operation 25 'store' <Predicate = (we_read & !or_ln17 & !icmp_ln20)> <Delay = 1.18>
+ST_3 : Operation 26 [1/1] (0.00ns)   --->   "br i1 %re_read, label %4, label %._crit_edge" [Mem/.settings/mem.c:23]   --->   Operation 26 'br' <Predicate = (we_read & !or_ln17 & !icmp_ln20)> <Delay = 0.00>
+ST_3 : Operation 27 [1/1] (0.00ns)   --->   "br i1 %re_read, label %6, label %._crit_edge2" [Mem/.settings/mem.c:27]   --->   Operation 27 'br' <Predicate = (we_read & !or_ln17 & icmp_ln20)> <Delay = 0.00>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "store i7 %addr_read, i7* @prevAddr, align 1" [Mem/.settings/mem.c:33]   --->   Operation 28 'store' <Predicate = (we_read & !or_ln17)> <Delay = 0.00>
+ST_3 : Operation 29 [1/1] (1.39ns)   --->   "%temp_1 = add i8 %temp, 1" [Mem/.settings/mem.c:38]   --->   Operation 29 'add' 'temp_1' <Predicate = (we_read & or_ln17)> <Delay = 1.39> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.39> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 30 [1/1] (1.12ns)   --->   "%icmp_ln39 = icmp ult i8 %temp_1, %tempOutVal_load" [Mem/.settings/mem.c:39]   --->   Operation 30 'icmp' 'icmp_ln39' <Predicate = (we_read & or_ln17)> <Delay = 1.12> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "br i1 %icmp_ln39, label %11, label %9" [Mem/.settings/mem.c:39]   --->   Operation 31 'br' <Predicate = (we_read & or_ln17)> <Delay = 0.00>
+ST_3 : Operation 32 [1/1] (1.18ns)   --->   "store i8 %temp_1, i8* @tempOutVal, align 1" [Mem/.settings/mem.c:40]   --->   Operation 32 'store' <Predicate = (we_read & or_ln17 & !icmp_ln39)> <Delay = 1.18>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "br i1 %re_read, label %10, label %._crit_edge3" [Mem/.settings/mem.c:42]   --->   Operation 33 'br' <Predicate = (we_read & or_ln17 & !icmp_ln39)> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "br i1 %re_read, label %12, label %._crit_edge4" [Mem/.settings/mem.c:46]   --->   Operation 34 'br' <Predicate = (we_read & or_ln17 & icmp_ln39)> <Delay = 0.00>
+ST_3 : Operation 35 [1/1] (0.00ns)   --->   "store i7 %addr_read, i7* @prevAddr, align 1" [Mem/.settings/mem.c:52]   --->   Operation 35 'store' <Predicate = (we_read & or_ln17)> <Delay = 0.00>
+ST_3 : Operation 36 [1/1] (1.18ns)   --->   "store i8 %temp_1, i8* @store, align 1" [Mem/.settings/mem.c:53]   --->   Operation 36 'store' <Predicate = (we_read & or_ln17)> <Delay = 1.18>
 
 State 4 <SV = 3> <Delay = 1.47>
-ST_4 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i7 %addr) nounwind, !map !7"   --->   Operation 14 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1 %we) nounwind, !map !13"   --->   Operation 15 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1 %re) nounwind, !map !17"   --->   Operation 16 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %out_r) nounwind, !map !21"   --->   Operation 17 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @mem_str) nounwind"   --->   Operation 18 'spectopmodule' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [Mem/.settings/mem.c:4]   --->   Operation 19 'specpipeline' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 20 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecMemCore([128 x i8]* @saved, [1 x i8]* @p_str, [14 x i8]* @p_str1, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str) nounwind" [Mem/.settings/mem.c:6]   --->   Operation 20 'specmemcore' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 21 [1/1] (0.00ns)   --->   "%tempOutAddr_load = load i7* @tempOutAddr, align 1" [Mem/.settings/mem.c:22]   --->   Operation 21 'load' 'tempOutAddr_load' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 22 [1/1] (0.00ns)   --->   "br i1 %re_read, label %8, label %._crit_edge2" [Mem/.settings/mem.c:31]   --->   Operation 22 'br' <Predicate = (!we_read)> <Delay = 0.00>
-ST_4 : Operation 23 [1/1] (0.00ns)   --->   "%zext_ln32 = zext i7 %tempOutAddr_load to i8" [Mem/.settings/mem.c:32]   --->   Operation 23 'zext' 'zext_ln32' <Predicate = (!we_read & re_read)> <Delay = 0.00>
-ST_4 : Operation 24 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln32) nounwind" [Mem/.settings/mem.c:32]   --->   Operation 24 'write' <Predicate = (!we_read & re_read)> <Delay = 0.00>
-ST_4 : Operation 25 [1/1] (0.00ns)   --->   "br label %._crit_edge2" [Mem/.settings/mem.c:33]   --->   Operation 25 'br' <Predicate = (!we_read & re_read)> <Delay = 0.00>
-ST_4 : Operation 26 [1/1] (0.00ns)   --->   "br label %9"   --->   Operation 26 'br' <Predicate = (!we_read)> <Delay = 0.00>
-ST_4 : Operation 27 [1/1] (0.00ns)   --->   "%tempOutVal_load = load i8* @tempOutVal, align 1" [Mem/.settings/mem.c:14]   --->   Operation 27 'load' 'tempOutVal_load' <Predicate = (we_read)> <Delay = 0.00>
-ST_4 : Operation 28 [1/1] (1.12ns)   --->   "%icmp_ln14 = icmp ult i8 %temp_1, %tempOutVal_load" [Mem/.settings/mem.c:14]   --->   Operation 28 'icmp' 'icmp_ln14' <Predicate = (we_read)> <Delay = 1.12> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.12> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 29 [1/1] (0.00ns)   --->   "br i1 %icmp_ln14, label %4, label %2" [Mem/.settings/mem.c:14]   --->   Operation 29 'br' <Predicate = (we_read)> <Delay = 0.00>
-ST_4 : Operation 30 [1/1] (0.00ns)   --->   "store i8 %temp_1, i8* @tempOutVal, align 1" [Mem/.settings/mem.c:15]   --->   Operation 30 'store' <Predicate = (we_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 31 [1/1] (0.00ns)   --->   "store i7 %addr_read, i7* @tempOutAddr, align 1" [Mem/.settings/mem.c:16]   --->   Operation 31 'store' <Predicate = (we_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 32 [1/1] (0.00ns)   --->   "br i1 %re_read, label %3, label %._crit_edge" [Mem/.settings/mem.c:17]   --->   Operation 32 'br' <Predicate = (we_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 33 [1/1] (0.00ns)   --->   "%zext_ln18 = zext i7 %addr_read to i8" [Mem/.settings/mem.c:18]   --->   Operation 33 'zext' 'zext_ln18' <Predicate = (we_read & re_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 34 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln18) nounwind" [Mem/.settings/mem.c:18]   --->   Operation 34 'write' <Predicate = (we_read & re_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 35 [1/1] (0.00ns)   --->   "br label %._crit_edge" [Mem/.settings/mem.c:19]   --->   Operation 35 'br' <Predicate = (we_read & re_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 36 [1/1] (0.00ns)   --->   "br label %6" [Mem/.settings/mem.c:20]   --->   Operation 36 'br' <Predicate = (we_read & !icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 37 [1/1] (0.00ns)   --->   "br i1 %re_read, label %5, label %._crit_edge1" [Mem/.settings/mem.c:21]   --->   Operation 37 'br' <Predicate = (we_read & icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 38 [1/1] (0.00ns)   --->   "%zext_ln22 = zext i7 %tempOutAddr_load to i8" [Mem/.settings/mem.c:22]   --->   Operation 38 'zext' 'zext_ln22' <Predicate = (we_read & re_read & icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 39 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln22) nounwind" [Mem/.settings/mem.c:22]   --->   Operation 39 'write' <Predicate = (we_read & re_read & icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 40 [1/1] (0.00ns)   --->   "br label %._crit_edge1" [Mem/.settings/mem.c:23]   --->   Operation 40 'br' <Predicate = (we_read & re_read & icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 41 [1/1] (0.00ns)   --->   "br label %6"   --->   Operation 41 'br' <Predicate = (we_read & icmp_ln14)> <Delay = 0.00>
-ST_4 : Operation 42 [1/1] (1.47ns)   --->   "store i8 %temp_1, i8* %saved_addr, align 1" [Mem/.settings/mem.c:26]   --->   Operation 42 'store' <Predicate = (we_read)> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
-ST_4 : Operation 43 [1/1] (0.00ns)   --->   "br label %9" [Mem/.settings/mem.c:30]   --->   Operation 43 'br' <Predicate = (we_read)> <Delay = 0.00>
-ST_4 : Operation 44 [1/1] (0.00ns)   --->   "ret void" [Mem/.settings/mem.c:39]   --->   Operation 44 'ret' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i7 %addr) nounwind, !map !7"   --->   Operation 37 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1 %we) nounwind, !map !13"   --->   Operation 38 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 39 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1 %re) nounwind, !map !17"   --->   Operation 39 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %out_r) nounwind, !map !21"   --->   Operation 40 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 41 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @mem_str) nounwind"   --->   Operation 41 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 42 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [Mem/.settings/mem.c:4]   --->   Operation 42 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 43 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecMemCore([128 x i8]* @saved, [1 x i8]* @p_str, [14 x i8]* @p_str1, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str) nounwind" [Mem/.settings/mem.c:6]   --->   Operation 43 'specmemcore' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 44 [1/1] (0.00ns)   --->   "%tempOutAddr_load = load i7* @tempOutAddr, align 1" [Mem/.settings/mem.c:28]   --->   Operation 44 'load' 'tempOutAddr_load' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 45 [1/1] (0.00ns)   --->   "%zext_ln58 = zext i7 %tempOutAddr_load to i8" [Mem/.settings/mem.c:58]   --->   Operation 45 'zext' 'zext_ln58' <Predicate = (!we_read & re_read)> <Delay = 0.00>
+ST_4 : Operation 46 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln58) nounwind" [Mem/.settings/mem.c:58]   --->   Operation 46 'write' <Predicate = (!we_read & re_read)> <Delay = 0.00>
+ST_4 : Operation 47 [1/1] (0.00ns)   --->   "br label %._crit_edge5" [Mem/.settings/mem.c:59]   --->   Operation 47 'br' <Predicate = (!we_read & re_read)> <Delay = 0.00>
+ST_4 : Operation 48 [1/1] (0.00ns)   --->   "br label %17"   --->   Operation 48 'br' <Predicate = (!we_read)> <Delay = 0.00>
+ST_4 : Operation 49 [1/1] (0.00ns)   --->   "store i7 %addr_read, i7* @tempOutAddr, align 1" [Mem/.settings/mem.c:22]   --->   Operation 49 'store' <Predicate = (we_read & !or_ln17 & !icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 50 [1/1] (0.00ns)   --->   "%zext_ln24 = zext i7 %addr_read to i8" [Mem/.settings/mem.c:24]   --->   Operation 50 'zext' 'zext_ln24' <Predicate = (we_read & re_read & !or_ln17 & !icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 51 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln24) nounwind" [Mem/.settings/mem.c:24]   --->   Operation 51 'write' <Predicate = (we_read & re_read & !or_ln17 & !icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 52 [1/1] (0.00ns)   --->   "br label %._crit_edge" [Mem/.settings/mem.c:25]   --->   Operation 52 'br' <Predicate = (we_read & re_read & !or_ln17 & !icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 53 [1/1] (0.00ns)   --->   "br label %7" [Mem/.settings/mem.c:26]   --->   Operation 53 'br' <Predicate = (we_read & !or_ln17 & !icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 54 [1/1] (0.00ns)   --->   "%zext_ln28 = zext i7 %tempOutAddr_load to i8" [Mem/.settings/mem.c:28]   --->   Operation 54 'zext' 'zext_ln28' <Predicate = (we_read & re_read & !or_ln17 & icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 55 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln28) nounwind" [Mem/.settings/mem.c:28]   --->   Operation 55 'write' <Predicate = (we_read & re_read & !or_ln17 & icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 56 [1/1] (0.00ns)   --->   "br label %._crit_edge2" [Mem/.settings/mem.c:29]   --->   Operation 56 'br' <Predicate = (we_read & re_read & !or_ln17 & icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 57 [1/1] (0.00ns)   --->   "br label %7"   --->   Operation 57 'br' <Predicate = (we_read & !or_ln17 & icmp_ln20)> <Delay = 0.00>
+ST_4 : Operation 58 [1/1] (1.47ns)   --->   "store i8 %temp2_1, i8* %saved_addr, align 1" [Mem/.settings/mem.c:32]   --->   Operation 58 'store' <Predicate = (we_read & !or_ln17)> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
+ST_4 : Operation 59 [1/1] (0.00ns)   --->   "br label %14" [Mem/.settings/mem.c:36]   --->   Operation 59 'br' <Predicate = (we_read & !or_ln17)> <Delay = 0.00>
+ST_4 : Operation 60 [1/1] (0.00ns)   --->   "store i7 %addr_read, i7* @tempOutAddr, align 1" [Mem/.settings/mem.c:41]   --->   Operation 60 'store' <Predicate = (we_read & or_ln17 & !icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 61 [1/1] (0.00ns)   --->   "%zext_ln43 = zext i7 %addr_read to i8" [Mem/.settings/mem.c:43]   --->   Operation 61 'zext' 'zext_ln43' <Predicate = (we_read & re_read & or_ln17 & !icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 62 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln43) nounwind" [Mem/.settings/mem.c:43]   --->   Operation 62 'write' <Predicate = (we_read & re_read & or_ln17 & !icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 63 [1/1] (0.00ns)   --->   "br label %._crit_edge3" [Mem/.settings/mem.c:44]   --->   Operation 63 'br' <Predicate = (we_read & re_read & or_ln17 & !icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 64 [1/1] (0.00ns)   --->   "br label %13" [Mem/.settings/mem.c:45]   --->   Operation 64 'br' <Predicate = (we_read & or_ln17 & !icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 65 [1/1] (0.00ns)   --->   "%zext_ln47 = zext i7 %tempOutAddr_load to i8" [Mem/.settings/mem.c:47]   --->   Operation 65 'zext' 'zext_ln47' <Predicate = (we_read & re_read & or_ln17 & icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 66 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %out_r, i8 %zext_ln47) nounwind" [Mem/.settings/mem.c:47]   --->   Operation 66 'write' <Predicate = (we_read & re_read & or_ln17 & icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 67 [1/1] (0.00ns)   --->   "br label %._crit_edge4" [Mem/.settings/mem.c:48]   --->   Operation 67 'br' <Predicate = (we_read & re_read & or_ln17 & icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 68 [1/1] (0.00ns)   --->   "br label %13"   --->   Operation 68 'br' <Predicate = (we_read & or_ln17 & icmp_ln39)> <Delay = 0.00>
+ST_4 : Operation 69 [1/1] (1.47ns)   --->   "store i8 %temp_1, i8* %saved_addr, align 1" [Mem/.settings/mem.c:51]   --->   Operation 69 'store' <Predicate = (we_read & or_ln17)> <Delay = 1.47> <Core = "RAM_2P_LUTRAM">   --->   Core 41 'RAM_2P_LUTRAM' <Latency = 1> <II = 1> <Delay = 1.47> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 128> <RAM>
+ST_4 : Operation 70 [1/1] (0.00ns)   --->   "br label %14"   --->   Operation 70 'br' <Predicate = (we_read & or_ln17)> <Delay = 0.00>
+ST_4 : Operation 71 [1/1] (0.00ns)   --->   "br label %17" [Mem/.settings/mem.c:56]   --->   Operation 71 'br' <Predicate = (we_read)> <Delay = 0.00>
+ST_4 : Operation 72 [1/1] (0.00ns)   --->   "ret void" [Mem/.settings/mem.c:65]   --->   Operation 72 'ret' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -137,21 +165,23 @@ Target clock period: 2.78ns, clock uncertainty: 0.347ns.
 
  <State 1>: 1.48ns
 The critical path consists of the following:
-	wire read on port 'addr' (Mem/.settings/mem.c:3) [15]  (0 ns)
-	'getelementptr' operation ('saved_addr', Mem/.settings/mem.c:8) [19]  (0 ns)
-	'load' operation ('temp', Mem/.settings/mem.c:8) on array 'saved' [20]  (1.48 ns)
+	wire read on port 'addr' (Mem/.settings/mem.c:3) [17]  (0 ns)
+	'getelementptr' operation ('saved_addr', Mem/.settings/mem.c:9) [21]  (0 ns)
+	'load' operation ('temp', Mem/.settings/mem.c:9) on array 'saved' [22]  (1.48 ns)
 
  <State 2>: 1.48ns
 The critical path consists of the following:
-	'load' operation ('temp', Mem/.settings/mem.c:8) on array 'saved' [20]  (1.48 ns)
+	'load' operation ('temp', Mem/.settings/mem.c:9) on array 'saved' [22]  (1.48 ns)
 
- <State 3>: 1.39ns
+ <State 3>: 2.58ns
 The critical path consists of the following:
-	'add' operation ('temp', Mem/.settings/mem.c:12) [32]  (1.39 ns)
+	'load' operation ('temp2', Mem/.settings/mem.c:13) on static variable 'store' [23]  (0 ns)
+	'add' operation ('temp2', Mem/.settings/mem.c:18) [42]  (1.39 ns)
+	'store' operation ('store_ln21', Mem/.settings/mem.c:21) of variable 'temp2', Mem/.settings/mem.c:18 on static variable 'tempOutVal' [47]  (1.18 ns)
 
  <State 4>: 1.48ns
 The critical path consists of the following:
-	'store' operation ('store_ln26', Mem/.settings/mem.c:26) of variable 'temp', Mem/.settings/mem.c:12 on array 'saved' [55]  (1.48 ns)
+	'store' operation ('store_ln32', Mem/.settings/mem.c:32) of variable 'temp2', Mem/.settings/mem.c:18 on array 'saved' [65]  (1.48 ns)
 
 
 ============================================================

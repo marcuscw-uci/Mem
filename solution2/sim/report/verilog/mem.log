@@ -4,21 +4,21 @@ INFO: [COSIM-14] Instrumenting C test bench ...
    Compiling apatb_mem.cpp
    Compiling (apcc) mem.c_pre.c.tb.c
 INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
-INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Mar 11 15:32:19 PDT 2020
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Apr 15 01:31:41 PDT 2020
 INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
 INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution2/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
-INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/24664681583965939434872
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/10206331586939501946799
 INFO: [APCC 202-1] APCC is done.
    Compiling (apcc) mem_test.c_pre.c.tb.c
 INFO: [HLS 200-10] Running '/state/opt/Xilinx/Vivado/2019.1/bin/unwrapped/lnx64.o/apcc'
-INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Mar 11 15:32:26 PDT 2020
+INFO: [HLS 200-10] For user 'marcuscw' on host 'uclhc-2.ps.uci.edu' (Linux_x86_64 version 3.10.0-957.27.2.el7.x86_64) on Wed Apr 15 01:31:48 PDT 2020
 INFO: [HLS 200-10] On os "CentOS Linux release 7.6.1810 (Core) "
 INFO: [HLS 200-10] In directory '/data11/home/marcuscw/Desktop/Mem/solution2/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
-INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/24667991583965946484876
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_marcuscw/10208771586939508738502
 INFO: [APCC 202-1] APCC is done.
    Generating cosim.tv.exe
 INFO: [COSIM-302] Starting C TB testing ... 
@@ -28,11 +28,6 @@ INFO: [COSIM-1] *** C/RTL co-simulation file generation completed. ***
 INFO: [COSIM-323] Starting verilog simulation. 
 INFO: [COSIM-15] Starting Modelsim ...
 INFO: [COSIM-316] Starting C post checking ...
-3
-5
-5
-5
-5
 Reading pref.tcl
 
 # 10.7c
@@ -52,48 +47,47 @@ Reading pref.tcl
 # vmap work work 
 # Modifying modelsim.ini
 # QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 15:32:38 on Mar 11,2020
+# Start time: 01:31:59 on Apr 15,2020
 # vlog -sv -work work glbl.v 
 # -- Compiling module glbl
 # 
 # Top level modules:
 # 	glbl
-# End time: 15:32:39 on Mar 11,2020, Elapsed time: 0:00:01
+# End time: 01:31:59 on Apr 15,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 15:32:39 on Mar 11,2020
+# Start time: 01:32:00 on Apr 15,2020
 # vlog -sv -work work mem.autotb.v 
 # -- Compiling module apatb_mem_top
 # 
 # Top level modules:
 # 	apatb_mem_top
-# End time: 15:32:39 on Mar 11,2020, Elapsed time: 0:00:00
+# End time: 01:32:00 on Apr 15,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 15:32:39 on Mar 11,2020
+# Start time: 01:32:00 on Apr 15,2020
 # vlog -sv -work work mem.v 
 # -- Compiling module mem
 # 
 # Top level modules:
 # 	mem
-# End time: 15:32:40 on Mar 11,2020, Elapsed time: 0:00:01
+# End time: 01:32:00 on Apr 15,2020, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 15:32:40 on Mar 11,2020
+# Start time: 01:32:00 on Apr 15,2020
 # vlog -sv -work work mem_saved.v 
 # -- Compiling module mem_saved_ram
 # -- Compiling module mem_saved
 # 
 # Top level modules:
 # 	mem_saved
-# End time: 15:32:41 on Mar 11,2020, Elapsed time: 0:00:01
+# End time: 01:32:01 on Apr 15,2020, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim -debugDB -t 10ps -voptargs=""+acc"" -L work -L unisims_ver -L xpm apatb_mem_top glbl -suppress 6630 -wlf mem.wlf 
-# Start time: 15:32:41 on Mar 11,2020
+# Start time: 01:32:01 on Apr 15,2020
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
-# ** Note: (vopt-143) Recognized 1 FSM in module "mem(fast)".
-# ** Note: (vopt-4301) Memory core inferred for signal 'ram' width=8, depth=128, type=RAM at location mem_saved.v:19
+# ** Note: (vopt-4301) Memory core inferred for signal 'ram' width=8, depth=128, type=RAM at location mem_saved.v:21
 # //  Questa Sim-64
 # //  Version 10.7c linux_x86_64 Aug 17 2018
 # //
@@ -124,24 +118,122 @@ Reading pref.tcl
 # //
 # // RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
 # ////////////////////////////////////////////////////////////////////////////////////
-# // RTL Simulation : 0 / 9 [0.00%] @ "10700"
-# // RTL Simulation : 1 / 9 [100.00%] @ "12100"
-# // RTL Simulation : 2 / 9 [100.00%] @ "13200"
-# // RTL Simulation : 3 / 9 [100.00%] @ "14300"
-# // RTL Simulation : 4 / 9 [100.00%] @ "15400"
-# // RTL Simulation : 5 / 9 [100.00%] @ "16500"
-# // RTL Simulation : 6 / 9 [100.00%] @ "17700"
-# // RTL Simulation : 7 / 9 [100.00%] @ "18800"
-# // RTL Simulation : 8 / 9 [100.00%] @ "19900"
-# // RTL Simulation : 9 / 9 [100.00%] @ "21000"
+# // RTL Simulation : 0 / 7 [0.00%] @ "10700"
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "12000"
+# //                : To memory access "saved_address0" = DEP_address_4_to[1][6:0] = 0x1 @ "11700"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        935
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "12000"
+# //                : To memory access "saved_address0" = DEP_address_4_to[2][6:0] = 0x1 @ "11400"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        946
+# ////////////////////////////////////////////////////////////////////////////////////
+# // RTL Simulation : 1 / 7 [66.67%] @ "12100"
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "12200"
+# //                : To memory access "saved_address0" = DEP_address_2_to[2][6:0] = 0x1 @ "11700"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        838
+# ////////////////////////////////////////////////////////////////////////////////////
+# // RTL Simulation : 2 / 7 [66.67%] @ "12400"
+# // RTL Simulation : 3 / 7 [66.67%] @ "12600"
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x2 @ "12800"
+# //                : To memory access "saved_address0" = DEP_address_4_to[1][6:0] = 0x2 @ "12500"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        935
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x2 @ "12800"
+# //                : To memory access "saved_address0" = DEP_address_4_to[2][6:0] = 0x2 @ "12200"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        946
+# ////////////////////////////////////////////////////////////////////////////////////
+# // RTL Simulation : 4 / 7 [66.67%] @ "12900"
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x2 @ "13100"
+# //                : To memory access "saved_address0" = DEP_address_2_to[2][6:0] = 0x2 @ "12500"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        838
+# ////////////////////////////////////////////////////////////////////////////////////
+# // RTL Simulation : 5 / 7 [66.67%] @ "13200"
+# // RTL Simulation : 6 / 7 [66.67%] @ "13500"
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "13600"
+# //                : To memory access "saved_address0" = DEP_address_4_to[0][6:0] = 0x1 @ "13600"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        924
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "13600"
+# //                : To memory access "saved_address0" = DEP_address_4_to[1][6:0] = 0x1 @ "13300"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        935
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "13600"
+# //                : To memory access "saved_address0" = DEP_address_4_to[2][6:0] = 0x1 @ "13100"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        946
+# ////////////////////////////////////////////////////////////////////////////////////
+# // RTL Simulation : 7 / 7 [100.00%] @ "13800"
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "13900"
+# //                : To memory access "saved_address0" = DEP_address_2_to[0][6:0] = 0x1 @ "13900"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        816
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "13900"
+# //                : To memory access "saved_address0" = DEP_address_2_to[1][6:0] = 0x1 @ "13600"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        827
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "13900"
+# //                : To memory access "saved_address0" = DEP_address_2_to[2][6:0] = 0x1 @ "13300"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        838
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14200"
+# //                : To memory access "saved_address0" = DEP_address_2_to[0][6:0] = 0x1 @ "14200"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        816
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14200"
+# //                : To memory access "saved_address0" = DEP_address_2_to[1][6:0] = 0x1 @ "13900"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        827
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14200"
+# //                : To memory access "saved_address0" = DEP_address_2_to[2][6:0] = 0x1 @ "13600"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        838
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14500"
+# //                : To memory access "saved_address0" = DEP_address_2_to[0][6:0] = 0x1 @ "14500"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        816
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14500"
+# //                : To memory access "saved_address0" = DEP_address_2_to[1][6:0] = 0x1 @ "14200"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        827
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14500"
+# //                : To memory access "saved_address0" = DEP_address_2_to[2][6:0] = 0x1 @ "13900"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        838
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14700"
+# //                : To memory access "saved_address0" = DEP_address_2_to[0][6:0] = 0x1 @ "14700"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        816
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14700"
+# //                : To memory access "saved_address0" = DEP_address_2_to[1][6:0] = 0x1 @ "14500"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        827
+# ////////////////////////////////////////////////////////////////////////////////////
+# //Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in "`AUTOTB_DUT_INST"
+# //                : From memory access "saved_address1" = 0x1 @ "14700"
+# //                : To memory access "saved_address0" = DEP_address_2_to[2][6:0] = 0x1 @ "14200"
+# //If cosim fails, the WARNING should be checked. autotb LINE:        838
 # ////////////////////////////////////////////////////////////////////////////////////
 # ** Note: $finish    : mem.autotb.v(401)
-#    Time: 221010 ps  Iteration: 1  Instance: /apatb_mem_top
-# End time: 15:32:45 on Mar 11,2020, Elapsed time: 0:00:04
+#    Time: 148730 ps  Iteration: 1  Instance: /apatb_mem_top
+# End time: 01:32:04 on Apr 15,2020, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0
-3
-5
-5
-5
-5
 INFO: [COSIM-1000] *** C/RTL co-simulation finished: PASS ***

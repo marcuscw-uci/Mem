@@ -5,7 +5,7 @@ set isCombinational 0
 set isDatapathOnly 0
 set isFreeRunPipelineModule 0
 set isPipelined 0
-set pipeline_type function
+set pipeline_type none
 set FunctionProtocol ap_ctrl_hs
 set isOneStateSeq 0
 set ProfileFlag 0
@@ -14,16 +14,16 @@ set isEnableWaveformDebug 1
 set C_modelName {mem}
 set C_modelType { void 0 }
 set C_modelArgList {
-	{ addr int 7 regular  }
-	{ we int 1 regular  }
-	{ re int 1 regular  }
+	{ addr uint 7 regular  }
+	{ we uint 1 regular  }
+	{ re uint 1 regular  }
 	{ out_r int 8 regular {pointer 1}  }
 }
 set C_modelArgMapList {[ 
-	{ "Name" : "addr", "interface" : "wire", "bitwidth" : 7, "direction" : "READONLY", "bitSlice":[{"low":0,"up":6,"cElement": [{"cName": "addr","cData": "int7","bit_use": { "low": 0,"up": 6},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
- 	{ "Name" : "we", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "we","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
- 	{ "Name" : "re", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "re","cData": "int1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
- 	{ "Name" : "out_r", "interface" : "wire", "bitwidth" : 8, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "out","cData": "int8","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
+	{ "Name" : "addr", "interface" : "wire", "bitwidth" : 7, "direction" : "READONLY", "bitSlice":[{"low":0,"up":6,"cElement": [{"cName": "addr","cData": "uint7","bit_use": { "low": 0,"up": 6},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
+ 	{ "Name" : "we", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "we","cData": "uint1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
+ 	{ "Name" : "re", "interface" : "wire", "bitwidth" : 1, "direction" : "READONLY", "bitSlice":[{"low":0,"up":0,"cElement": [{"cName": "re","cData": "uint1","bit_use": { "low": 0,"up": 0},"cArray": [{"low" : 0,"up" : 0,"step" : 0}]}]}]} , 
+ 	{ "Name" : "out_r", "interface" : "wire", "bitwidth" : 8, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":7,"cElement": [{"cName": "out","cData": "uint8","bit_use": { "low": 0,"up": 7},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
 # RTL Port declarations: 
 set portNum 11
 set portList { 
@@ -58,8 +58,8 @@ set RtlHierarchyInfo {[
 		"Protocol" : "ap_ctrl_hs",
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "2",
-		"VariableLatency" : "0", "ExactLatency" : "1", "EstimateLatencyMin" : "1", "EstimateLatencyMax" : "1",
+		"II" : "0",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1", "EstimateLatencyMax" : "1",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -72,8 +72,8 @@ set RtlHierarchyInfo {[
 			{"Name" : "re", "Type" : "None", "Direction" : "I"},
 			{"Name" : "out_r", "Type" : "Vld", "Direction" : "O"},
 			{"Name" : "saved", "Type" : "Memory", "Direction" : "IO"},
-			{"Name" : "tempOutVal", "Type" : "OVld", "Direction" : "IO"},
-			{"Name" : "tempOutAddr", "Type" : "OVld", "Direction" : "IO"}]},
+			{"Name" : "tempOutAddr", "Type" : "OVld", "Direction" : "IO"},
+			{"Name" : "tempOutVal", "Type" : "OVld", "Direction" : "IO"}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.saved_U", "Parent" : "0"}]}
 
 
@@ -84,8 +84,8 @@ set ArgLastReadFirstWriteLatency {
 		re {Type I LastRead 1 FirstWrite -1}
 		out_r {Type O LastRead -1 FirstWrite 1}
 		saved {Type IO LastRead -1 FirstWrite -1}
-		tempOutVal {Type IO LastRead -1 FirstWrite -1}
-		tempOutAddr {Type IO LastRead -1 FirstWrite -1}}}
+		tempOutAddr {Type IO LastRead -1 FirstWrite -1}
+		tempOutVal {Type IO LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 

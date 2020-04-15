@@ -28,7 +28,7 @@
 `define AUTOTB_TVOUT_out_r_out_wrapc  "../tv/rtldatafile/rtl.mem.autotvout_out_r.dat"
 module `AUTOTB_TOP;
 
-parameter AUTOTB_TRANSACTION_NUM = 9;
+parameter AUTOTB_TRANSACTION_NUM = 7;
 parameter PROGRESS_TIMEOUT = 10000000;
 parameter LATENCY_ESTIMATION = 3;
 parameter LENGTH_addr = 1;
@@ -613,6 +613,13 @@ initial begin : simulation_progress
                 end
             end
         end
+        // non-dataflow design && latency is predictable && no AXI master/slave interface
+        get_intra_progress(intra_progress);
+        if (intra_progress > 1000) begin
+            $display("// RTL Simulation : transaction %0d run-time latency is greater than %0f time(s) of the prediction @ \"%0t\"", start_cnt, intra_progress, $time);
+            $display("////////////////////////////////////////////////////////////////////////////////////");
+            $finish;
+        end
     end
     print_progress();
     $display("////////////////////////////////////////////////////////////////////////////////////");
@@ -678,7 +685,7 @@ task calculate_performance();
                 interval_min = 0;
                 interval_total = 0;
             end else if (i < AUTOTB_TRANSACTION_NUM - 1) begin
-                interval[i] = finish_timestamp[i] - start_timestamp[i]+1;
+                interval[i] = start_timestamp[i + 1] - start_timestamp[i];
                 if (interval[i] > interval_max) interval_max = interval[i];
                 if (interval[i] < interval_min) interval_min = interval[i];
                 interval_total = interval_total + interval[i];
@@ -729,6 +736,226 @@ endtask
 ////////////////////////////////////////////
 
 `ifndef POST_SYN
+
+// Dependence Check (WAR) "ap_enable_operation_12"(R:SV0-1) -> "ap_enable_operation_58"(W:SV3-3) @ `AUTOTB_DUT_INST
+
+// Dependence Check (WAR) "ap_enable_operation_12"(R:SV0-1) -> "ap_enable_operation_69"(W:SV3-3) @ `AUTOTB_DUT_INST
+
+// Dependence Check (RAW) "ap_enable_operation_58"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+reg [7:0] DEP_address_2_to [3 - 1:0];
+time DEP_time_2_to [3 - 1:0];
+reg [7:0] DEP_address_2_from [1 - 1:0];
+time DEP_time_2_from [1 - 1:0];
+reg DEP_error_2 = 0;
+integer DEP_i_2;
+
+initial begin
+    DEP_address_2_to[0] = 0;
+    DEP_time_2_to[0] = 0;
+    DEP_address_2_to[1] = 0;
+    DEP_time_2_to[1] = 0;
+    DEP_address_2_to[2] = 0;
+    DEP_time_2_to[2] = 0;
+    DEP_address_2_from[0] = 0;
+    DEP_time_2_from[0] = 0;
+end
+
+always @ (negedge AESL_clock) begin
+    if (~`AUTOTB_DUT_INST.ap_block_pp0) begin 
+        // record "to" access
+        if (`AUTOTB_DUT_INST.ap_enable_state1_pp0_iter0_stage0
+            &&  `AUTOTB_DUT_INST.ap_enable_reg_pp0_iter0) begin 
+            DEP_address_2_to[2] = DEP_address_2_to[1];
+            DEP_time_2_to[2] = DEP_time_2_to[1];
+            DEP_address_2_to[1] = DEP_address_2_to[0];
+            DEP_time_2_to[1] = DEP_time_2_to[0];
+            if (`AUTOTB_DUT_INST.ap_enable_operation_10) begin
+                DEP_address_2_to[0] = {1'b1, `AUTOTB_DUT_INST.saved_address0};
+                DEP_time_2_to[0] = $time;
+            end else begin
+                DEP_address_2_to[0] = {1'b0, 7'b0};
+                DEP_time_2_to[0] = $time;
+            end
+        end // of record to access
+        else if( (`AUTOTB_DUT_INST.ap_enable_state1_pp0_iter0_stage0||
+            `AUTOTB_DUT_INST.ap_enable_state1_pp0_iter0_stage0||
+            `AUTOTB_DUT_INST.ap_enable_state2_pp0_iter1_stage0||
+            `AUTOTB_DUT_INST.ap_enable_state4_pp0_iter3_stage0)
+            &&  ~`AUTOTB_DUT_INST.ap_enable_reg_pp0_iter0) begin
+            DEP_address_2_to[2] = DEP_address_2_to[1];
+            DEP_time_2_to[2] = DEP_time_2_to[1];
+            DEP_address_2_to[1] = DEP_address_2_to[0];
+            DEP_time_2_to[1] = DEP_time_2_to[0];
+            DEP_address_2_to[0] = {1'b0, 7'b0};
+            DEP_time_2_to[0] = $time;
+        end
+        // record "from" access
+        if (`AUTOTB_DUT_INST.ap_enable_state4_pp0_iter3_stage0
+            &&  `AUTOTB_DUT_INST.ap_enable_reg_pp0_iter3) begin
+            if (`AUTOTB_DUT_INST.ap_enable_operation_58) begin
+                if (DEP_address_2_from[0][7]) begin
+                    $display("// ERROR : \"DEP_address_2_from[0]\" is overwritten @ \"%0t\"", $time);
+                    $display("// autotb LINE:%d", `__LINE__);
+                    $display("////////////////////////////////////////////////////////////////////////////////////");
+                end
+                DEP_address_2_from[0] = {1'b1, `AUTOTB_DUT_INST.saved_address1};
+                DEP_time_2_from[0] = $time;
+            end
+        end // of record from access
+        // check access
+        if (`AUTOTB_DUT_INST.ap_enable_state4_pp0_iter3_stage0
+            &&  `AUTOTB_DUT_INST.ap_enable_reg_pp0_iter3) begin
+            if (`AUTOTB_DUT_INST.ap_enable_operation_58) begin
+                DEP_i_2 = 0;
+                if (DEP_address_2_to[0][7]) begin
+                    DEP_error_2 = (DEP_address_2_to[0][6:0] == DEP_address_2_from[DEP_i_2][6:0]);
+                    if (DEP_error_2) begin
+                        $display("//Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in \"`AUTOTB_DUT_INST\"");
+                        $display("//                : From memory access \"saved_address1\" = 0x%0h @ \"%0t\"", DEP_address_2_from[DEP_i_2][6:0], DEP_time_2_from[DEP_i_2]);
+                        $display("//                : To memory access \"saved_address0\" = DEP_address_2_to[0][6:0] = 0x%0h @ \"%0t\"", DEP_address_2_to[0][6:0], DEP_time_2_to[0]);
+                        $display("//If cosim fails, the WARNING should be checked. autotb LINE:%d", `__LINE__);
+                        $display("////////////////////////////////////////////////////////////////////////////////////");
+// (RAW) "ap_enable_operation_58"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+                    end
+                end
+                if (DEP_address_2_to[1][7]) begin
+                    DEP_error_2 = (DEP_address_2_to[1][6:0] == DEP_address_2_from[DEP_i_2][6:0]);
+                    if (DEP_error_2) begin
+                        $display("//Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in \"`AUTOTB_DUT_INST\"");
+                        $display("//                : From memory access \"saved_address1\" = 0x%0h @ \"%0t\"", DEP_address_2_from[DEP_i_2][6:0], DEP_time_2_from[DEP_i_2]);
+                        $display("//                : To memory access \"saved_address0\" = DEP_address_2_to[1][6:0] = 0x%0h @ \"%0t\"", DEP_address_2_to[1][6:0], DEP_time_2_to[1]);
+                        $display("//If cosim fails, the WARNING should be checked. autotb LINE:%d", `__LINE__);
+                        $display("////////////////////////////////////////////////////////////////////////////////////");
+// (RAW) "ap_enable_operation_58"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+                    end
+                end
+                if (DEP_address_2_to[2][7]) begin
+                    DEP_error_2 = (DEP_address_2_to[2][6:0] == DEP_address_2_from[DEP_i_2][6:0]);
+                    if (DEP_error_2) begin
+                        $display("//Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in \"`AUTOTB_DUT_INST\"");
+                        $display("//                : From memory access \"saved_address1\" = 0x%0h @ \"%0t\"", DEP_address_2_from[DEP_i_2][6:0], DEP_time_2_from[DEP_i_2]);
+                        $display("//                : To memory access \"saved_address0\" = DEP_address_2_to[2][6:0] = 0x%0h @ \"%0t\"", DEP_address_2_to[2][6:0], DEP_time_2_to[2]);
+                        $display("//If cosim fails, the WARNING should be checked. autotb LINE:%d", `__LINE__);
+                        $display("////////////////////////////////////////////////////////////////////////////////////");
+// (RAW) "ap_enable_operation_58"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+                    end
+                end
+                DEP_address_2_from[DEP_i_2] = {1'b0, 7'b0};
+                DEP_time_2_from[DEP_i_2] = 0;
+            end
+        end // of check access
+    end 
+end
+
+// Dependence Check (WAW) "ap_enable_operation_58"(W:SV3-3) -> "ap_enable_operation_69"(W:SV3-3) @ `AUTOTB_DUT_INST
+
+// Dependence Check (RAW) "ap_enable_operation_69"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+reg [7:0] DEP_address_4_to [3 - 1:0];
+time DEP_time_4_to [3 - 1:0];
+reg [7:0] DEP_address_4_from [1 - 1:0];
+time DEP_time_4_from [1 - 1:0];
+reg DEP_error_4 = 0;
+integer DEP_i_4;
+
+initial begin
+    DEP_address_4_to[0] = 0;
+    DEP_time_4_to[0] = 0;
+    DEP_address_4_to[1] = 0;
+    DEP_time_4_to[1] = 0;
+    DEP_address_4_to[2] = 0;
+    DEP_time_4_to[2] = 0;
+    DEP_address_4_from[0] = 0;
+    DEP_time_4_from[0] = 0;
+end
+
+always @ (negedge AESL_clock) begin
+    if (~`AUTOTB_DUT_INST.ap_block_pp0) begin 
+        // record "to" access
+        if (`AUTOTB_DUT_INST.ap_enable_state1_pp0_iter0_stage0
+            &&  `AUTOTB_DUT_INST.ap_enable_reg_pp0_iter0) begin 
+            DEP_address_4_to[2] = DEP_address_4_to[1];
+            DEP_time_4_to[2] = DEP_time_4_to[1];
+            DEP_address_4_to[1] = DEP_address_4_to[0];
+            DEP_time_4_to[1] = DEP_time_4_to[0];
+            if (`AUTOTB_DUT_INST.ap_enable_operation_10) begin
+                DEP_address_4_to[0] = {1'b1, `AUTOTB_DUT_INST.saved_address0};
+                DEP_time_4_to[0] = $time;
+            end else begin
+                DEP_address_4_to[0] = {1'b0, 7'b0};
+                DEP_time_4_to[0] = $time;
+            end
+        end // of record to access
+        else if( (`AUTOTB_DUT_INST.ap_enable_state1_pp0_iter0_stage0||
+            `AUTOTB_DUT_INST.ap_enable_state1_pp0_iter0_stage0||
+            `AUTOTB_DUT_INST.ap_enable_state2_pp0_iter1_stage0||
+            `AUTOTB_DUT_INST.ap_enable_state4_pp0_iter3_stage0)
+            &&  ~`AUTOTB_DUT_INST.ap_enable_reg_pp0_iter0) begin
+            DEP_address_4_to[2] = DEP_address_4_to[1];
+            DEP_time_4_to[2] = DEP_time_4_to[1];
+            DEP_address_4_to[1] = DEP_address_4_to[0];
+            DEP_time_4_to[1] = DEP_time_4_to[0];
+            DEP_address_4_to[0] = {1'b0, 7'b0};
+            DEP_time_4_to[0] = $time;
+        end
+        // record "from" access
+        if (`AUTOTB_DUT_INST.ap_enable_state4_pp0_iter3_stage0
+            &&  `AUTOTB_DUT_INST.ap_enable_reg_pp0_iter3) begin
+            if (`AUTOTB_DUT_INST.ap_enable_operation_69) begin
+                if (DEP_address_4_from[0][7]) begin
+                    $display("// ERROR : \"DEP_address_4_from[0]\" is overwritten @ \"%0t\"", $time);
+                    $display("// autotb LINE:%d", `__LINE__);
+                    $display("////////////////////////////////////////////////////////////////////////////////////");
+                end
+                DEP_address_4_from[0] = {1'b1, `AUTOTB_DUT_INST.saved_address1};
+                DEP_time_4_from[0] = $time;
+            end
+        end // of record from access
+        // check access
+        if (`AUTOTB_DUT_INST.ap_enable_state4_pp0_iter3_stage0
+            &&  `AUTOTB_DUT_INST.ap_enable_reg_pp0_iter3) begin
+            if (`AUTOTB_DUT_INST.ap_enable_operation_69) begin
+                DEP_i_4 = 0;
+                if (DEP_address_4_to[0][7]) begin
+                    DEP_error_4 = (DEP_address_4_to[0][6:0] == DEP_address_4_from[DEP_i_4][6:0]);
+                    if (DEP_error_4) begin
+                        $display("//Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 3) is detected in \"`AUTOTB_DUT_INST\"");
+                        $display("//                : From memory access \"saved_address1\" = 0x%0h @ \"%0t\"", DEP_address_4_from[DEP_i_4][6:0], DEP_time_4_from[DEP_i_4]);
+                        $display("//                : To memory access \"saved_address0\" = DEP_address_4_to[0][6:0] = 0x%0h @ \"%0t\"", DEP_address_4_to[0][6:0], DEP_time_4_to[0]);
+                        $display("//If cosim fails, the WARNING should be checked. autotb LINE:%d", `__LINE__);
+                        $display("////////////////////////////////////////////////////////////////////////////////////");
+// (RAW) "ap_enable_operation_69"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+                    end
+                end
+                if (DEP_address_4_to[1][7]) begin
+                    DEP_error_4 = (DEP_address_4_to[1][6:0] == DEP_address_4_from[DEP_i_4][6:0]);
+                    if (DEP_error_4) begin
+                        $display("//Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 2) is detected in \"`AUTOTB_DUT_INST\"");
+                        $display("//                : From memory access \"saved_address1\" = 0x%0h @ \"%0t\"", DEP_address_4_from[DEP_i_4][6:0], DEP_time_4_from[DEP_i_4]);
+                        $display("//                : To memory access \"saved_address0\" = DEP_address_4_to[1][6:0] = 0x%0h @ \"%0t\"", DEP_address_4_to[1][6:0], DEP_time_4_to[1]);
+                        $display("//If cosim fails, the WARNING should be checked. autotb LINE:%d", `__LINE__);
+                        $display("////////////////////////////////////////////////////////////////////////////////////");
+// (RAW) "ap_enable_operation_69"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+                    end
+                end
+                if (DEP_address_4_to[2][7]) begin
+                    DEP_error_4 = (DEP_address_4_to[2][6:0] == DEP_address_4_from[DEP_i_4][6:0]);
+                    if (DEP_error_4) begin
+                        $display("//Critical WARNING: Due to pragma (Mem/.settings/mem.c:6:1), dependence access (loop distance = 1) is detected in \"`AUTOTB_DUT_INST\"");
+                        $display("//                : From memory access \"saved_address1\" = 0x%0h @ \"%0t\"", DEP_address_4_from[DEP_i_4][6:0], DEP_time_4_from[DEP_i_4]);
+                        $display("//                : To memory access \"saved_address0\" = DEP_address_4_to[2][6:0] = 0x%0h @ \"%0t\"", DEP_address_4_to[2][6:0], DEP_time_4_to[2]);
+                        $display("//If cosim fails, the WARNING should be checked. autotb LINE:%d", `__LINE__);
+                        $display("////////////////////////////////////////////////////////////////////////////////////");
+// (RAW) "ap_enable_operation_69"(W:SV3-3) -> "ap_enable_operation_10"(R:SV0-1) @ `AUTOTB_DUT_INST
+                    end
+                end
+                DEP_address_4_from[DEP_i_4] = {1'b0, 7'b0};
+                DEP_time_4_from[DEP_i_4] = 0;
+            end
+        end // of check access
+    end 
+end
+
+// Dependence Check (WAW) "ap_enable_operation_69"(W:SV3-3) -> "ap_enable_operation_58"(W:SV3-3) @ `AUTOTB_DUT_INST
 
 `endif
 

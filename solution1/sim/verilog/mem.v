@@ -7,7 +7,7 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="mem,hls_ip_2019_1,{HLS_INPUT_TYPE=c,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7vx485t-ffg1157-1,HLS_INPUT_CLOCK=2.780000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=1.868000,HLS_SYN_LAT=3,HLS_SYN_TPT=none,HLS_SYN_MEM=1,HLS_SYN_DSP=0,HLS_SYN_FF=42,HLS_SYN_LUT=91,HLS_VERSION=2019_1}" *)
+(* CORE_GENERATION_INFO="mem,hls_ip_2019_1,{HLS_INPUT_TYPE=c,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7vx485t-ffg1157-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=6.721000,HLS_SYN_LAT=1,HLS_SYN_TPT=none,HLS_SYN_MEM=1,HLS_SYN_DSP=0,HLS_SYN_FF=24,HLS_SYN_LUT=77,HLS_VERSION=2019_1}" *)
 
 module mem (
         ap_clk,
@@ -23,10 +23,8 @@ module mem (
         out_r_ap_vld
 );
 
-parameter    ap_ST_fsm_state1 = 4'd1;
-parameter    ap_ST_fsm_state2 = 4'd2;
-parameter    ap_ST_fsm_state3 = 4'd4;
-parameter    ap_ST_fsm_state4 = 4'd8;
+parameter    ap_ST_fsm_state1 = 2'd1;
+parameter    ap_ST_fsm_state2 = 2'd2;
 
 input   ap_clk;
 input   ap_rst;
@@ -46,36 +44,31 @@ reg ap_ready;
 reg[7:0] out_r;
 reg out_r_ap_vld;
 
-(* fsm_encoding = "none" *) reg   [3:0] ap_CS_fsm;
+(* fsm_encoding = "none" *) reg   [1:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg   [6:0] saved_address0;
 reg    saved_ce0;
 reg    saved_we0;
 wire   [7:0] saved_q0;
-reg   [7:0] tempOutVal;
 reg   [6:0] tempOutAddr;
-reg   [6:0] saved_addr_reg_123;
-reg   [7:0] temp1_reg_128;
+reg   [7:0] tempOutVal;
+reg   [6:0] saved_addr_reg_125;
+wire   [63:0] zext_ln8_fu_68_p1;
 wire    ap_CS_fsm_state2;
-wire   [7:0] temp1_2_fu_78_p3;
-reg   [7:0] temp1_2_reg_134;
-wire    ap_CS_fsm_state3;
-wire  signed [63:0] sext_ln9_fu_68_p1;
-wire    ap_CS_fsm_state4;
-wire   [0:0] icmp_ln20_fu_89_p2;
-wire   [0:0] re_read_read_fu_42_p2;
-wire  signed [7:0] sext_ln21_fu_94_p1;
-wire  signed [7:0] sext_ln30_fu_112_p1;
-wire  signed [6:0] sext_ln9_fu_68_p0;
-wire   [7:0] temp1_1_fu_73_p2;
-wire  signed [6:0] sext_ln21_fu_94_p0;
-reg   [3:0] ap_NS_fsm;
+wire   [0:0] we_read_read_fu_42_p2;
+wire   [0:0] icmp_ln14_fu_93_p2;
+wire   [7:0] temp_1_fu_82_p2;
+wire   [0:0] re_read_read_fu_36_p2;
+wire   [7:0] zext_ln32_fu_77_p1;
+wire   [7:0] zext_ln18_fu_110_p1;
+wire   [7:0] zext_ln22_fu_114_p1;
+reg   [1:0] ap_NS_fsm;
 
 // power-on initialization
 initial begin
-#0 ap_CS_fsm = 4'd1;
-#0 tempOutVal = 8'd0;
+#0 ap_CS_fsm = 2'd1;
 #0 tempOutAddr = 7'd0;
+#0 tempOutVal = 8'd0;
 end
 
 mem_saved #(
@@ -88,7 +81,7 @@ saved_U(
     .address0(saved_address0),
     .ce0(saved_ce0),
     .we0(saved_we0),
-    .d0(temp1_2_reg_134),
+    .d0(temp_1_fu_82_p2),
     .q0(saved_q0)
 );
 
@@ -102,31 +95,19 @@ end
 
 always @ (posedge ap_clk) begin
     if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
-        saved_addr_reg_123 <= sext_ln9_fu_68_p1;
+        saved_addr_reg_125 <= zext_ln8_fu_68_p1;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state3)) begin
-        temp1_2_reg_134 <= temp1_2_fu_78_p3;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if ((1'b1 == ap_CS_fsm_state2)) begin
-        temp1_reg_128 <= saved_q0;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (((icmp_ln20_fu_89_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state4))) begin
+    if (((icmp_ln14_fu_93_p2 == 1'd0) & (we_read_read_fu_42_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
         tempOutAddr <= addr;
-        tempOutVal <= temp1_2_reg_134;
+        tempOutVal <= temp_1_fu_82_p2;
     end
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state4)) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
         ap_done = 1'b1;
     end else begin
         ap_done = 1'b0;
@@ -142,7 +123,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state4)) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -150,11 +131,13 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((re_read_read_fu_42_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state4))) begin
-        if ((icmp_ln20_fu_89_p2 == 1'd1)) begin
-            out_r = sext_ln30_fu_112_p1;
-        end else if ((icmp_ln20_fu_89_p2 == 1'd0)) begin
-            out_r = sext_ln21_fu_94_p1;
+    if (((re_read_read_fu_36_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+        if (((icmp_ln14_fu_93_p2 == 1'd1) & (we_read_read_fu_42_p2 == 1'd1))) begin
+            out_r = zext_ln22_fu_114_p1;
+        end else if (((icmp_ln14_fu_93_p2 == 1'd0) & (we_read_read_fu_42_p2 == 1'd1))) begin
+            out_r = zext_ln18_fu_110_p1;
+        end else if ((we_read_read_fu_42_p2 == 1'd0)) begin
+            out_r = zext_ln32_fu_77_p1;
         end else begin
             out_r = 'bx;
         end
@@ -164,7 +147,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((((re_read_read_fu_42_p2 == 1'd1) & (icmp_ln20_fu_89_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state4)) | ((re_read_read_fu_42_p2 == 1'd1) & (icmp_ln20_fu_89_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state4)))) begin
+    if ((((re_read_read_fu_36_p2 == 1'd1) & (we_read_read_fu_42_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2)) | ((re_read_read_fu_36_p2 == 1'd1) & (icmp_ln14_fu_93_p2 == 1'd1) & (we_read_read_fu_42_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2)) | ((icmp_ln14_fu_93_p2 == 1'd0) & (re_read_read_fu_36_p2 == 1'd1) & (we_read_read_fu_42_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2)))) begin
         out_r_ap_vld = 1'b1;
     end else begin
         out_r_ap_vld = 1'b0;
@@ -172,17 +155,17 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state4)) begin
-        saved_address0 = saved_addr_reg_123;
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        saved_address0 = saved_addr_reg_125;
     end else if ((1'b1 == ap_CS_fsm_state1)) begin
-        saved_address0 = sext_ln9_fu_68_p1;
+        saved_address0 = zext_ln8_fu_68_p1;
     end else begin
         saved_address0 = 'bx;
     end
 end
 
 always @ (*) begin
-    if (((1'b1 == ap_CS_fsm_state4) | ((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1)))) begin
+    if (((1'b1 == ap_CS_fsm_state2) | ((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1)))) begin
         saved_ce0 = 1'b1;
     end else begin
         saved_ce0 = 1'b0;
@@ -190,7 +173,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if ((1'b1 == ap_CS_fsm_state4)) begin
+    if (((we_read_read_fu_42_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
         saved_we0 = 1'b1;
     end else begin
         saved_we0 = 1'b0;
@@ -207,12 +190,6 @@ always @ (*) begin
             end
         end
         ap_ST_fsm_state2 : begin
-            ap_NS_fsm = ap_ST_fsm_state3;
-        end
-        ap_ST_fsm_state3 : begin
-            ap_NS_fsm = ap_ST_fsm_state4;
-        end
-        ap_ST_fsm_state4 : begin
             ap_NS_fsm = ap_ST_fsm_state1;
         end
         default : begin
@@ -225,26 +202,20 @@ assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
 
 assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
 
-assign ap_CS_fsm_state3 = ap_CS_fsm[32'd2];
+assign icmp_ln14_fu_93_p2 = ((temp_1_fu_82_p2 < tempOutVal) ? 1'b1 : 1'b0);
 
-assign ap_CS_fsm_state4 = ap_CS_fsm[32'd3];
+assign re_read_read_fu_36_p2 = re;
 
-assign icmp_ln20_fu_89_p2 = (($signed(temp1_2_reg_134) < $signed(tempOutVal)) ? 1'b1 : 1'b0);
+assign temp_1_fu_82_p2 = (saved_q0 + 8'd1);
 
-assign re_read_read_fu_42_p2 = re;
+assign we_read_read_fu_42_p2 = we;
 
-assign sext_ln21_fu_94_p0 = addr;
+assign zext_ln18_fu_110_p1 = addr;
 
-assign sext_ln21_fu_94_p1 = sext_ln21_fu_94_p0;
+assign zext_ln22_fu_114_p1 = tempOutAddr;
 
-assign sext_ln30_fu_112_p1 = $signed(tempOutAddr);
+assign zext_ln32_fu_77_p1 = tempOutAddr;
 
-assign sext_ln9_fu_68_p0 = addr;
-
-assign sext_ln9_fu_68_p1 = sext_ln9_fu_68_p0;
-
-assign temp1_1_fu_73_p2 = (temp1_reg_128 + 8'd1);
-
-assign temp1_2_fu_78_p3 = ((we[0:0] === 1'b1) ? temp1_1_fu_73_p2 : temp1_reg_128);
+assign zext_ln8_fu_68_p1 = addr;
 
 endmodule //mem

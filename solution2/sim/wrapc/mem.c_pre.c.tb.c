@@ -6076,39 +6076,69 @@ extern int getloadavg (double __loadavg[], int __nelem)
 
 static const int ADDRESSES = 128;
 
-void mem(int7 wr_addr, int1 we, int1 re, int8 *out);
+void mem(uint7 wr_addr, uint1 we, uint1 re, uint8 *out);
 # 2 "/data11/home/marcuscw/Desktop/Mem/.settings/mem.c" 2
 
+void mem(uint7 addr, uint1 we, uint1 re, uint8 *out){
 
+ static uint8 saved[ADDRESSES];
 
-void mem(int7 addr, int1 we, int1 re, int8 *out){
- static int8 saved[ADDRESSES];
- static int8 tempOutAddr = 0;
- static int8 tempOutVal = 0;
- int8 temp1 = saved[addr];
+ static uint7 tempOutAddr = 0;
+ static uint8 tempOutVal = 0;
+ uint8 temp = saved[addr];
 
+ static uint7 prevAddr;
+ static int store;
+ uint8 temp2 = store;
 
  if(we){
-  temp1++;
-  saved[addr] = temp1;
- }else{
-  saved[addr] = temp1;
- }
+
+  if(addr == prevAddr && tempOutVal != 0){
+   temp2++;
+   store = temp2;
+   if(temp2 >= tempOutVal){
+    tempOutVal = temp2;
+    tempOutAddr = addr;
+    if(re){
+     *out = addr;
+    }
+   }else{
+    if(re){
+     *out = tempOutAddr;
+    }else;
+   }
+
+    saved[addr] = temp2;
+    prevAddr = addr;
 
 
- if(temp1 >= tempOutVal){
-  tempOutAddr = addr;
-  tempOutVal = temp1;
-  if(re){
-   *out = addr;
+  }else{
+
+   temp++;
+   if(temp >= tempOutVal){
+    tempOutVal = temp;
+    tempOutAddr = addr;
+     if(re){
+      *out = addr;
+     }
+   }else{
+    if(re){
+     *out = tempOutAddr;
+    }else;
+   }
+
+    saved[addr] = temp;
+    prevAddr = addr;
+    store = temp;
+
   }
- }
-
- else{
+ }else{
   if(re){
    *out = tempOutAddr;
-  }
+  }else;
  }
+
+
 
 
 }

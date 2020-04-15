@@ -13,6 +13,8 @@
     <UIConfigurations>
         <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
             <Platform>xilinx/Virtex-7/Virtex-7</Platform>
+            <Platform>xilinx/virtex7/virtex7</Platform>
+            <Platform>xilinx/virtex7/virtex7_fpv6</Platform>
             <customLibs/>
         </UIAutosynConf>
         <UIIPPackagerConf AskAgain="true" DescriptionButton="false" LibraryButton="false" RTLLanguage="verilog" UseNetList="none" VendorButton="false" VersionButton="false" evaluateRTL="false" setup="false">
@@ -48,8 +50,8 @@
         <Format formatName="syn_dcp"/>
         <Format formatName="pcore" use_netlist="none"/>
     </ExportDesign>
-    <Simulation>
-        <SimFlow askAgain="true" clangSanitizer="false" compile="false" compileChoice="gcc" compiledLibrary="/DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1" disableDeadlockDetect="false" dumpTrace="all" name="cosim" optimizeCompile="false" reduce_diskspace="false" setup="false" toolName="ModelSim" waveDebug="false">
+    <Simulation argv="">
+        <SimFlow askAgain="true" clangSanitizer="false" compile="false" compileChoice="gcc" compiledLibrary="/DFS-L/DATA/atlas/psundara/xilinx/compiled_libraries/v2019.1" disableDeadlockDetect="false" dumpTrace="all" name="cosim" optimizeCompile="false" reduce_diskspace="false" setup="false" toolName="modelsim" waveDebug="false" ldflags="" mflags="">
             <Rtl active="false" name="systemc"/>
             <Rtl active="true" name="verilog"/>
             <Rtl active="false" name="vhdl"/>
@@ -66,11 +68,11 @@
     </targetInfo>
     <libraryList>
         <library name="DefaultPlatform" value="xilinx/Virtex-7/Virtex-7"/>
-        <library value="xilinx/virtex7/virtex7" name="DefaultPlatform"/>
-        <library value="xilinx/virtex7/virtex7_fpv6" name="DefaultPlatform"/>
+        <library name="DefaultPlatform" value="xilinx/virtex7/virtex7"/>
+        <library name="DefaultPlatform" value="xilinx/virtex7/virtex7_fpv6"/>
     </libraryList>
     <clockList>
-        <clock default="false" name="default" uncertainty="12.5%" period="10"/>
+        <clock name="default" default="false" uncertainty="12.5%" period="10"/>
     </clockList>
 </solution>
 

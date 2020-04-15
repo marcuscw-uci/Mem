@@ -4,7 +4,7 @@
 // ==============================================================
 
 extern void AESL_WRAP_mem (
-int7 addr,
-int1 we,
-int1 re,
-int8* out);
+uint7 addr,
+uint1 we,
+uint1 re,
+uint8* out);
